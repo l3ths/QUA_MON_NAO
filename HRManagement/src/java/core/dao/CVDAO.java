@@ -66,18 +66,18 @@ public class CVDAO {
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                String sql = "select [CVID]\n"
-                            + "      ,cv.[dateOfBirth]\n"
-                            + "      ,[status]\n"
-                            + "      ,[education]\n"
-                            + "      ,[experience]\n"
-                            + "      ,cv.[candidateID]\n"
-                            + "      ,cv.[certificateID]\n"
-                            + "      ,[fileCV]\n"
-                            + "from tblCV cv\n"
-                            + "inner join tblCandidate c\n"
-                            + "on cv.candidateID=c.candidateID\n"
-                            + "where c.email=?";
+                String sql = "select cv.CVID\n"
+                        + "      ,cv.dateOfBirth\n"
+                        + "      ,cv.status\n"
+                        + "      ,cv.education\n"
+                        + "      ,cv.experience\n"
+                        + "      ,cv.candidateID\n"
+                        + "      ,cv.certificateID\n"
+                        + "      ,cv.fileCV\n"
+                        + "from tblCV cv\n"
+                        + "inner join tblCandidate c\n"
+                        + "on cv.candidateID=c.candidateID\n"
+                        + "where c.email=?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, email);
                 ResultSet rs = pst.executeQuery();
@@ -113,10 +113,49 @@ public class CVDAO {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "SELECT *\n"
-                            + "FROM tblCV";
-                PreparedStatement pst=cn.prepareStatement(sql);
+                        + "FROM tblCV";
+                PreparedStatement pst = cn.prepareStatement(sql);
                 ResultSet rs = pst.executeQuery();
-                while (rs.next()) { 
+                while (rs.next()) {
+                    String id = rs.getString("CVID");
+                    String education = rs.getString("education");
+                    String experience = rs.getString("experience");
+                    String dateOfBirth = rs.getString("dateOfBirth");
+                    int status = rs.getInt("status");
+                    String fileCV = rs.getString("fileCV");
+                    String candidateID = rs.getString("candidateID");
+                    String certificateID = rs.getString("certificateID");
+                    CVDTO cv = new CVDTO(id, education, experience, dateOfBirth, status, fileCV, candidateID, certificateID);
+                    list.add(cv);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+
+    public static ArrayList<CVDTO> getCVsByJobID(String jobID) {
+        ArrayList<CVDTO> list = new ArrayList<>();
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "select cv.*\n"
+                        + "from dbo.tblCV cv\n"
+                        + "inner join dbo.tblAppyling app on cv.CVID = app.CVID\n"
+                        + "inner join dbo.tblJob job on app.jobID = job.jobID\n"
+                        + "where job.jobID = ?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, jobID);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
                     String id = rs.getString("CVID");
                     String education = rs.getString("education");
                     String experience = rs.getString("experience");

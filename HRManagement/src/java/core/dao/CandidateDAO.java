@@ -5,6 +5,7 @@
  */
 package core.dao;
 
+import core.dto.CVDTO;
 import core.dto.CandidateDTO;
 import core.utils.DBUtils;
 import java.sql.Connection;
@@ -80,6 +81,41 @@ public class CandidateDAO {
                     String cID = table.getString("candidateID");
                     String name = table.getString("name");
                     String phoneNumber = table.getString("phoneNumber");
+                    String imgPath = table.getString("imgPath");
+                    String birthdate = table.getString("dateOfBirth");
+                    can = new CandidateDTO(cID, name, phoneNumber, email, imgPath, birthdate);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return can;
+    }
+
+    public static CandidateDTO getCandidatesByCV(String CVID) {
+        CandidateDTO can = null;
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "select can.*\n"
+                        + "from dbo.tblCandidate can\n"
+                        + "inner join dbo.tblCV cv on cv.candidateID = can.candidateID\n"
+                        + "where cv.CVID = ?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, CVID);
+                ResultSet table = pst.executeQuery();
+                if (table != null && table.next()) {
+                    String cID = table.getString("candidateID");
+                    String name = table.getString("name");
+                    String phoneNumber = table.getString("phoneNumber");
+                    String email = table.getString("email");
                     String imgPath = table.getString("imgPath");
                     String birthdate = table.getString("dateOfBirth");
                     can = new CandidateDTO(cID, name, phoneNumber, email, imgPath, birthdate);
