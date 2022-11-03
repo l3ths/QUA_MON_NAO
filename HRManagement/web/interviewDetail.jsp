@@ -4,6 +4,9 @@
     Author     : ADMIN
 --%>
 
+<%@page import="core.dto.JobDTO"%>
+<%@page import="core.dto.InterviewingDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -17,6 +20,11 @@
         <link href="css/fontawesomecss" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
+    <%
+        ArrayList<String> listName = (ArrayList<String>) request.getAttribute("listName");
+        ArrayList<InterviewingDTO> listIW = (ArrayList<InterviewingDTO>) request.getAttribute("listIW");
+        JobDTO Job = (JobDTO) request.getAttribute("Job");
+    %>
     <body>
         <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
@@ -38,7 +46,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="detail-name">
-                        <h2 style="margin-top: 30%;">Marketing</h2>
+                        <h2 style="margin-top: 30%;"><%= Job.getName()%></h2>
                     </div>
                 </div>
                 <div class="col-md-8 detail-table">
@@ -64,26 +72,39 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 25%;">Huy</p>
+                   
+                <%
+                    for (int i = 0; i < listIW.size(); i++) {
+                        InterviewingDTO get = listIW.get(i);
+                %>
+                 <form action="MainController" method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="border-form" style="height: 200px;">
+                            <p class="table-description" style="margin-top: 25%;"><%= listName.get(i)%></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="border-form table-link" style="height: 200px; padding-top: 25%;">
+                            <a href="#">Detail</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="border-form" style="height: 200px;">
+                            <input placeholder="Score" type="number" name="score" value="<%= (get.getScore()==null) ? "":get.getScore()  %>">
+                            <input type="hidden" value="<%= get.getCvID() %>" name="CVID" />
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="border-form table-link" style="height: 200px; padding-top: 25%;">
-                        <a href="#">Detail</a>
-                    </div>
+                        <div style="width: 150px; margin-right:40px; margin-bottom: 30px; margin-top: 20px; float: right;">
+                    <button type="submit" name="action" value="MarkCandidate" >Mark</button>
                 </div>
-                <div class="col-md-4">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 25%;">Score</p>
-                    </div>
-                </div>
-            </div>
-            <div style="width: 150px; margin-right:40px; margin-bottom: 30px; margin-top: 20px; float: right;">
-                <a href="postRecruitmentJob.jsp" class="link-button" >New post</a>
-            </div>
+                        </form>
+                <%
+                    }
+                %>
+                
+            
         </div>
         <%@include file="footer.jsp" %>
     </body>

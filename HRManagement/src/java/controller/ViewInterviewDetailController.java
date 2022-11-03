@@ -4,8 +4,17 @@
  */
 package controller;
 
+import core.dao.CandidateDAO;
+import core.dao.InterviewingDAO;
+import core.dao.JobDAO;
+import core.dto.InterviewingDTO;
+import core.dto.JobDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,19 +36,22 @@ public class ViewInterviewDetailController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet viewInterviewDetailController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet viewInterviewDetailController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String JobID = (String) request.getAttribute("JobID");
+            JobDTO job = JobDAO.getJob(JobID);
+            ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByJobID(JobID);
+            ArrayList<String> listName = new ArrayList<>();
+            for (int i = 0; i < listIW.size(); i++) {
+                InterviewingDTO get = listIW.get(i);
+                String name = (CandidateDAO.getCandidatesByCV(get.getCvID())).getName();
+                listName.add(name);
+            }
+            request.setAttribute("listIW", listIW);
+            request.setAttribute("listName", listName);
+            request.getRequestDispatcher("interviewDetail.jsp").forward(request, response);
         }
     }
 
@@ -55,7 +67,11 @@ public class ViewInterviewDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewInterviewDetailController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -69,7 +85,11 @@ public class ViewInterviewDetailController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewInterviewDetailController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
