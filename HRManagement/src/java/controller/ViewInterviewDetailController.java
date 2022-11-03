@@ -40,7 +40,7 @@ public class ViewInterviewDetailController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String JobID = (String) request.getAttribute("JobID");
+            String JobID = (String) request.getParameter("JobID");
             JobDTO Job = JobDAO.getJob(JobID);
             ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByJobID(JobID);
             ArrayList<String> listName = new ArrayList<>();
