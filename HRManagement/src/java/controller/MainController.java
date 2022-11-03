@@ -46,7 +46,8 @@ public class MainController extends HttpServlet {
     private static final String REGISTER_CONTROLLER = "RegisterController";
     private static final String VIEW_PERSONAL = "ViewPersonal";
     private static final String VIEW_PERSONAL_CONTROLLER = "ViewPersonalController";
-    
+    private static final String VIEW_INTERVIEW_DETAIL = "ViewInterviewDetail";
+    private static final String VIEW_INTERVIEW_DETAIL_CONTROLLER = "ViewInterviewDetailController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
@@ -80,6 +81,8 @@ public class MainController extends HttpServlet {
                 url = REGISTER_CONTROLLER;
             } else if (VIEW_PERSONAL.equals(action)) {
                 url = VIEW_PERSONAL_CONTROLLER;
+            } else if (VIEW_INTERVIEW_DETAIL.equals(action)) {
+                url = VIEW_INTERVIEW_DETAIL_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

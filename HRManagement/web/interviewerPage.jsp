@@ -84,11 +84,14 @@
                 </div>
                 <div class="col-md-4">
                     <div class="border-form" style="height: 700px;">
-                        <% for (int idx = 0; idx < listIW.size(); idx++) {
-                                InterviewingDTO get = listIW.get(idx);
+                        <% for (int idx = 0; idx < listJob.size(); idx++) {
+                                JobDTO get = listJob.get(idx);
                         %>
                         <div class="table-link" style="padding-top: 10px;">
-                            <a href="#">Detail</a>
+                            <form action="MainController" method="post">
+                                <input type="hidden" name="JobID" value="<%= get.getJobID() %>" />
+                                <button type="submit" name="action" value="ViewInterviewDetail" >Detail</button>
+                            </form>
                         </div>
                         <%
                             }
