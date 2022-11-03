@@ -19,13 +19,13 @@
     <body>
         <c:if test="${sessionScope.role eq 'candidate'}">
             <div class="header row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <h1>Toidiyuh</h1>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <ul>
                         <li><a href="MainController?action=ShowJob" class="active-page">Home</a></li>
-                        <li><a href="candidatePage.jsp">Personal</a></li>
+                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                         <li><a href="personalPage.jsp">Profile</a></li>
                         <li><a href="MainController?action=Logout">Log out</a></li>
                     </ul>
@@ -34,10 +34,10 @@
         </c:if>
         <c:if test="${sessionScope.role==null}">
             <div class="header row">
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <h1>Toidiyuh</h1>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <ul>
                         <li><a href="MainController?action=ShowJob" class="active-page">Home</a></li>
                         <li><a href="loginPage.jsp">Login</a></li>
