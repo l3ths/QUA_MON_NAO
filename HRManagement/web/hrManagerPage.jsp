@@ -97,7 +97,10 @@
                             <%
                             } else {
                             %>
-                            <a href="#">View passed list</a>
+                            <form action="MainController" method="post">
+                                <input type="hidden" name="JobID" value="<%= listIW.get(i).getJobID() %>" />
+                                <button type="submit" name="action" value="ViewPassed" >View Passed List</button>
+                            </form>
                             <%
                                 }
                             %>

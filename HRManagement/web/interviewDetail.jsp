@@ -72,39 +72,42 @@
                     </div>
                 </div>
             </div>
-                   
-                <%
-                    for (int i = 0; i < listIW.size(); i++) {
-                        InterviewingDTO get = listIW.get(i);
-                %>
-                 <form action="MainController" method="post">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="border-form" style="height: 200px;">
-                            <p class="table-description" style="margin-top: 25%;"><%= listName.get(i)%></p>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="border-form table-link" style="height: 200px; padding-top: 25%;">
-                            <a href="#">Detail</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="border-form" style="height: 200px;">
-                            <input placeholder="Score" type="number" name="score" value="<%= (get.getScore()==null) ? "":get.getScore()  %>">
-                            <input type="hidden" value="<%= get.getCvID() %>" name="CVID" />
-                        </div>
+
+            <%
+                for (int i = 0; i < listIW.size(); i++) {
+                    InterviewingDTO get = listIW.get(i);
+            %>
+            <form action="MainController" method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="border-form" style="height: 200px;">
+                        <p class="table-description" style="margin-top: 25%;"><%= listName.get(i)%></p>
                     </div>
                 </div>
-                        <div style="width: 150px; margin-right:40px; margin-bottom: 30px; margin-top: 20px; float: right;">
-                    <button type="submit" name="action" value="MarkCandidate" >Mark</button>
+                <div class="col-md-4">
+                    <div class="border-form table-link" style="height: 200px; padding-top: 25%;">
+                        <a href="#">Detail</a>
+                    </div>
                 </div>
-                        </form>
-                <%
-                    }
-                %>
-                
+                <div class="col-md-4">
+                    <div class="border-form" style="height: 200px;">
+                        <input placeholder="Score" type="number" name="score" value="<%= (get.getScore() == null) ? "" : get.getScore()%>">
+                        <input type="hidden" value="<%= get.getCvID()%>" name="CVID" />
+                    </div>
+                </div>
+            </div>
             
+                <div style="width: 150px; margin-right:40px; margin-bottom: 30px; margin-top: 20px; float: right;">
+                    <input type="hidden" name="CVID" value="<%= get.getCvID() %>" />
+                    <input type="hidden" name="JobID" value="<%= get.getJobID()%>" />
+                    <button type="submit" name="action" value="MarkCandidate" ><%= (get.getScore() == null) ? "Mark":"Update" %></button>
+                </div>
+            </form>
+            <%
+                }
+            %>
+
+
         </div>
         <%@include file="footer.jsp" %>
     </body>
