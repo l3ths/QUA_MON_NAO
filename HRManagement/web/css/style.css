@@ -617,7 +617,7 @@ body{
     font-family: var(--text-font-2);
     padding-left: 10px;
     padding-right: 10px;
-    height: 50px;
+    height: 40px;
     border-radius: 2px;
     border: none;
     width: 100%;
@@ -628,7 +628,7 @@ body{
     background-color: var(--theme-color);
     color: white;
     text-transform: uppercase;
-    height: 50px;
+    height: 40px;
     border-radius: 2px;
     border: none;
     width: 100%;
