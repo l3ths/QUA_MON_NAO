@@ -5,24 +5,34 @@
         <servlet-class>controller.ViewInterviewDetailController</servlet-class>
     </servlet>
     <servlet>
+<<<<<<< Updated upstream
         <servlet-name>ViewPassedController</servlet-name>
         <servlet-class>controller.ViewPassedController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>MarkCandidateController</servlet-name>
         <servlet-class>controller.MarkCandidateController</servlet-class>
+=======
+        <servlet-name>CreateJobServlet</servlet-name>
+        <servlet-class>controller.CreateJobServlet</servlet-class>
+>>>>>>> Stashed changes
     </servlet>
     <servlet-mapping>
         <servlet-name>ViewInterviewDetailController</servlet-name>
         <url-pattern>/ViewInterviewDetailController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< Updated upstream
         <servlet-name>ViewPassedController</servlet-name>
         <url-pattern>/ViewPassedController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MarkCandidateController</servlet-name>
         <url-pattern>/MarkCandidateController</url-pattern>
+=======
+        <servlet-name>CreateJobServlet</servlet-name>
+        <url-pattern>/CreateJobServlet</url-pattern>
+>>>>>>> Stashed changes
     </servlet-mapping>
     <session-config>
         <session-timeout>

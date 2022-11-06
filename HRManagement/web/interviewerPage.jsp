@@ -89,7 +89,7 @@
                         %>
                         <div class="table-link" style="padding-top: 10px;">
                             <form action="MainController" method="post">
-                                <input type="hidden" name="JobID" value="<%= get.getJobID() %>" />
+                                <input type="hidden" name="JobID" value="<%= listIW.get(idx).getJobID() %>" />
                                 <button type="submit" name="action" value="ViewInterviewDetail" >Detail</button>
                             </form>
                         </div>

@@ -13,6 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -141,31 +143,27 @@ public class JobDAO {
         return listJob;
     }
 
-    public int getCountJob() throws SQLException {
+    public static int getCountJob() {
         int count = 0;
-        Connection conn = null;
+        Connection cn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
         try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                ptm = conn.prepareStatement(COUNT_JOB);
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                ptm = cn.prepareStatement(COUNT_JOB);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
                     count = rs.getInt("count");
                 }
             }
-        } catch (Exception e) {
+        }  catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
-                conn.close();
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return count;
@@ -251,20 +249,24 @@ public class JobDAO {
         return list;
     }
 
-    public static void createJob(String jid, String jname, String description, int salary, String expReq, String eduReq, String imgJob) {
+    public static void createJob(String jid, String jname, int salary, String description, String expReq, String eduReq, String imgJob, int quantity, String fromDate, String toDate, String empID) {
         Connection cn = null;
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                String sql = "insert tblJob values (?,?,?,?,?,?,?,? )";
+                String sql = "insert tblJob values (?,?,?,?,?,?,?,?,?,?,?)";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, jid);
                 pst.setString(2, jname);
-                pst.setString(3, description);
-                pst.setInt(4, salary);
-                pst.setString(6, expReq);
-                pst.setString(7, eduReq);
-                pst.setString(8, imgJob);
+                pst.setInt(3, salary);
+                pst.setString(4, description);
+                pst.setString(5, expReq);
+                pst.setString(6, eduReq);
+                pst.setString(7, imgJob);
+                pst.setInt(8, quantity);
+                pst.setString(9, fromDate);
+                pst.setString(10, toDate);
+                pst.setString(11, empID);
                 pst.executeUpdate();
             }
         } catch (Exception e) {

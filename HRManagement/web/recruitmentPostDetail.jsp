@@ -33,7 +33,7 @@
                     <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
-            </div>
+            </div>  
         </div>
         <div class="container">
             <h1 class="page-title">Interview Schedule</h1>
