@@ -66,10 +66,8 @@ public class Tester {
 //            }
 //        ArrayList<RecruitmentPostDTO> listPost = RecruitmentPostDAO.getPostsByEmail("ngoctlbse160583@fpt.edu.vn");
 //        ArrayList<JobDTO> listJob = JobDAO.getJobsByEmail("ngoctlbse160583@fpt.edu.vn");
-//        CVDTO cv = CVDAO.getCVByEmail("ductcse160119@fpt.edu.vn");
-//        ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByCV(cv.getCvid());
-
-      //  JobDAO.createJob("1", "Maket", "abc", 1000, "123", "123", "img", 1000, "2002-10-10", "2020-10-10", "EMP1");
+        CVDTO cv = CVDAO.getCVByEmail("ductcse160119@fpt.edu.vn");
+        ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByCV(cv.getCvid());
     }
 
 }
