@@ -10,10 +10,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-               <title>Post Recruitment Page</title>
+                      <title>Post Recruitment Page</title>
     </head>
     <body>
-        <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
+  <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
         </c:if>  
         <div class="header row">
@@ -44,6 +44,16 @@
                         <tr><td><div class="info-title2">
                                     <p2>Education Requirement:</p2>
                                 </div> </td>
+                            <td> <input type="text" class="input-form" name="txteduReq" required="" > </td></tr>
+                        <tr><td><div class="info-title2">
+                                    <p2>Salary:</p2>
+                                </div> </td>
+                            <td> <input type="text" class="input-form" name="txtSalary" required="" > </td></tr>
+                        <tr><td><div class="info-title2">
+                                    <p2>Description:</p2>
+                                </div> </td>
+                            <td> <input type="text" class="input-form" name="txtDesc" required="" > </td></tr>
+                        <tr><td><div class="info-title2">
                                     <p2>Image:</p2>
                                 </div> </td>
                             <td> <input type="text" class="input-form" name="txtImg" required="" > </td></tr>
