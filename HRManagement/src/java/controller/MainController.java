@@ -48,19 +48,11 @@ public class MainController extends HttpServlet {
     private static final String VIEW_PERSONAL_CONTROLLER = "ViewPersonalController";
     private static final String VIEW_INTERVIEW_DETAIL = "ViewInterviewDetail";
     private static final String VIEW_INTERVIEW_DETAIL_CONTROLLER = "ViewInterviewDetailController";
-<<<<<<< Updated upstream
     private static final String VIEW_PASSED = "ViewPassed";
     private static final String VIEW_PASSED_CONTROLLER = "ViewPassedController";
     private static final String MARK_CANDIDATE = "MarkCandidate";
     private static final String MARK_CANDIDATE_CONTROLLER = "MarkCandidateController";
     
-=======
-    private static final String CREATE_JOB = "CREATE JOB";
-    private static final String CREATE_JOB_CONTROLLER = "CreateJobServlet";
-    
-    
-
->>>>>>> Stashed changes
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -95,15 +87,10 @@ public class MainController extends HttpServlet {
                 url = VIEW_PERSONAL_CONTROLLER;
             } else if (VIEW_INTERVIEW_DETAIL.equals(action)) {
                 url = VIEW_INTERVIEW_DETAIL_CONTROLLER;
-<<<<<<< Updated upstream
             } else if (VIEW_PASSED.equals(action)) {
                 url = VIEW_PASSED_CONTROLLER;
             } else if (MARK_CANDIDATE.equals(action)) {
                 url = MARK_CANDIDATE_CONTROLLER;
-=======
-            } else if (CREATE_JOB.equals(action)) {
-                url = CREATE_JOB_CONTROLLER;
->>>>>>> Stashed changes
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

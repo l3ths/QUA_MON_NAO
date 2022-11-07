@@ -11,11 +11,7 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-<<<<<<< Updated upstream
                     <file>${file.reference.sqljdbc4.jar-1}</file>
-=======
-                    <file>${file.reference.sqljdbc4-2.0.jar}</file>
->>>>>>> Stashed changes
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
