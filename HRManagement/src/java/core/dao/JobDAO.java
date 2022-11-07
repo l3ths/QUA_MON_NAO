@@ -66,7 +66,7 @@ public class JobDAO {
         return listJob;
     }
 
-    public static JobDTO getJob(String jID) throws SQLException {
+    public static JobDTO getJob(String jID) {
         JobDTO Job = null;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -87,17 +87,13 @@ public class JobDAO {
                     Job = new JobDTO(jID, name, salary, description, experienceRequirement, educationRequirement, imgPath);
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        }  catch (Exception e) {
+            System.out.println("error");
         } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (ptm != null) {
-                ptm.close();
-            }
-            if (conn != null) {
+            try {
                 conn.close();
+            } catch (SQLException ex) {
+                System.out.println("error");
             }
         }
         return Job;

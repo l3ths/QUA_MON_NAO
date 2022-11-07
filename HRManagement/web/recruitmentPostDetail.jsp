@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="core.dto.JobDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -23,10 +24,10 @@
         </c:if>
         --%>
         <div class="header row">
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <h1>Toidiyuh</h1>
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <ul>
                     <li><a href="MainController?action=ShowJob">Home</a></li>
                     <li><a href="recruitmentPostDetail" class="active-page">Post Detail</a></li>
@@ -35,21 +36,24 @@
                 </ul>
             </div>
         </div>
+       <%
+        JobDTO Job = (JobDTO) request.getAttribute("Job");
+       %>
         <div class="container">
             <h1 class="page-title">Interview Schedule</h1>
             <div class="row">
                 <div class="col-md-4">
                     <div class="detail-name">
-                        <h2 style="margin-top: 10%;">Marketing</h2>
+                        <h2 style="margin-top: 10%;"><%= Job.getName()%></h2>
                     </div>
                     <button value="" class="submit-button" style="margin: 15px auto;">Edit</button>
                     <button value="" class="submit-button" style="margin: 15px auto;">Schedule</button>
                 </div>
                 <div class="col-md-8 detail-table">
-                    <p><span>Experience:</span> 2 year at Marketing</p>
-                    <p><span>Education:</span> Graduated from university</p>
-                    <p><span>Salary:</span> up to 2000 USD</p>
-                    <p><span>Description:</span> Responsible for executing the marketing plans to deliver the market share, sales volume, revenue and profit growth objectives for assigned products / categories.</p>
+                    <p><span>Experience:</span> <%= Job.getExperienceRequirement()%> at <%= Job.getName()%></p>
+                    <p><span>Education:</span> <%= Job.getEducationRequirement()%></p>
+                    <p><span>Salary:</span> up to <%= Job.getSalary()%> USD</p>
+                    <p><span>Description:</span> <%= Job.getDesription()%></p>
                 </div>
             </div>
             <table border="1" style="margin: 20px auto;">

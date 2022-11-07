@@ -16,6 +16,10 @@
         <servlet-name>CreateJobController</servlet-name>
         <servlet-class>controller.CreateJobController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GetDetailJobRecruitmentController</servlet-name>
+        <servlet-class>controller.GetDetailJobRecruitmentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewInterviewDetailController</servlet-name>
         <url-pattern>/ViewInterviewDetailController</url-pattern>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>CreateJobController</servlet-name>
         <url-pattern>/CreateJobController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetDetailJobRecruitmentController</servlet-name>
+        <url-pattern>/GetDetailJobRecruitmentController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

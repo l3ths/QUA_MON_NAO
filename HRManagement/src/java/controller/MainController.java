@@ -54,6 +54,8 @@ public class MainController extends HttpServlet {
     private static final String MARK_CANDIDATE_CONTROLLER = "MarkCandidateController";
     private static final String CREATE_JOB = "CREATE JOB";
     private static final String CREATE_JOB_CONTROLLER = "CreateJobController";
+    private static final String GET_DETAIL_JOB = "Detail";
+    private static final String GET_DETAIL_JOB_CONTROLLER = "GetDetailJobRecruitmentController";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
@@ -95,6 +97,8 @@ public class MainController extends HttpServlet {
                 url = MARK_CANDIDATE_CONTROLLER;
             } else if (CREATE_JOB.equals(action)) {
                 url = CREATE_JOB_CONTROLLER;
+            } else if (GET_DETAIL_JOB.equals(action)) {
+                url = GET_DETAIL_JOB_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
