@@ -35,7 +35,7 @@ public class ShowJobController extends HttpServlet {
                 index = Integer.parseInt(request.getParameter("index"));
             }
             JobDAO dao = new JobDAO();
-            int total = dao.getCountJob();
+            int total = JobDAO.getCountJob();
             if (total > 0) {
                 int endPage = total / 3;
                 if (total % 3 != 0) {

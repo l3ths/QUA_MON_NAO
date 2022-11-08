@@ -15,7 +15,7 @@
         <link href="css/style.css" rel="stylesheet" />
     </head>
     <body>
-        <div class = "footer row">
+        <footer class = "footer row">
             <div class = "col-md-4 left">
                 <div>
                     <h1>Toidiyuh</h1>
@@ -40,6 +40,6 @@
                     <p>Email: huyidiot@hotmail.com</p>
                 </div>
             </div>
-        </div>
+        </footer>
     </body>
 </html>

@@ -29,7 +29,13 @@
             </div>
             <div class="col-md-6">
                 <ul>
-                    <li><a href="MainController?action=ShowJob">Home</a></li>
+                    <c:if test="${sessionScope.role eq 'candidate'}">
+                        <li><a href="MainController?action=ShowJob">Home</a></li>
+                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
+                        </c:if>
+                        <c:if test="${sessionScope.role ne 'candidate'}">
+                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
+                        </c:if>
                     <li><a href="personalPage.jsp" class="active-page">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
@@ -43,35 +49,34 @@
                     if (!role.equals("candidate")) {
                         EmployeeDTO emp = (EmployeeDTO) session.getAttribute("LOGIN_EMP");
                 %>
-                <div class="profile-form row">
+                <div class="row" style="margin: 100px 0;">
                     <div class="col-md-5" >
                         <img src="img/avatar/<%= emp.getImgpath()%>" class="img-responsive"/>
                     </div>
-                    <div class="col-md-7" >
-                        <div class="profile-information">
+                    <div class="col-md-7 row" >
                             <div class="col-md-4">
-                                <p1>Full name:</p1>
+                                <p class="info-title">Full name:</p>
                             </div>
-                            <div class="col-md-8">
-                                <p> <%= emp.getEmname()%> </p>
-                            </div>
-                            <div class="col-md-4">
-                                <p1>Date of birth:</p1>
-                            </div>
-                            <div class="col-md-8">
-                                <p> <%= emp.getBirthdate()%> </p>
+                            <div class="col-md-8 input-border">
+                                <input class="input" value="<%= emp.getEmname()%>" readonly="">
                             </div>
                             <div class="col-md-4">
-                                <p1>Phone number:</p1>
+                                <p class="info-title">Date of birth:</p>
                             </div>
-                            <div class="col-md-8">
-                                <p> <%= emp.getEmphone()%> </p>
+                            <div class="col-md-8 input-border">
+                                <input type="date" class="input" value="<%= emp.getBirthdate()%>" readonly="">
                             </div>
                             <div class="col-md-4">
-                                <p1>Email:</p1>
+                                <p class="info-title">Phone number:</p>
                             </div>
-                            <div class="col-md-8">
-                                <p> <%= emp.getEmemail()%> </p>
+                            <div class="col-md-8 input-border">
+                                <input class="input" value="<%= emp.getEmphone()%>" readonly="">
+                            </div>
+                            <div class="col-md-4">
+                                <p class="info-title">Email:</p1>
+                            </div>
+                            <div class="col-md-8 input-border">
+                                <input class="input" value="<%= emp.getEmemail()%>" readonly="">
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
@@ -80,53 +85,50 @@
                             <div class="col-md-4">
                                 <a href="updatePersonal.jsp" class="link-button">Update Personal</a> 
                             </div>
-                        </div>    
                     </div>
                     <%
                     } else {
                         CandidateDTO can = (CandidateDTO) session.getAttribute("LOGIN_CDD");
                     %>
-                    <div class="profile-form row">
+                    <div class="row" style="margin: 100px 0;">
                         <div class="col-md-5" >
                             <img src="img/avatar/<%= can.getImgPath()%>" class="img-responsive"/>
                         </div>
-                        <div class="col-md-7" >
-                            <div class="profile-information">
-                                <div class="col-md-4">
-                                    <p1>Full name:</p1>
-                                </div>
-                                <div class="col-md-8">
-                                    <p> <%= can.getName()%> </p>
-                                </div>
-                                <div class="col-md-4">
-                                    <p1>Date of birth:</p1>
-                                </div>
-                                <div class="col-md-8">
-                                    <p> <%= can.getBirthdate()%> </p>
-                                </div>
-                                <div class="col-md-4">
-                                    <p1>Phone number:</p1>
-                                </div>
-                                <div class="col-md-8">
-                                    <p> <%= can.getBirthdate()%> </p>
-                                </div>
-                                <div class="col-md-4">
-                                    <p1>Email:</p1>
-                                </div>
-                                <div class="col-md-8">
-                                    <p> <%= can.getEmail()%> </p>
-                                </div>
-                                <div class="col-md-4"></div>
-                                <div class="col-md-4">
-                                    <a href="updatePassword.jsp" class="link-button">Change Password</a>  
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="updatePersonal.jsp" class="link-button">Update Personal</a> 
-                                </div>
-                                <%
-                                    }
-                                %>
+                        <div class="col-md-7 row">
+                            <div class="col-md-4">
+                                <p class="info-title">Full name:</p>
                             </div>
+                            <div class="col-md-8 input-border">
+                                <input class="input" value="<%= can.getName()%>" readonly="">
+                            </div>
+                            <div class="col-md-4">
+                                <p class="info-title">Date of birth:</p>
+                            </div>
+                            <div class="col-md-8 input-border">
+                                <input class="input" value="<%= can.getBirthdate()%>" readonly="">
+                            </div>
+                            <div class="col-md-4">
+                                <p class="info-title">Phone number:</p>
+                            </div>
+                            <div class="col-md-8 input-border">
+                                <input class="input" value="<%= can.getBirthdate()%>" readonly="">
+                            </div>
+                            <div class="col-md-4">
+                                <p class="info-title">Email:</p>
+                            </div>
+                            <div class="col-md-8 input-border">
+                                <input class="input" value="<%= can.getEmail()%>" readonly="">
+                            </div>
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
+                                <a href="updatePassword.jsp" class="link-button">Change Password</a>  
+                            </div>
+                            <div class="col-md-4">
+                                <a href="updatePersonal.jsp" class="link-button">Update Personal</a> 
+                            </div>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>    
             </form>

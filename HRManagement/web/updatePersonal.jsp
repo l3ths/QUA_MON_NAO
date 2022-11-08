@@ -30,17 +30,11 @@
             <div class="col-md-6">
                 <ul>
                     <c:if test="${sessionScope.role eq 'candidate'}">
-                        <li><a href="MainController?action=ShowJob" class="active-page">Home</a></li>
-                        <li><a href="candidatePage.jsp">Personal</a></li>
+                        <li><a href="MainController?action=ShowJob">Home</a></li>
+                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                         </c:if>
-                        <c:if test="${sessionScope.role eq 'hr'}">
-                        <li><a href="hrPage.jsp">Personal</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.role eq 'hr manager'}">
-                        <li><a href="hrManagerPage.jsp">Personal</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.role eq 'interviewer'}">
-                        <li><a href="interviewerPage.jsp">Personal</a></li>
+                        <c:if test="${sessionScope.role ne 'candidate'}">
+                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                         </c:if>
                     <li><a href="personalPage.jsp" class="active-page">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
@@ -54,21 +48,21 @@
                 if (!role.equals("candidate")) {
                     EmployeeDTO emp = (EmployeeDTO) session.getAttribute("LOGIN_EMP");
             %>
-            <div class="profile-information row" style="width: 600px; margin: 100px auto;">
-                <div class="col-md-4" style="margin-top: 3.5%;">
-                    <p1>Full name:</p1>
+            <div class="row" style="width: 600px; margin: 100px auto;">
+                <div class="col-md-4">
+                    <p class="info-title">Full name:</p>
                 </div>
                 <div class="col-md-8 input-border">
                     <input type="text" class="input" name="txtnewname" required="" value="<%= emp.getEmname()%>">
                 </div>
-                <div class="col-md-4" style="margin-top: 3.5%;">
-                    <p1>Date of birth:</p1>
+                <div class="col-md-4">
+                    <p class="info-title">Date of birth:</p>
                 </div>
                 <div class="col-md-8 input-border">
                     <input type="date" class="input" name="txtnewbirthdate" required="" value="<%= emp.getBirthdate()%>">
                 </div>
-                <div class="col-md-4" style="margin-top: 3.5%;">
-                    <p1>Phone number:</p1>
+                <div class="col-md-4">
+                    <p class="info-title">Phone number:</p>
                 </div>
                 <div class="col-md-8 input-border">
                     <input type="text" class="input" name="txtnewphone" required="" value="<%= emp.getEmphone()%>">
@@ -82,21 +76,21 @@
             } else {
                 CandidateDTO can = (CandidateDTO) session.getAttribute("LOGIN_CDD");
             %>
-            <div class="profile-information row" style="width: 600px; margin: 100px auto;">
-                <div class="col-md-4" style="margin-top: 4%;">
-                    <p1>Full name:</p1>
+            <div class="row" style="width: 600px; margin: 100px auto;">
+                <div class="col-md-4">
+                    <p class="info-title">Full name:</p>
                 </div>
                 <div class="col-md-8 input-border">
                     <input type="text" class="input" name="txtnewname" required="" value="<%= can.getName()%>">
                 </div>
-                <div class="col-md-4" style="margin-top: 4%;">
-                    <p1>Date of birth:</p1>
+                <div class="col-md-4">
+                    <p class="info-title">Date of birth:</p>
                 </div>
                 <div class="col-md-8 input-border">
                     <input type="date" class="input" name="txtnewbirthdate" required="" value="<%= can.getBirthdate()%>">
                 </div>
-                <div class="col-md-4" style="margin-top: 4%;">
-                    <p1>Phone number:</p1>
+                <div class="col-md-4">
+                    <p class="info-title">Phone number:</p>
                 </div>
                 <div class="col-md-8 input-border">
                     <input type="text" class="input" name="txtnewphone" required="" value="<%= can.getPhone()%>">

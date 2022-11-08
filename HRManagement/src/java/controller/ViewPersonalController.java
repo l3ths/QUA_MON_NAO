@@ -5,14 +5,11 @@
  */
 package controller;
 
-import core.dao.AccountDAO;
 import core.dao.CVDAO;
 import core.dao.InterviewingDAO;
 import core.dao.JobDAO;
 import core.dao.RecruitmentPostDAO;
-import core.dto.AccountDTO;
 import core.dto.CVDTO;
-import core.dto.CandidateDTO;
 import core.dto.InterviewingDTO;
 import core.dto.JobDTO;
 import core.dto.RecruitmentPostDTO;

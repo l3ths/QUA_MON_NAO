@@ -4,7 +4,7 @@ body{
 :root {
     --theme-color: #DFA974;
     --text-font-1: Lora;
-    --text-font-2: 'Cabin', sans-serif;
+    --text-font-2: var(--text-font-2), sans-serif;
 }
 /*footer*/
 .footer {
@@ -181,85 +181,15 @@ body{
 }
 
 /*profile */
-.profile h2{
-    padding-top: 3px;
-    padding-bottom: 3px;
-    font-family: lora;
-    text-align: center;
-    font-size: 100%;
-}
-.profile a{
-    font-family: lora;
-    text-align: center;
-    font-size: 100%;
-    color: var(--theme-color);
-}
-
-.profile-information p{
-    font-family: lora;
-    font-size: 18px;
-    width: 360px;
-    padding: 10px 10px 8px 10px;
-    border: 1px solid #EBEBEB;
-    border-radius: 3px;
-    margin-bottom: 15px;
-}
-.input-form {
-    font-family: lora;
-    font-size: 18px;
-    width: 340px;
-    padding: 10px 10px 10px 10px;
-    border: 1px solid #EBEBEB;
-    border-radius: 3px;
-    margin-bottom: 15px;
-    margin-left: 30px;
-}
-.profile-information p1{
-    font-family: 'Cabin';
-    font-style: inherit;
+.info-title {
+    font-family: var(--text-font-2);
     font-size: 15px;
     color: #707079;
-    padding-left: 50px;
     margin-top: 20px;
 }
-.profile-information .info-title {
-    padding-top: 12px;    
-}
-.profile-information .info-title2 {
-    padding-bottom: 13px;    
-}
-.profile-information p2{
-    font-family: 'Cabin';
-    font-style: inherit;
-    font-size: 15px;
-    color: #707079;
-    padding: 30px;
-    margin-left: 200px;
-    margin-bottom: 10px;
-}
 
-.profile-button {
-    font-family: var(--text-font-2);
-    background-color: var(--theme-color);
-    color: white;
-    text-transform: uppercase;
-    height: 40px;
-    border-radius: 2px;
-    border: none;
-    width: 100%;
-}
-.profile-form {
-    padding-bottom: 50px;
-}
-.profile-form img {
-    height: 400px;
-    width: 300px;
-    align-self: center;
-    margin-left: 15%;
-    margin-right: 5%;
-}
 .detail-table p {
-    font-family: 'Cabin';
+    font-family: var(--text-font-2);
     font-style: inherit;
     color: #707079;
     margin-left: 40px;
@@ -269,7 +199,7 @@ body{
 .login-screen h1{
     padding-top: 10px;
     padding-bottom: 10px;
-    font-family: lora;
+    font-family: var(--text-font-1);
     text-align: center;
 }
 .login-screen {
@@ -280,7 +210,7 @@ body{
 .login-screen h2{
     padding-top: 10px;
     padding-bottom: 10px;
-    font-family: lora;
+    font-family: var(--text-font-1);
     text-align: center;
     font-size: 100%;
 }
@@ -342,7 +272,7 @@ body{
 }
 .login100-form h1 {
     display: block;
-    font-family: lora-bold;
+    font-family: var(--text-font-1)-bold;
     font-style: inherit;
     font-size: 30px;
     color: #333333;
@@ -469,12 +399,12 @@ body{
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 5px;
-    font-family: lora;
+    font-family: var(--text-font-1);
     text-align: center;
     font-size: 100%;
 }
 .login100-form h7 {
-    font-family: lora;
+    font-family: var(--text-font-1);
     text-align: center;
     font-size: 100%;
     margin-bottom: 30px;

@@ -30,17 +30,11 @@
             <div class="col-md-6">
                 <ul>
                     <c:if test="${sessionScope.role eq 'candidate'}">
-                        <li><a href="MainController?action=ShowJob" class="active-page">Home</a></li>
-                        <li><a href="candidatePage.jsp">Personal</a></li>
+                        <li><a href="MainController?action=ShowJob">Home</a></li>
+                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                         </c:if>
-                        <c:if test="${sessionScope.role eq 'hr'}">
-                        <li><a href="hrPage.jsp">Personal</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.role eq 'hr manager'}">
-                        <li><a href="hrManagerPage.jsp">Personal</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.role eq 'interviewer'}">
-                        <li><a href="interviewerPage.jsp">Personal</a></li>
+                        <c:if test="${sessionScope.role ne 'candidate'}">
+                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                         </c:if>
                     <li><a href="personalPage.jsp" class="active-page">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
@@ -50,7 +44,7 @@
         <section>
             <h1 class="page-title">Change Password</h1>
             <form action="MainController" method="post">
-                <div class=" profile-form row">
+                <div class="row" style="margin: 50px 0;">
                     <div class="col-md-4" >
                         <%
                             String role = (String) session.getAttribute("role");
@@ -68,27 +62,27 @@
                         <img src="img/avatar/<%= can.getImgPath()%>" class="img-responsive"/>
                         <%}%>
                     </div>
-                    <div class="col-md-8 profile-information row">
-                        <div class="col-md-4" style="margin-top: 3.5%;">
-                            <p1>Email:</p1>
+                    <div class="col-md-8 row">
+                        <div class="col-md-4">
+                            <p class="info-title">Email:</p>
                         </div>
                         <div class="col-md-8 input-border">
                             <input type="text" class="input" name="txtemail" value="<%= email%>" readonly="">
                         </div>
-                        <div class="col-md-4" style="margin-top: 3.5%;">
-                            <p1>Old password:</p1>
+                        <div class="col-md-4">
+                            <p class="info-title">Old password:</p>
                         </div>
                         <div class="col-md-8 input-border">
                             <input type="password" class="input" name="txtoldpassword" required="">
                         </div>
-                        <div class="col-md-4" style="margin-top: 3.5%;">
-                            <p1>New password:</p1>
+                        <div class="col-md-4">
+                            <p class="info-title">New password:</p>
                         </div>
                         <div class="col-md-8 input-border">
                             <input type="password" class="input" name="txtnewpassword" required="">
                         </div>
-                        <div class="col-md-4" style="margin-top: 3.5%;">
-                            <p1>Confirm password:</p1>
+                        <div class="col-md-4">
+                            <p class="info-title">Confirm password:</p>
                         </div>
                         <div class="col-md-8 input-border">
                             <input type="password" class="input" name="txtnewpassword2" required="">
