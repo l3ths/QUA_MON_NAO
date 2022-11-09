@@ -151,7 +151,7 @@ public class CVDAO {
                         + "from dbo.tblCV cv\n"
                         + "inner join dbo.tblAppyling app on cv.CVID = app.CVID\n"
                         + "inner join dbo.tblJob job on app.jobID = job.jobID\n"
-                        + "where job.jobID = ?";
+                        + "where job.jobID = ? and status=0";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, jobID);
                 ResultSet rs = pst.executeQuery();
