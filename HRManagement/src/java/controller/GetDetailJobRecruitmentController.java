@@ -6,8 +6,10 @@
 package controller;
 
 import core.dao.CVDAO;
+import core.dao.CandidateDAO;
 import core.dao.JobDAO;
 import core.dto.CVDTO;
+import core.dto.CandidateDTO;
 import core.dto.JobDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,8 +42,14 @@ public class GetDetailJobRecruitmentController extends HttpServlet {
             String JobID = request.getParameter("JobID");
             JobDTO Job = JobDAO.getJob(JobID);
             ArrayList<CVDTO> listCV = CVDAO.getCVsByJobID(JobID);
+            ArrayList<CandidateDTO> listCan = new ArrayList<>();
+            for (int i = 0; i < listCV.size(); i++) {
+                CVDTO get = listCV.get(i);
+                listCan.add(CandidateDAO.getCandidatesByCV(get.getCID()));
+            }
             request.setAttribute("Job", Job);
             request.setAttribute("listCV", listCV);
+            request.setAttribute("listCan", listCan);
             request.getRequestDispatcher("recruitmentPostDetail.jsp").forward(request, response);
         }
     }
