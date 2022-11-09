@@ -28,8 +28,8 @@ public class InterviewingDAO {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "SELECT *\n"
-                            + "FROM tblInterviewing\n"
-                            + "where CVID=?";
+                        + "FROM tblInterviewing\n"
+                        + "where CVID=?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, CVID);
                 ResultSet rs = pst.executeQuery();
@@ -66,32 +66,32 @@ public class InterviewingDAO {
                 String sql;
                 if (role.equals("candidate")) {
                     sql = "SELECT interviewingID\n"
-                                + "      ,[date]\n"
-                                + "      ,[time]\n"
-                                + "      ,[score]\n"
-                                + "      ,[content]\n"
-                                + "      ,i.[empID]\n"
-                                + "      ,i.[CVID]\n"
-                                + "      ,[jobID]\n"
-                                + "  FROM tblInterviewing i\n"
-                                + "  inner join tblCV cv\n"
-                                + "  on i.CVID=cv.CVID\n"
-                                + "  inner join tblCandidate c\n"
-                                + "  on c.candidateID=cv.candidateID\n"
-                                + "  where c.email=?";
+                            + "      ,[date]\n"
+                            + "      ,[time]\n"
+                            + "      ,[score]\n"
+                            + "      ,[content]\n"
+                            + "      ,i.[empID]\n"
+                            + "      ,i.[CVID]\n"
+                            + "      ,[jobID]\n"
+                            + "  FROM tblInterviewing i\n"
+                            + "  inner join tblCV cv\n"
+                            + "  on i.CVID=cv.CVID\n"
+                            + "  inner join tblCandidate c\n"
+                            + "  on c.candidateID=cv.candidateID\n"
+                            + "  where c.email=?";
                 } else {
                     sql = "SELECT interviewingID\n"
-                                + "      ,[date]\n"
-                                + "      ,[time]\n"
-                                + "      ,[score]\n"
-                                + "      ,[content]\n"
-                                + "      ,i.[empID]\n"
-                                + "      ,[CVID]\n"
-                                + "      ,[jobID]\n"
-                                + "  FROM tblInterviewing i\n"
-                                + "  inner join tblEmployee e\n"
-                                + "  on i.empID=e.empID\n"
-                                + "  where e.email=?";
+                            + "      ,[date]\n"
+                            + "      ,[time]\n"
+                            + "      ,[score]\n"
+                            + "      ,[content]\n"
+                            + "      ,i.[empID]\n"
+                            + "      ,[CVID]\n"
+                            + "      ,[jobID]\n"
+                            + "  FROM tblInterviewing i\n"
+                            + "  inner join tblEmployee e\n"
+                            + "  on i.empID=e.empID\n"
+                            + "  where e.email=?";
                 }
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, email);
@@ -128,7 +128,7 @@ public class InterviewingDAO {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "SELECT *\n"
-                            + "FROM tblInterviewing";
+                        + "FROM tblInterviewing";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
@@ -163,7 +163,7 @@ public class InterviewingDAO {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "SELECT *\n"
-                            + "FROM tblInterviewing";
+                        + "FROM tblInterviewing";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 ResultSet rs = pst.executeQuery();
                 while (rs.next()) {
@@ -190,8 +190,8 @@ public class InterviewingDAO {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "SELECT *\n"
-                            + "FROM tblInterviewing\n"
-                            + "where jobID=?";
+                        + "FROM tblInterviewing\n"
+                        + "where jobID=?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, JobID);
                 ResultSet rs = pst.executeQuery();
@@ -238,6 +238,35 @@ public class InterviewingDAO {
                 cn.close();
             } catch (SQLException ex) {
                 Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    public static void createInterviewing(String iID, String date, String time, int score, String content, String empID, String cvID, String jobID, int status) {
+        Connection cn = null;
+        try{
+            cn = DBUtils.getConnection();
+            if(cn != null){
+                String sql = "insert tblInterviewing values (?,?,?,?,?,?,?,?,?)";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, iID);
+                pst.setString(2, date);
+                pst.setString(3, time);
+                pst.setInt(4, score);
+                pst.setString(5, content);
+                pst.setString(6, empID);
+                pst.setString(7, cvID);
+                pst.setString(8, jobID);
+                pst.setInt(9, status);
+                pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            System.out.println("error");
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("error");
             }
         }
     }
