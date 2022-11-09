@@ -56,7 +56,10 @@ public class MainController extends HttpServlet {
     private static final String CREATE_JOB_CONTROLLER = "CreateJobController";
     private static final String GET_DETAIL_JOB = "Detail";
     private static final String GET_DETAIL_JOB_CONTROLLER = "GetDetailJobRecruitmentController";
-    
+    private static final String EDIT_RECRUITMENT_POST = "editPost";
+    private static final String EDIT_RECRUITMENT_POST_CONTROLLER = "EditRecruitmentPostController";
+    private static final String EDIT_RECRUITMENT_POST_LINK = "editRecruitmentPost";
+    private static final String EDIT_RECRUITMENT_POST_LINK_CONTROLLER = "EditRecruitmentPostController1";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -99,6 +102,10 @@ public class MainController extends HttpServlet {
                 url = CREATE_JOB_CONTROLLER;
             } else if (GET_DETAIL_JOB.equals(action)) {
                 url = GET_DETAIL_JOB_CONTROLLER;
+            } else if (EDIT_RECRUITMENT_POST.equals(action)) {
+                url = EDIT_RECRUITMENT_POST_CONTROLLER;
+            } else if (EDIT_RECRUITMENT_POST_LINK.equals(action)) {
+                url = EDIT_RECRUITMENT_POST_LINK_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

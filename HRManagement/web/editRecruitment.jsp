@@ -4,6 +4,7 @@
     Author     : ADMIN
 --%>
 
+<%@page import="core.dto.JobDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -18,9 +19,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
+        <%--    <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
-        </c:if>
+        </c:if> --%>
         <div class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
@@ -34,29 +35,48 @@
             </div>
         </div>
         <div class="container">
+            <%
+                JobDTO Job = (JobDTO) request.getAttribute("Job");
+            %>
             <h1 class="page-title">Edit Recruitment</h1>
-            <form action="MainController" style="width: 500px; margin: 100px auto;">
-                <div class="input-border">
-                    <input type="text" name="" value="" placeholder="Experience Requirement" class="input"/>
-                </div>
-                <div class="input-border">
-                    <input type="text" name="" value="" placeholder="Education Requirement" class="input"/>
-                </div>
-                <div class="input-border">
-                    <input type="text" name="" value="" placeholder="Salary" class="input"/>
-                </div>
-                <div class="input-border">
-                    <input type="text" name="" value="" placeholder="Description" class="input"/>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <button type="submit" name="action" value="" class="submit-button">Submit</button>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="submit" name="action" value="" class="submit-button">Save</button>
-                    </div>
-                </div>
+            <div class="profile-information">
+            <form action="MainController" method="post">
+                <table>
+                <tr><td><div class="info-title2">
+                            <p2>Experience Requirement</p2>
+                        </div> </td>
+                    <td><div class="input-border">
+                            <input type="text" name="" value="<%= Job.getExperienceRequirement()%> at <%= Job.getName()%>" class="input"/>
+                        </div> </td></tr>
+                <tr><td><div class="info-title2">
+                            <p2>Education Requirement</p2>
+                        </div> </td>
+                    <td><div class="input-border">
+                            <input type="text" name="" value="<%= Job.getEducationRequirement()%>" class="input"/>
+                        </div> </td></tr>
+                <tr><td><div class="info-title2">
+                            <p2>Salary:</p2>
+                        </div> </td>
+                    <td><div class="input-border">
+                            <input type="text" name="" value="<%= Job.getSalary()%> USD" class="input"/>
+                        </div> </td></tr>
+                <tr><td><div class="info-title2">
+                            <p2>Description:</p2>
+                        </div> </td>
+                    <td><div class="input-border">
+                            <input type="text" name="" value="<%= Job.getDesription()%>" class="input"/>
+                        </div> </td></tr>
+                <tr>
+                    <td>
+                        <button type="submit" name="action" value="" class="submit-button">Cancel</button>
+                    </td>
+                    <td>
+                        <button type="submit" name="action" value="editPost" class="submit-button">Save</button>
+                    </td>
+                </tr>
+                </table>
             </form>
+            </div>
         </div>
         <%@include file="footer.jsp" %>
     </body>

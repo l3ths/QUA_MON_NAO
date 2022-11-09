@@ -42,19 +42,23 @@
         <div class="container">
             <h1 class="page-title">Interview Schedule</h1>
             <div class="row">
+                <form action="MainController" method="post">
                 <div class="col-md-4">
                     <div class="detail-name">
                         <h2 style="margin-top: 10%;"><%= Job.getName()%></h2>
                     </div>
-                    <button value="" class="submit-button" style="margin: 15px auto;">Edit</button>
-                    <button value="" class="submit-button" style="margin: 15px auto;">Schedule</button>
+                        <input type="hidden" value="<%= Job.getJobID() %>" name="JobID">
+                        <button type="submit" name="action" value="editRecruitmentPost" class="submit-button" style="margin: 15px auto;">Edit</button>
+                    <%--<button value="" class="submit-button" style="margin: 15px auto;">Schedule</button> --%>
                 </div>
+                </form>
                 <div class="col-md-8 detail-table">
                     <p><span>Experience:</span> <%= Job.getExperienceRequirement()%> at <%= Job.getName()%></p>
                     <p><span>Education:</span> <%= Job.getEducationRequirement()%></p>
                     <p><span>Salary:</span> up to <%= Job.getSalary()%> USD</p>
                     <p><span>Description:</span> <%= Job.getDesription()%></p>
                 </div>
+                
             </div>
             <table border="1" style="margin: 20px auto;">
                 <thead>
