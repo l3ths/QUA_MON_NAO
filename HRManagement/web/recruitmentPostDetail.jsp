@@ -4,6 +4,9 @@
     Author     : ADMIN
 --%>
 
+<%@page import="core.dto.CandidateDTO"%>
+<%@page import="core.dto.CVDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="core.dto.JobDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -36,21 +39,23 @@
                 </ul>
             </div>
         </div>
-       <%
-        JobDTO Job = (JobDTO) request.getAttribute("Job");
-       %>
+        <%
+            JobDTO Job = (JobDTO) request.getAttribute("Job");
+            ArrayList<CVDTO> listCV = (ArrayList<CVDTO>) request.getAttribute("listCV");
+            ArrayList<CandidateDTO> listCan = (ArrayList<CandidateDTO>) request.getAttribute("listCan");
+        %>
         <div class="container">
             <h1 class="page-title">Interview Schedule</h1>
             <div class="row">
                 <form action="MainController" method="post">
-                <div class="col-md-4">
-                    <div class="detail-name">
-                        <h2 style="margin-top: 10%;"><%= Job.getName()%></h2>
-                    </div>
-                        <input type="hidden" value="<%= Job.getJobID() %>" name="JobID">
+                    <div class="col-md-4">
+                        <div class="detail-name">
+                            <h2 style="margin-top: 10%;"><%= Job.getName()%></h2>
+                        </div>
+                        <input type="hidden" value="<%= Job.getJobID()%>" name="JobID">
                         <button type="submit" name="action" value="editRecruitmentPost" class="submit-button" style="margin: 15px auto;">Edit</button>
-                    <%--<button value="" class="submit-button" style="margin: 15px auto;">Schedule</button> --%>
-                </div>
+                        <%--<button value="" class="submit-button" style="margin: 15px auto;">Schedule</button> --%>
+                    </div>
                 </form>
                 <div class="col-md-8 detail-table">
                     <p><span>Experience:</span> <%= Job.getExperienceRequirement()%> at <%= Job.getName()%></p>
@@ -58,7 +63,7 @@
                     <p><span>Salary:</span> up to <%= Job.getSalary()%> USD</p>
                     <p><span>Description:</span> <%= Job.getDesription()%></p>
                 </div>
-                
+
             </div>
             <table border="1" style="margin: 20px auto;">
                 <thead>
@@ -73,42 +78,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <%
+                        for (int i = 0; i < listCV.size(); i++) {
+                            CVDTO get = listCV.get(i);
+                    %>
                     <tr class="border-form">
-                        <td class="table-description border-form">Truong Tan Trung</td>
-                        <td class="table-description border-form">11/12/2002</td>
-                        <td class="table-description border-form">trung@gmail.com</td>
-                        <td class="table-description border-form">0927352647</td>
+                        <td class="table-description border-form"><%= listCan.get(i).getName() %></td>
+                        <td class="table-description border-form"><%= listCan.get(i).getBirthdate()%></td>
+                        <td class="table-description border-form"><%= listCan.get(i).getEmail() %></td>
+                        <td class="table-description border-form"><%= listCan.get(i).getPhone()%></td>
                         <td class="table-description border-form">Certification 5</br>Certification 4</td>
-                        <td class="table-description border-form">Harvard University</td>
-                        <td class="table-description border-form">Manager: 1 year</td>
+                        <td class="table-description border-form"><%= get.getEducation() %></td>
+                        <td class="table-description border-form"><%= get.getExperience() %> in <%= Job.getName() %></td>
                     </tr>
-                    <tr class="border-form">
-                        <td class="table-description border-form">Nguyen Trung Tan</td>
-                        <td class="table-description border-form">15/11/2000</td>
-                        <td class="table-description border-form">tan@gmail.com</td>
-                        <td class="table-description border-form">0942378423</td>
-                        <td class="table-description border-form">Certification 1</br>Certification 2</td>
-                        <td class="table-description border-form">Ho Chi Minh College</td>
-                        <td class="table-description border-form">Coder: 2 years</td>
-                    </tr>
-                    <tr class="border-form">
-                        <td class="table-description border-form">Tran Tan Trung</td>
-                        <td class="table-description border-form">09/09/1999</td>
-                        <td class="table-description border-form">trantrung@gmail.com</td>
-                        <td class="table-description border-form">0934411324</td>
-                        <td class="table-description border-form">Certification 3</br>Certification 2</td>
-                        <td class="table-description border-form">Cambridge</td>
-                        <td class="table-description border-form">Marketing: 2 years</td>
-                    </tr>
-                    <tr class="border-form">
-                        <td class="table-description border-form">Nguyen Thi Nhu Trung</td>
-                        <td class="table-description border-form">08/05/1995</td>
-                        <td class="table-description border-form">nhutrung@gmail.com</td>
-                        <td class="table-description border-form">038897249</td>
-                        <td class="table-description border-form">Certification 7</br>Certification 6</td>
-                        <td class="table-description border-form">FPT University</td>
-                        <td class="table-description border-form">BA: 4 years</td>
-                    </tr>
+                    <%
+                        }
+                    %>
                 </tbody>
             </table>
             <div class="page-pagination">
