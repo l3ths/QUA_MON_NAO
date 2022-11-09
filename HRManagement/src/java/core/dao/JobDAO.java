@@ -358,4 +358,40 @@ public class JobDAO {
         }
         return list;
     }
+    public static boolean updateJob(String newExp, String newEdu, String newSalary, String NewDescr, String jobID) {
+        boolean result = false;
+        int n;
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "update tblJob\n"
+                        + "set experienceRequirement = ?,\n"
+                        + "educationRequirement = ? ,\n"
+                        + "salary = ? ,\n"
+                        + "description = ?\n"
+                        + "where jobID= ?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, newExp);
+                pst.setString(2, newEdu);
+                pst.setString(3, newSalary);
+                pst.setString(4, NewDescr);
+                pst.setString(5, jobID);
+                n = pst.executeUpdate();
+                if (n != 0) {
+                    result = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return result;
+    }
 }
+

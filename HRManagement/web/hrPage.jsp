@@ -78,7 +78,7 @@
                 </div>
                 <div class="col-md-3">
                     <div class="border-form table-link" style="height: 200px; padding-top: 25%;">
-                        <input type="hidden" name="JobID" value="<%= get.getJobID() %>">
+                        <input type="text" name="JobID" value="<%= get.getJobID() %>">
                         <input type="submit" name="action" value="Detail"> 
                     </div>
                 </div>

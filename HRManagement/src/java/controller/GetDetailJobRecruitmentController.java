@@ -37,7 +37,7 @@ public class GetDetailJobRecruitmentController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            String JobID = (String) request.getParameter("JobID");
+            String JobID = request.getParameter("JobID");
             JobDTO Job = JobDAO.getJob(JobID);
             ArrayList<CVDTO> listCV = CVDAO.getCVsByJobID(JobID);
             request.setAttribute("Job", Job);
