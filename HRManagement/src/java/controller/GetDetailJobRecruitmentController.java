@@ -41,6 +41,7 @@ public class GetDetailJobRecruitmentController extends HttpServlet {
             JobDTO Job = JobDAO.getJob(JobID);
             ArrayList<CVDTO> listCV = CVDAO.getCVsByJobID(JobID);
             request.setAttribute("Job", Job);
+            request.setAttribute("listCV", listCV);
             request.getRequestDispatcher("recruitmentPostDetail.jsp").forward(request, response);
         }
     }
