@@ -6,10 +6,10 @@
 package controller;
 
 import core.dao.CVDAO;
-import core.dao.CandidateDAO;
+import core.dao.EmployeeDAO;
 import core.dao.JobDAO;
 import core.dto.CVDTO;
-import core.dto.CandidateDTO;
+import core.dto.EmployeeDTO;
 import core.dto.JobDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,12 +18,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author ThinkPad T490
  */
-public class GetDetailJobRecruitmentController extends HttpServlet {
+public class ScheduleInterviewController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,17 +41,21 @@ public class GetDetailJobRecruitmentController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String JobID = request.getParameter("JobID");
+            HttpSession session = request.getSession();
             JobDTO Job = JobDAO.getJob(JobID);
-            ArrayList<CVDTO> listCV = CVDAO.getCVsByJobID(JobID);
-            ArrayList<CandidateDTO> listCan = new ArrayList<>();
-            for (int i = 0; i < listCV.size(); i++) {
-                CVDTO get = listCV.get(i);
-                listCan.add(CandidateDAO.getCandidatesByCV(get.getCvid()));
+            ArrayList<CVDTO> listCV1 = CVDAO.getCVsByJobID(JobID);
+            ArrayList<CVDTO> listCV = new ArrayList<>();
+            ArrayList<EmployeeDTO> listInterviewer = EmployeeDAO.getAllInterviewers();
+            for (int i = 0; i < listCV1.size(); i++) {
+                CVDTO get = listCV1.get(i);
+                if (request.getParameter(get.getCvid())!=null) {
+                    listCV.add(get);
+                }
             }
             request.setAttribute("Job", Job);
-            request.setAttribute("listCV", listCV);
-            request.setAttribute("listCan", listCan);
-            request.getRequestDispatcher("recruitmentPostDetail.jsp").forward(request, response);
+            request.setAttribute("listInterviewer", listInterviewer);
+            session.setAttribute("listCV", listCV);
+            request.getRequestDispatcher("interviewSchedule.jsp").forward(request, response);
         }
     }
 

@@ -42,7 +42,7 @@
         </div>
         <div class="container">
             <h1 class="page-title">Recruitment Management</h1>
-            <form action="MainController" method="post">
+            
             <div class="row">
                 <div class="col-md-3">
                     <div class="border-form">
@@ -76,12 +76,14 @@
                         <p class="table-description">To : <%= listPost.get(i).getDateTo()%></p>
                     </div>
                 </div>
+                    <form action="MainController" method="post">
                 <div class="col-md-3">
                     <div class="border-form table-link" style="height: 200px; padding-top: 25%;">
-                        <input type="text" name="JobID" value="<%= get.getJobID() %>">
+                        <input type="hidden" name="JobID" value="<%= get.getJobID() %>">
                         <input type="submit" name="action" value="Detail"> 
                     </div>
                 </div>
+                    </form>
                 <%
                     }
                 %>
@@ -89,7 +91,6 @@
                     <a href="postRecruitmentJob.jsp" class="link-button" >New post</a>
                 </div>
             </div>
-            </form>
             <footer>
                 <%@include file="footer.jsp" %>
             </footer>

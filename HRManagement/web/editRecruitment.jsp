@@ -52,7 +52,7 @@
                             <p2>Education Requirement</p2>
                         </div> </td>
                     <td><div class="input-border">
-                            <input type="text" name=newEdu"" value="<%= Job.getEducationRequirement()%>" class="input"/>
+                            <input type="text" name="newEdu" value="<%= Job.getEducationRequirement()%>" class="input"/>
                         </div> </td></tr>
                 <tr><td><div class="info-title2">
                             <p2>Salary:</p2>

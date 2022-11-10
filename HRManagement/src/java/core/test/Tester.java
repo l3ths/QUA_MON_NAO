@@ -66,8 +66,14 @@ public class Tester {
 //            }
 //        ArrayList<RecruitmentPostDTO> listPost = RecruitmentPostDAO.getPostsByEmail("ngoctlbse160583@fpt.edu.vn");
 //        ArrayList<JobDTO> listJob = JobDAO.getJobsByEmail("ngoctlbse160583@fpt.edu.vn");
-        CVDTO cv = CVDAO.getCVByEmail("ductcse160119@fpt.edu.vn");
-        ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByCV(cv.getCvid());
+//        CVDTO cv = CVDAO.getCVByEmail("ductcse160119@fpt.edu.vn");
+//        ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByCV(cv.getCvid());
+
+    ArrayList<EmployeeDTO> list = EmployeeDAO.getAllInterviewers();
+        for (int i = 0; i < list.size(); i++) {
+            EmployeeDTO get = list.get(i);
+            System.out.println(get.getEmname());;
+        }
     }
 
 }

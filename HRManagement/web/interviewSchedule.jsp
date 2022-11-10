@@ -19,9 +19,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
-            <c:redirect url="loginPage.jsp"></c:redirect>
-        </c:if>
+        <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
+<c:redirect url="loginPage.jsp"></c:redirect> 
+        </c:if> --%>
         <div class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
@@ -47,7 +47,10 @@
                     <input type="text" name="" value="" placeholder="Interviewer" class="input"/>
                 </div>
                 <div class="input-border">
-                    <input type="datetime-local" name="" value="" placeholder="Set Time" class="input"/>
+                    <input type="date" name="" value="" placeholder="Set Day" class="input"/>
+                </div>
+                <div class="input-border">
+                    <input type="time" name="" value="" placeholder="Set Time" class="input"/>
                 </div>
                 <div class="input-border">
                     <input type="text" name="" value="" placeholder="Questions" class="input"/>

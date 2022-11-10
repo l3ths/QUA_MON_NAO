@@ -4,6 +4,8 @@
     Author     : ThinkPad T490
 --%>
 
+<%@page import="core.dto.CVDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +15,16 @@
     </head>
     <body>
         <%
-            session.setAttribute("email", "trungttse160105@fpt.edu.vn");
+            ArrayList<CVDTO> listCV = (ArrayList<CVDTO>) request.getAttribute("listCV");
+            for (int i = 0; i < listCV.size(); i++) {
+        %>
+        <p><%= listCV.get(i).getCvid() %></p>
+        <%
+            }
         %>
         <a href="ViewPersonalController"> link ne</a>
         <form action="MainController" method="post" >
-            
+
             <input type="submit" value="ViewPersonal" name="action" />
         </form>
     </body>
