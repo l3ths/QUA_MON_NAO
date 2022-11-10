@@ -34,10 +34,10 @@ public class MarkCandidateController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String CVID = request.getParameter("CVID");
-            String JobID = request.getParameter("JobID");
+            String ITVID = request.getParameter("ITVID");
             int score = Integer.parseInt(request.getParameter("score"));
             InterviewingDAO.updateScore(CVID, score);
-            String url = "ViewInterviewDetailController?JobID=" + JobID;
+            String url = "ViewInterviewDetailController?ITVID=" + ITVID;
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

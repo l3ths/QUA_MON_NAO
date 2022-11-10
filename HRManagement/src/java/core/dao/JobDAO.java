@@ -418,4 +418,52 @@ public class JobDAO {
             }
         }
     }
+
+    public static JobDTO getJobsByITVID(String id) {
+        JobDTO job = null;
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "SELECT distinct j.[jobID]\n"
+                            + "      ,[name]\n"
+                            + "      ,[salary]\n"
+                            + "      ,[description]\n"
+                            + "      ,[experienceRequirement]\n"
+                            + "      ,[educationRequirement]\n"
+                            + "      ,[imgPath]\n"
+                            + "      ,[quantity]\n"
+                            + "      ,[dateFrom]\n"
+                            + "      ,[dateTo]\n"
+                            + "      ,j.[empID]\n"
+                            + "  FROM tblJob j\n"
+                            + "  inner join tblInterviewing i\n"
+                            + "  on j.jobID = i.jobID\n"
+                            + "  where i.interviewingID = ?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, id);
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+                    String jID = rs.getString("jobID");
+                    String name = rs.getString("name");
+                    int salary = rs.getInt("salary");
+                    String description = rs.getString("description");
+                    String experienceRequirement = rs.getString("experienceRequirement");
+                    String educationRequirement = rs.getString("educationRequirement");
+                    String imgPath = rs.getString("imgPath");
+                     job = new JobDTO(jID, name, salary, description, experienceRequirement, educationRequirement, imgPath);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return job;
+    }
 }

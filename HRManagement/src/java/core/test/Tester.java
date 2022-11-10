@@ -68,13 +68,17 @@ public class Tester {
 //        ArrayList<JobDTO> listJob = JobDAO.getJobsByEmail("ngoctlbse160583@fpt.edu.vn");
 //        CVDTO cv = CVDAO.getCVByEmail("ductcse160119@fpt.edu.vn");
 //        ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByCV(cv.getCvid());
-
-    ArrayList<CVDTO> listCV = CVDAO.getCVsByJobID("JOB1");
-            ArrayList<CandidateDTO> listCan = new ArrayList<>();
-            for (int i = 0; i < listCV.size(); i++) {
-                CVDTO get = listCV.get(i);
-                listCan.add(CandidateDAO.getCandidatesByCV(get.getCvid()));
-            }
+        ArrayList<String> listID = InterviewingDAO.getInterviewingID();
+                ArrayList<JobDTO> listJob = new ArrayList<>();
+                for (int i = 0; i < listID.size(); i++) {
+                    String get = listID.get(i);
+                    listJob.add(JobDAO.getJobsByITVID(get));
+                }
+                ArrayList<Integer> listStatus = InterviewingDAO.getInterviewingStatus();
+                ArrayList<Integer> listQuantity = new ArrayList<>();
+                for (int i = 0; i < listJob.size(); i++) {
+                    JobDTO get = listJob.get(i);
+                    listQuantity.add(JobDAO.getQuantityByJID(get.getJobID()));
+                }
     }
-
 }

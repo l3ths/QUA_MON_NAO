@@ -38,7 +38,7 @@
             </div>
         </div>
         <%
-            CVDTO cv = (CVDTO) request.getAttribute("cv");
+            ArrayList<CVDTO> listCV = (ArrayList<CVDTO>) request.getAttribute("listCV");
             ArrayList<InterviewingDTO> listIW = (ArrayList<InterviewingDTO>) request.getAttribute("listIW");
             ArrayList<JobDTO> listJob = (ArrayList<JobDTO>) request.getAttribute("listJob");
             String[] stt = {"Processing","Aproved","Rejected"};
@@ -90,7 +90,7 @@
                         <% for (int idx = 0; idx < listIW.size(); idx++) {
                                 InterviewingDTO get = listIW.get(idx);
                         %>
-                        <p class="table-description"><%= stt[cv.getStatus()] %></p>
+                        <p class="table-description"><%= stt[listCV.get(idx).getStatus()] %></p>
                         <%
                             }
                         %>

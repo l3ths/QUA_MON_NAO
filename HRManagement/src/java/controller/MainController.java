@@ -64,6 +64,10 @@ public class MainController extends HttpServlet {
     private static final String SCHEDULE_INTERVEW_CONTROLLER = "ScheduleInterviewController";
     private static final String SUBMIT_SCHEDULE = "SubmitSchedule";
     private static final String SUBMIT_SCHEDULE_CONTROLLER = "SubmitScheduleController";
+    private static final String SUBMIT_INTERVEW = "SubmitInterview";
+    private static final String SUBMIT_INTERVEW_CONTROLLER = "SubmitInterviewController";
+    private static final String APPROVE_CANDIDATE = "ApproveCandidate";
+    private static final String APPROVE_CANDIDATE_CONTROLLER = "ApproveCandidateController";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -114,7 +118,9 @@ public class MainController extends HttpServlet {
                 url = SCHEDULE_INTERVEW_CONTROLLER;
             } else if (SUBMIT_SCHEDULE.equals(action)) {
                 url = SUBMIT_SCHEDULE_CONTROLLER;
-            }
+            } else if (SUBMIT_INTERVEW.equals(action)) {
+                url = SUBMIT_INTERVEW_CONTROLLER;
+            } 
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {

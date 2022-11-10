@@ -21,7 +21,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <%
-        ArrayList<InterviewingDTO> listIW = (ArrayList<InterviewingDTO>) request.getAttribute("listIW");
+        ArrayList<String> listID = (ArrayList<String>) request.getAttribute("listID");
         ArrayList<JobDTO> listJob = (ArrayList<JobDTO>) request.getAttribute("listJob");
         ArrayList<Integer> listStatus = (ArrayList<Integer>) request.getAttribute("listStatus");
         ArrayList<Integer> listQuantity = (ArrayList<Integer>) request.getAttribute("listQuantity");
@@ -69,7 +69,7 @@
             </div>
 
             <%
-                for (int i = 0; i < listIW.size(); i++) {
+                for (int i = 0; i < listJob.size(); i++) {
             %>
             <div class="row">
                 <div class="col-md-3">
@@ -98,7 +98,7 @@
                             } else {
                             %>
                             <form action="MainController" method="post">
-                                <input type="hidden" name="JobID" value="<%= listIW.get(i).getJobID() %>" />
+                                <input type="hidden" name="ITVID" value="<%= listID.get(i) %>" />
                                 <button type="submit" name="action" value="ViewPassed" >View Passed List</button>
                             </form>
                             <%

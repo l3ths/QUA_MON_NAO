@@ -51,24 +51,41 @@ public class ViewPersonalController extends HttpServlet {
             String email = (String) session.getAttribute("email");
             String role = (String) session.getAttribute("role");
             if (role.equals("interviewer")) {
-                ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByEmail(email, role);
+                ArrayList<String> listID = InterviewingDAO.getInterviewingIDbyEmail(email);
                 ArrayList<JobDTO> listJob = new ArrayList<>();
-                for (int i = 0; i < listIW.size(); i++) {
-                    InterviewingDTO get = listIW.get(i);
-                    listJob.add(JobDAO.getJob(get.getJobID()));
+                for (int i = 0; i < listID.size(); i++) {
+                    String get = listID.get(i);
+                    listJob.add(JobDAO.getJobsByITVID(get));
                 }
-                request.setAttribute("listIW", listIW);
+                ArrayList<String> listDay = new ArrayList<>();
+                ArrayList<String> listTime = new ArrayList<>();
+                for (int i = 0; i < listID.size(); i++) {
+                    String get = listID.get(i);
+                    InterviewingDTO iw = InterviewingDAO.getInterviewingByInterviewingID(get).get(0);
+                    listDay.add(iw.getDate());
+                    listTime.add(iw.getTime());
+                }
+                request.setAttribute("listDay", listDay);
+                request.setAttribute("listTime", listTime);
                 request.setAttribute("listJob", listJob);
+                request.setAttribute("listID", listID);
                 request.getRequestDispatcher("interviewerPage.jsp").forward(request, response);
             } else if (role.equals("candidate")) {
-                CVDTO cv = CVDAO.getCVByEmail(email);
-                ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByCV(cv.getCvid());
+                ArrayList<CVDTO> listCV = CVDAO.getCVsByEmail(email);
+                ArrayList<InterviewingDTO> listIW = new ArrayList<>();
+                for (int i = 0; i < listCV.size(); i++) {
+                    CVDTO get = listCV.get(i);
+                    InterviewingDTO iw = InterviewingDAO.getInterviewingByCV(get.getCvid());
+                    if (iw != null) {
+                        listIW.add(iw);
+                    }
+                }
                 ArrayList<JobDTO> listJob = new ArrayList<>();
                 for (int i = 0; i < listIW.size(); i++) {
                     InterviewingDTO get = listIW.get(i);
                     listJob.add(JobDAO.getJob(get.getJobID()));
                 }
-                request.setAttribute("cv", cv);
+                request.setAttribute("listCV", listCV);
                 request.setAttribute("listIW", listIW);
                 request.setAttribute("listJob", listJob);
                 request.getRequestDispatcher("candidatePage.jsp").forward(request, response);
@@ -79,11 +96,11 @@ public class ViewPersonalController extends HttpServlet {
                 request.setAttribute("listJob", listJob);
                 request.getRequestDispatcher("hrPage.jsp").forward(request, response);
             } else if (role.equals("hr manager")) {
-                ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewings();
+                ArrayList<String> listID = InterviewingDAO.getInterviewingID();
                 ArrayList<JobDTO> listJob = new ArrayList<>();
-                for (int i = 0; i < listIW.size(); i++) {
-                    InterviewingDTO get = listIW.get(i);
-                    listJob.add(JobDAO.getJob(get.getJobID()));
+                for (int i = 0; i < listID.size(); i++) {
+                    String get = listID.get(i);
+                    listJob.add(JobDAO.getJobsByITVID(get));
                 }
                 ArrayList<Integer> listStatus = InterviewingDAO.getInterviewingStatus();
                 ArrayList<Integer> listQuantity = new ArrayList<>();
@@ -91,11 +108,11 @@ public class ViewPersonalController extends HttpServlet {
                     JobDTO get = listJob.get(i);
                     listQuantity.add(JobDAO.getQuantityByJID(get.getJobID()));
                 }
-                request.setAttribute("listIW", listIW);
+                request.setAttribute("listID", listID);
                 request.setAttribute("listJob", listJob);
                 request.setAttribute("listStatus", listStatus);
                 request.setAttribute("listQuantity", listQuantity);
-                request.getRequestDispatcher("hrManagerPage.jsp").forward(request, response);       
+                request.getRequestDispatcher("hrManagerPage.jsp").forward(request, response);
             } else {
                 response.sendRedirect("index.html");
             }

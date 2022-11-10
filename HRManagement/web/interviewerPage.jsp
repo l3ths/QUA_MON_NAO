@@ -21,8 +21,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <%
-        ArrayList<InterviewingDTO> listIW = (ArrayList<InterviewingDTO>) request.getAttribute("listIW");
+        ArrayList<String> listDay = (ArrayList<String>) request.getAttribute("listDay");
+        ArrayList<String> listTime = (ArrayList<String>) request.getAttribute("listTime");
         ArrayList<JobDTO> listJob = (ArrayList<JobDTO>) request.getAttribute("listJob");
+        ArrayList<String> listID = (ArrayList<String>) request.getAttribute("listID");
+        
     %>
     <body>
         <c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
@@ -73,10 +76,9 @@
                 </div>
                 <div class="col-md-4">
                     <div class="border-form" style="min-height: 700px;">
-                        <% for (int idx = 0; idx < listIW.size(); idx++) {
-                                InterviewingDTO get = listIW.get(idx);
+                        <% for (int idx = 0; idx < listDay.size(); idx++) {
                         %>
-                        <p class="table-description"><%= get.getTime()%> <%= get.getDate()%></p>
+                        <p class="table-description"><%= listTime.get(idx) %> <%= listDay.get(idx) %></p>
                         <%
                             }
                         %>
@@ -89,7 +91,7 @@
                         %>
                         <div class="table-link" style="padding-top: 10px;">
                             <form action="MainController" method="post">
-                                <input type="hidden" name="JobID" value="<%= listIW.get(idx).getJobID() %>" />
+                                <input type="hidden" name="ITVID" value="<%= listID.get(idx) %>" />
                                 <button type="submit" name="action" value="ViewInterviewDetail" >Detail</button>
                             </form>
                         </div>
