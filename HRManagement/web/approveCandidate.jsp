@@ -61,37 +61,38 @@
                 <div class="col-md-1">
                 </div>
             </div>
-            <%
-                for (int i = 0; i < listIW.size(); i++) {
-                    InterviewingDTO get = listIW.get(i);
-            %>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 80px;"><%= listName.get(i)%></p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="border-form" style="height: 200px;">
-                        <div class="table-link" style="margin-top: 80px;">
-                            <a href="#" >View</a>
+            <form action="MainController" method="post">
+                <%
+                    for (int i = 0; i < listIW.size(); i++) {
+                        InterviewingDTO get = listIW.get(i);
+                %>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="border-form" style="height: 200px;">
+                            <p class="table-description" style="margin-top: 80px;"><%= listName.get(i)%></p>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 80px;"><%= get.getScore()%></p>
+                    <div class="col-md-3">
+                        <div class="border-form" style="height: 200px;">
+                            <div class="table-link" style="margin-top: 80px;">
+                                <a href="#" >View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="border-form" style="height: 200px;">
+                            <p class="table-description" style="margin-top: 80px;"><%= get.getScore()%></p>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <input class="input" name="<%= get.getCvID()%>" value="true" type="checkbox" style="margin-top: 80px;">
                     </div>
                 </div>
-                <div class="col-md-1">
-                    <input class="input" name="<%= get.getCvID()%>" value="true" type="checkbox" style="margin-top: 80px;">
-                </div>
-            </div>
-            <%
-                }
-            %>
-            <form action="MainController" method="post">
-                <input type="hidden" name="ITVID" value="<%= ITVID %>" />
+                <%
+                    }
+                %>
+
+                <input type="hidden" name="ITVID" value="<%= ITVID%>" />
                 <button type="submit" name="action" value="ApproveCandidate" >Approve</button>
             </form>
         </div>

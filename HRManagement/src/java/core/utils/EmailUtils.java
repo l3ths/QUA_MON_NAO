@@ -24,7 +24,7 @@ public class EmailUtils {
     public static void sendEmail(String toEmail, String subject, String body) throws MessagingException, UnsupportedEncodingException {
         final String fromEmail = "huyltse160094@fpt.edu.vn";
         // Mat khai email cua ban
-        final String password = "12345huy";
+        final String password = "12345huy@";
         // dia chi email nguoi nhan
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com"); //SMTP Host

@@ -40,6 +40,10 @@
         <servlet-name>SubmitInterviewController</servlet-name>
         <servlet-class>controller.SubmitInterviewController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ApproveCandidateController</servlet-name>
+        <servlet-class>controller.ApproveCandidateController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewInterviewDetailController</servlet-name>
         <url-pattern>/ViewInterviewDetailController</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>SubmitInterviewController</servlet-name>
         <url-pattern>/SubmitInterviewController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ApproveCandidateController</servlet-name>
+        <url-pattern>/ApproveCandidateController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
