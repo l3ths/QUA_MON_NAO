@@ -87,7 +87,7 @@ public class JobDAO {
                     Job = new JobDTO(jID, name, salary, description, experienceRequirement, educationRequirement, imgPath);
                 }
             }
-        }  catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("error");
         } finally {
             try {
@@ -139,7 +139,7 @@ public class JobDAO {
         return listJob;
     }
 
-     public static int getCountJob() {
+    public static int getCountJob() {
         int count = 0;
         Connection cn = null;
         PreparedStatement ptm = null;
@@ -153,7 +153,7 @@ public class JobDAO {
                     count = rs.getInt("count");
                 }
             }
-          }  catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
@@ -346,7 +346,7 @@ public class JobDAO {
                     list.add(Job);
                 }
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -358,6 +358,7 @@ public class JobDAO {
         }
         return list;
     }
+
     public static boolean updateJob(String newExp, String newEdu, String newSalary, String NewDescr, String jobID) {
         boolean result = false;
         int n;
@@ -366,11 +367,11 @@ public class JobDAO {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "update tblJob\n"
-                        + "set experienceRequirement = ?,\n"
-                        + "educationRequirement = ? ,\n"
-                        + "salary = ? ,\n"
-                        + "description = ?\n"
-                        + "where jobID= ?";
+                            + "set experienceRequirement = ?,\n"
+                            + "educationRequirement = ? ,\n"
+                            + "salary = ? ,\n"
+                            + "description = ?\n"
+                            + "where jobID= ?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, newExp);
                 pst.setString(2, newEdu);
@@ -393,5 +394,28 @@ public class JobDAO {
         }
         return result;
     }
-}
 
+    public static void updateStatus(int status, String jobID) {
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "UPDATE tblJob\n"
+                            + "    SET status = ?\n"
+                            + "    WHERE jobID =?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(2, jobID);
+                pst.setInt(1, status);
+                pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            System.out.println("error");
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                System.out.println("error");
+            }
+        }
+    }
+}

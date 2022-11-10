@@ -69,11 +69,12 @@ public class Tester {
 //        CVDTO cv = CVDAO.getCVByEmail("ductcse160119@fpt.edu.vn");
 //        ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByCV(cv.getCvid());
 
-    ArrayList<EmployeeDTO> list = EmployeeDAO.getAllInterviewers();
-        for (int i = 0; i < list.size(); i++) {
-            EmployeeDTO get = list.get(i);
-            System.out.println(get.getEmname());;
-        }
+    ArrayList<CVDTO> listCV = CVDAO.getCVsByJobID("JOB1");
+            ArrayList<CandidateDTO> listCan = new ArrayList<>();
+            for (int i = 0; i < listCV.size(); i++) {
+                CVDTO get = listCV.get(i);
+                listCan.add(CandidateDAO.getCandidatesByCV(get.getCvid()));
+            }
     }
 
 }

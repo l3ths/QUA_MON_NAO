@@ -32,6 +32,10 @@
         <servlet-name>ScheduleInterviewController</servlet-name>
         <servlet-class>controller.ScheduleInterviewController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SubmitScheduleController</servlet-name>
+        <servlet-class>controller.SubmitScheduleController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewInterviewDetailController</servlet-name>
         <url-pattern>/ViewInterviewDetailController</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ScheduleInterviewController</servlet-name>
         <url-pattern>/ScheduleInterviewController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SubmitScheduleController</servlet-name>
+        <url-pattern>/SubmitScheduleController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

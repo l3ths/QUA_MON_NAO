@@ -5,6 +5,9 @@
 --%>
 
 
+<%@page import="core.dto.JobDTO"%>
+<%@page import="core.dto.EmployeeDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -22,6 +25,10 @@
         <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
 <c:redirect url="loginPage.jsp"></c:redirect> 
         </c:if> --%>
+        <%
+            ArrayList<EmployeeDTO> listInterviewer = (ArrayList<EmployeeDTO>) request.getAttribute("listInterviewer");
+            JobDTO Job = (JobDTO) request.getAttribute("Job");
+        %>
         <div class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
@@ -36,26 +43,31 @@
         </div>
         <div class="container">
             <h1 class="page-title">Interview schedule</h1>
-            <form action="MainController" style="width: 500px; margin: 100px auto;">
+            <h3 class="page-title" style="font-size: 20px" ><%= Job.getName()%></h3>
+            <form action="MainController" method="post" style="width: 500px; margin: 100px auto;">
+                <input type="hidden" name="JobID" value="<%= Job.getJobID()%>" />
                 <div class="input-border">
-                    <input type="text" name="" value="" placeholder="Job Title" class="input"/>
+                    <p>Interviewer :</p>
+                    <%
+                        for (int i = 0; i < listInterviewer.size(); i++) {
+                            EmployeeDTO get = listInterviewer.get(i);
+                    %>
+                    <input type="checkbox" name="<%= get.getEid()%>" value="true"/>
+                    <label for="<%= get.getEid()%>"><%= get.getEmname()%></label><br>
+                    <%
+                        }
+                    %>
                 </div>
                 <div class="input-border">
-                    <input type="text" name="" value="" placeholder="Candidate" class="input"/>
+                    <input required="" type="date" name="date" placeholder="Set Day" class="input"/>
                 </div>
                 <div class="input-border">
-                    <input type="text" name="" value="" placeholder="Interviewer" class="input"/>
+                    <input required="" type="time" name="time" placeholder="Set Time" class="input"/>
                 </div>
                 <div class="input-border">
-                    <input type="date" name="" value="" placeholder="Set Day" class="input"/>
+                    <input required="" type="text" name="questtion" placeholder="Questions" class="input"/>
                 </div>
-                <div class="input-border">
-                    <input type="time" name="" value="" placeholder="Set Time" class="input"/>
-                </div>
-                <div class="input-border">
-                    <input type="text" name="" value="" placeholder="Questions" class="input"/>
-                </div>
-                <button type="submit" name="action" value="" class="submit-button">Submit</button>
+                <button type="submit" name="action" value="SubmitSchedule" class="submit-button">Submit</button>
             </form>
         </div>
         <%@include file="footer.jsp" %>

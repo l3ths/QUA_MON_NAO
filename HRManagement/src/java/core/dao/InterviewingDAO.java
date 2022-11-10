@@ -242,22 +242,20 @@ public class InterviewingDAO {
         }
     }
 
-    public static void createInterviewing(String iID, String date, String time, int score, String content, String empID, String cvID, String jobID, int status) {
+    public static void createInterviewing(String iID, String date, String time, String content, String empID, String cvID, String jobID) {
         Connection cn = null;
         try{
             cn = DBUtils.getConnection();
             if(cn != null){
-                String sql = "insert tblInterviewing values (?,?,?,?,?,?,?,?,?)";
+                String sql = "insert tblInterviewing ([interviewingID],[date],[time],[content],[empID],[CVID],[jobID],[status]) values (?,?,?,?,?,?,?,0)";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, iID);
                 pst.setString(2, date);
                 pst.setString(3, time);
-                pst.setInt(4, score);
-                pst.setString(5, content);
-                pst.setString(6, empID);
-                pst.setString(7, cvID);
-                pst.setString(8, jobID);
-                pst.setInt(9, status);
+                pst.setString(4, content);
+                pst.setString(5, empID);
+                pst.setString(6, cvID);
+                pst.setString(7, jobID);
                 pst.executeUpdate();
             }
         } catch (Exception e) {
