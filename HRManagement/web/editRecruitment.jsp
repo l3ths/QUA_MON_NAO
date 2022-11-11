@@ -19,16 +19,16 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <%--    <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
+        <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
-        </c:if> --%>
+        </c:if>
         <div class="header row">
             <div class="col-md-4">
                 <h1>Toidiyuh</h1>
             </div>
             <div class="col-md-8">
                 <ul>
-                    <li><a href="editRecruitment.jsp" class="active-page">Edit Recruitment</a></li>
+                    <li><a href="MainController?action=ViewPersonal" class="active-page">Personal</a></li>
                     <li><a href="personalPage.jsp">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
@@ -39,44 +39,40 @@
                 JobDTO Job = (JobDTO) request.getAttribute("Job");
             %>
             <h1 class="page-title">Edit Recruitment</h1>
-            <div class="profile-information">
-            <form action="MainController" method="post">
-                <table>
-                <tr><td><div class="info-title2">
-                            <p2>Experience Requirement</p2>
-                        </div> </td>
-                    <td><div class="input-border">
-                            <input type="text" name="newExp" value="<%= Job.getExperienceRequirement()%>" class="input"/>
-                        </div> </td></tr>
-                <tr><td><div class="info-title2">
-                            <p2>Education Requirement</p2>
-                        </div> </td>
-                    <td><div class="input-border">
-                            <input type="text" name="newEdu" value="<%= Job.getEducationRequirement()%>" class="input"/>
-                        </div> </td></tr>
-                <tr><td><div class="info-title2">
-                            <p2>Salary:</p2>
-                        </div> </td>
-                    <td><div class="input-border">
-                            <input type="text" name="newSalary" value="<%= Job.getSalary()%>" class="input"/>
-                        </div> </td></tr>
-                <tr><td><div class="info-title2">
-                            <p2>Description:</p2>
-                        </div> </td>
-                    <td><div class="input-border">
-                            <input type="text" name="NewDescr" value="<%= Job.getDesription()%>" class="input"/>
-                        </div> </td></tr>
-                <tr>
-                    <td>
+            <div class="row" style="width: 600px; margin: 0 auto;">
+                <form action="MainController" method="post">
+                    <div class="col-md-4">
+                        <p class="info-title">Experience Requirement:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="text" name="newExp" value="<%= Job.getExperienceRequirement()%>" class="input"/>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Education Requirement:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="text" name="newEdu" value="<%= Job.getEducationRequirement()%>" class="input"/>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Salary:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="text" name="newSalary" value="<%= Job.getSalary()%>" class="input"/>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Description:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="text" name="NewDescr" value="<%= Job.getDesription()%>" class="input"/>
+                    </div>
+                    <div class="col-md-6">
                         <input type="hidden" name="jobID" value="<%= Job.getJobID()%>" >
                         <button type="submit" name="action" value="" class="submit-button">Cancel</button>
-                    </td>
-                    <td>
+                    </div>
+                    <div class="col-md-6">
                         <button type="submit" name="action" value="editPost" class="submit-button">Save</button>
-                    </td>
-                </tr>
-                </table>
-            </form>
+                    </div> 
+                </form>
             </div>
         </div>
         <%@include file="footer.jsp" %>

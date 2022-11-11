@@ -12,7 +12,7 @@
         <title>Register Page</title>
     </head>
     <body>
-        <div class="header row">
+        <header class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
             </div>
@@ -23,7 +23,7 @@
                     <li><a href="registerCandPage.jsp" class="active-page">Register</a></li>
                 </ul>
             </div>
-        </div>
+        </header>
         <section>
             <div class="limiter">
                 <div class="container-login100">

@@ -23,7 +23,7 @@
         <c:if test="${sessionScope.role==null}">
             <c:redirect url="loginPage.jsp"></c:redirect>
         </c:if>
-        <div class="header row">
+        <header class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
             </div>
@@ -31,16 +31,12 @@
                 <ul>
                     <c:if test="${sessionScope.role eq 'candidate'}">
                         <li><a href="MainController?action=ShowJob">Home</a></li>
-                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
-                        </c:if>
-                        <c:if test="${sessionScope.role ne 'candidate'}">
-                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                         </c:if>
                     <li><a href="personalPage.jsp" class="active-page">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
             </div>
-        </div>
+        </header>
         <section>
             <h1 class="page-title">Change Password</h1>
             <form action="MainController" method="post">

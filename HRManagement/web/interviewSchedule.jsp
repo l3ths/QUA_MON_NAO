@@ -22,25 +22,25 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
-<c:redirect url="loginPage.jsp"></c:redirect> 
-        </c:if> --%>
+        <c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
+            <c:redirect url="loginPage.jsp"></c:redirect> 
+        </c:if>
         <%
             ArrayList<EmployeeDTO> listInterviewer = (ArrayList<EmployeeDTO>) request.getAttribute("listInterviewer");
             JobDTO Job = (JobDTO) request.getAttribute("Job");
         %>
-        <div class="header row">
+        <header class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
             </div>
             <div class="col-md-6">
                 <ul>
-                    <li><a href="interviewSchedule.jsp" class="active-page">Interview Schedule</a></li>
+                    <li><a href="MainController?action=ViewPersonal" class="active-page">Personal</a></li>
                     <li><a href="personalPage.jsp">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
             </div>
-        </div>
+        </header>
         <div class="container">
             <h1 class="page-title">Interview schedule</h1>
             <h3 class="page-title" style="font-size: 20px" ><%= Job.getName()%></h3>

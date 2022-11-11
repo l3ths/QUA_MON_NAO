@@ -1,4 +1,8 @@
+html {
+    height: 100%;
+}
 body{
+    min-height: 100%;
     margin: 0 200px;
 }
 :root {
@@ -9,6 +13,8 @@ body{
 /*footer*/
 .footer {
     width: 100%;
+    position: sticky;
+    top:100%;
     background-color: #222736;
     padding: 20px ;
     text-align: center;

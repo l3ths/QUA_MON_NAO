@@ -22,23 +22,21 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <%--     <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
+        <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
         </c:if>
-        --%>
-        <div class="header row">
+        <header class="header row">
             <div class="col-md-4">
                 <h1>Toidiyuh</h1>
             </div>
             <div class="col-md-8">
                 <ul>
-                    <li><a href="MainController?action=ShowJob">Home</a></li>
-                    <li><a href="recruitmentPostDetail" class="active-page">Post Detail</a></li>
-                    <li><a href="MainController?action=ViewPersonal">Personal</a></li>
+                    <li><a href="MainController?action=ViewPersonal" class="active-page">Personal</a></li>
+                    <li><a href="personalPage.jsp">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
             </div>
-        </div>
+        </header>
         <%
             JobDTO Job = (JobDTO) request.getAttribute("Job");
             ArrayList<CVDTO> listCV = (ArrayList<CVDTO>) request.getAttribute("listCV");

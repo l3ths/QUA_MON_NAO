@@ -17,35 +17,26 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <c:if test="${sessionScope.role eq 'candidate'}">
-            <div class="header row">
-                <div class="col-md-5">
-                    <h1>Toidiyuh</h1>
-                </div>
-                <div class="col-md-7">
-                    <ul>
+        <header class="header row">
+            <div class="col-md-5">
+                <h1>Toidiyuh</h1>
+            </div>
+            <div class="col-md-7">
+                <ul>
+                    <c:if test="${sessionScope.role eq 'candidate'}">
                         <li><a href="MainController?action=ShowJob" class="active-page">Home</a></li>
                         <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                         <li><a href="personalPage.jsp">Profile</a></li>
                         <li><a href="MainController?action=Logout">Log out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </c:if>
-        <c:if test="${sessionScope.role==null}">
-            <div class="header row">
-                <div class="col-md-5">
-                    <h1>Toidiyuh</h1>
-                </div>
-                <div class="col-md-7">
-                    <ul>
+                        </c:if>
+                        <c:if test="${sessionScope.role==null}">
                         <li><a href="MainController?action=ShowJob" class="active-page">Home</a></li>
                         <li><a href="loginPage.jsp">Login</a></li>
                         <li><a href="registerCandPage.jsp">Register</a></li>
-                    </ul>
-                </div>
+                        </c:if>
+                </ul>
             </div>
-        </c:if>
+        </header>
         <div class="container">
             <img src="img/background.jpg" alt="background" class="background-img">
             <div>

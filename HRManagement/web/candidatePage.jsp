@@ -25,18 +25,19 @@
         <c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
         </c:if>
-        <div class="header row">
+        <header class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
             </div>
             <div class="col-md-6">
                 <ul>
+                    <li><a href="MainController?action=ShowJob">Home</a></li>
                     <li><a href="candidatePage.jsp" class="active-page">Personal</a></li>
                     <li><a href="personalPage.jsp">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
             </div>
-        </div>
+        </header>
         <%
             ArrayList<CVDTO> listCV = (ArrayList<CVDTO>) request.getAttribute("listCV");
             ArrayList<InterviewingDTO> listIW = (ArrayList<InterviewingDTO>) request.getAttribute("listIW");

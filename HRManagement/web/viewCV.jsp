@@ -18,21 +18,21 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
+        <c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
-        </c:if>--%>
-        <div class="header row">
+        </c:if>
+        <header class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
             </div>
             <div class="col-md-6">
                 <ul>
-                    <li><a href="MainController?action=ViewPersonal">Personal</a></li>
-                    <li><a href="personalPage.jsp" class="active-page">Profile</a></li>
+                    <li><a href="MainController?action=ViewPersonal" class="active-page">Personal</a></li>
+                    <li><a href="personalPage.jsp">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
             </div>
-        </div>
+        </header>
         <div class="container">
             <h1 class="page-title">CV</h1>
             <div class="row" style="margin: 50px auto;">

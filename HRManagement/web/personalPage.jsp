@@ -23,7 +23,7 @@
         <c:if test="${sessionScope.role==null}">
             <c:redirect url="loginPage.jsp"></c:redirect>
         </c:if>
-        <div class="header row">
+        <header class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
             </div>
@@ -31,16 +31,13 @@
                 <ul>
                     <c:if test="${sessionScope.role eq 'candidate'}">
                         <li><a href="MainController?action=ShowJob">Home</a></li>
-                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                         </c:if>
-                        <c:if test="${sessionScope.role ne 'candidate'}">
-                        <li><a href="MainController?action=ViewPersonal">Personal</a></li>
-                        </c:if>
+                    <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                     <li><a href="personalPage.jsp" class="active-page">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
             </div>
-        </div>
+        </header>
         <section>
             <h1 class="page-title">Profile</h1>
             <form action="MainController" method="post">
@@ -55,37 +52,37 @@
                         <img src="img/avatar/<%= emp.getImgpath()%>" class="img-responsive"/>
                     </div>
                     <div class="col-md-7 row" >
-                            <div class="col-md-4">
-                                <p class="info-title">Full name:</p>
-                            </div>
-                            <div class="col-md-8 input-border">
-                                <input class="input" value="<%= emp.getEmname()%>" readonly="">
-                            </div>
-                            <div class="col-md-4">
-                                <p class="info-title">Date of birth:</p>
-                            </div>
-                            <div class="col-md-8 input-border">
-                                <input type="date" class="input" value="<%= emp.getBirthdate()%>" readonly="">
-                            </div>
-                            <div class="col-md-4">
-                                <p class="info-title">Phone number:</p>
-                            </div>
-                            <div class="col-md-8 input-border">
-                                <input class="input" value="<%= emp.getEmphone()%>" readonly="">
-                            </div>
-                            <div class="col-md-4">
-                                <p class="info-title">Email:</p1>
-                            </div>
-                            <div class="col-md-8 input-border">
-                                <input class="input" value="<%= emp.getEmemail()%>" readonly="">
-                            </div>
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4">
-                                <a href="updatePassword.jsp" class="link-button">Change Password</a>  
-                            </div>
-                            <div class="col-md-4">
-                                <a href="updatePersonal.jsp" class="link-button">Update Personal</a> 
-                            </div>
+                        <div class="col-md-4">
+                            <p class="info-title">Full name:</p>
+                        </div>
+                        <div class="col-md-8 input-border">
+                            <input class="input" value="<%= emp.getEmname()%>" readonly="">
+                        </div>
+                        <div class="col-md-4">
+                            <p class="info-title">Date of birth:</p>
+                        </div>
+                        <div class="col-md-8 input-border">
+                            <input type="date" class="input" value="<%= emp.getBirthdate()%>" readonly="">
+                        </div>
+                        <div class="col-md-4">
+                            <p class="info-title">Phone number:</p>
+                        </div>
+                        <div class="col-md-8 input-border">
+                            <input class="input" value="<%= emp.getEmphone()%>" readonly="">
+                        </div>
+                        <div class="col-md-4">
+                            <p class="info-title">Email:</p1>
+                        </div>
+                        <div class="col-md-8 input-border">
+                            <input class="input" value="<%= emp.getEmemail()%>" readonly="">
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <a href="updatePassword.jsp" class="link-button">Change Password</a>  
+                        </div>
+                        <div class="col-md-4">
+                            <a href="updatePersonal.jsp" class="link-button">Update Personal</a> 
+                        </div>
                     </div>
                     <%
                     } else {
