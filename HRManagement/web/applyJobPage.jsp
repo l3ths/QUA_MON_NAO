@@ -59,7 +59,7 @@
                     <input type="text" name="applyExp" placeholder="Experience" class="input"/>
                 </div>
                 <div class="input-border">
-                    <input type="text" name="applydateOB" placeholder="Date of Birth" class="input"/>
+                    <input type="date" name="applydateOB" placeholder="Date of Birth" class="input"/>
                 </div>
                 <button type="submit" name="action" value="ApplyJob" class="submit-button">Apply</button>
             </form>

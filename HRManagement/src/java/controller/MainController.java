@@ -120,6 +120,8 @@ public class MainController extends HttpServlet {
                 url = SUBMIT_SCHEDULE_CONTROLLER;
             } else if (SUBMIT_INTERVEW.equals(action)) {
                 url = SUBMIT_INTERVEW_CONTROLLER;
+            } else if (APPROVE_CANDIDATE.equals(action)) {
+                url = APPROVE_CANDIDATE_CONTROLLER;
             } 
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

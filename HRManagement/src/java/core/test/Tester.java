@@ -19,6 +19,7 @@ import core.dto.EmployeeDTO;
 import core.dto.InterviewingDTO;
 import core.dto.JobDTO;
 import core.dto.RecruitmentPostDTO;
+import core.utils.EmailUtils;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -80,7 +81,7 @@ public class Tester {
 //                    JobDTO get = listJob.get(i);
 //                    listQuantity.add(JobDAO.getQuantityByJID(get.getJobID()));
 //                }
-        CandidateDAO.createCandidate("CDD10", "Le Thanh Huy", "123", "lethanhhuy@gmail.com", "2002-01-01");
+        EmailUtils.sendEmail("ductcse160119@fpt.edu.vn", "Chao Duc", "dmm");
         
     }
 }
