@@ -93,17 +93,18 @@
                             <%
                                 if (listStatus.get(i) == 0) {
                             %>
-                            <p class="table-description" style="margin-top: 25%;"><%= listStatus.get(i)%></p>
+                            <p class="table-description" style="margin-top: 25%;"><%= stt[listStatus.get(i)]%></p>
                             <%
                             } else if (listStatus.get(i) == 1) {
                             %>
                             <form action="MainController" method="post">
                                 <input type="hidden" name="ITVID" value="<%= listID.get(i)%>" />
+                                <p class="table-description" style="margin-top: 25%;"><%= stt[listStatus.get(i)]%></p>
                                 <button type="submit" name="action" value="ViewPassed" >View Candidate List</button>
                             </form>
                             <%
                             } else {%>
-                            <p class="table-description" style="margin-top: 25%;"><%= listStatus.get(i)%></p>
+                            <p class="table-description" style="margin-top: 25%;"><%= stt[listStatus.get(i)]%></p>
                             <%
                                 }
                             %>
