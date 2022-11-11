@@ -22,7 +22,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
+        <c:if test="${sessionScope.role==null||sessionScope.role ne 'hr'}">
             <c:redirect url="loginPage.jsp"></c:redirect> 
         </c:if>
         <%
