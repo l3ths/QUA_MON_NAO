@@ -44,6 +44,7 @@
         <section>
             <h1 class="page-title">Profile</h1>
             <form action="MainController" method="post">
+                <p style="color: red"> <%= (request.getParameter("stt") != null) ? "Register Successfull" : ""%></p>
                 <%
                     String role = (String) session.getAttribute("role");
                     if (!role.equals("candidate")) {

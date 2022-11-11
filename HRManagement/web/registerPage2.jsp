@@ -17,18 +17,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <div class="header row">
-            <div class="col-md-6">
-                <h1>Toidiyuh</h1>
-            </div>
-            <div class="col-md-6">
-                <ul>
-                    <li><a href="MainController?action=ShowJob">Home</a></li>
-                    <li><a href="loginPage.jsp">Login</a></li>
-                    <li><a href="registerPage.jsp" class="active-page">Register</a></li>
-                </ul>
-            </div>
-        </div>
         <form action="MainController" method="post">
             <div class="wrap-input100 validate-input" data-validate="Enter password">
                 <span class="btn-show-pass">

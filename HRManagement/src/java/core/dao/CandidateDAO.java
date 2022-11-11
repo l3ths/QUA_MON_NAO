@@ -172,7 +172,7 @@ public class CandidateDAO {
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                String sql = "insert tblCandidate values (?,?,?,?,null,?)";
+                String sql = "insert tblCandidate values (?,?,?,?,null,null,?)";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, id);
                 pst.setString(2, name);
