@@ -99,7 +99,7 @@ public class EmployeeDAO {
         return emp;
     }
 
-    public static boolean updateEmployee(String email, String name, String phone, String birthDate) {
+    public static boolean updateEmployee(String email, String name, String phone, String birthDate, String imgPath) {
         boolean result = false;
         int n;
         Connection cn = null;
@@ -109,13 +109,15 @@ public class EmployeeDAO {
                 String sql = "update tblEmployee\n"
                             + "set name = ?,\n"
                             + "phoneNumber = ? ,\n"
-                            + "dateofBirth = ?\n"
+                            + "dateofBirth = ?, \n"
+                            + "imgPath = ?\n"
                             + "where email= ?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, name);
                 pst.setString(2, phone);
-                pst.setString(4, email);
                 pst.setString(3, birthDate);
+                pst.setString(4, imgPath);
+                pst.setString(5, email);
                 n = pst.executeUpdate();
                 if (n != 0) {
                     result = true;

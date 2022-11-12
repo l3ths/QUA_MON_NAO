@@ -13,28 +13,28 @@ import core.dto.CandidateDTO;
 import core.dto.EmployeeDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author ThinkPad T490
  */
 @WebServlet(name = "UpdateEmpProfileController", urlPatterns = {"/UpdateEmpProfileController"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class UpdateEmpProfileController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -43,24 +43,36 @@ public class UpdateEmpProfileController extends HttpServlet {
             String email = request.getParameter("txtemail");
             String newbirthdate = request.getParameter("txtnewbirthdate");
             String newphone = request.getParameter("txtnewphone");
+            String uploadFolder = request.getServletContext().getRealPath("/img/avatar");
+            Path uploadPath = Paths.get(uploadFolder);
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectory(uploadPath);
+            }
+            Part imgPart = request.getPart("txtnewimage");
+            String imgFilename = Paths.get(imgPart.getSubmittedFileName()).getFileName().toString();
+            imgPart.write(Paths.get(uploadPath.toString(), imgFilename).toString());
             AccountDTO acc = AccountDAO.getAccount(email);
             if (!acc.getAccrole().equals("candidate")) {
                 EmployeeDTO emp = EmployeeDAO.getEmployee(email);
                 if (emp != null) {
-                    if (EmployeeDAO.updateEmployee(email, newname, newphone, newbirthdate)) {
+                    if (EmployeeDAO.updateEmployee(email, newname, newphone, newbirthdate, imgFilename)) {
+                        HttpSession session = request.getSession();
+                        session.setAttribute("LOGIN_EMP", EmployeeDAO.getEmployee(email));
                         request.getRequestDispatcher("personalPage.jsp").forward(request, response);
                     }
                 } else {
-                    request.getRequestDispatcher("homePage.jsp").forward(request, response);
+                    request.getRequestDispatcher("errorPage.jsp").forward(request, response);
                 }
             } else {
                 CandidateDTO can = CandidateDAO.getCandidate(email);
                 if (can != null) {
-                    if (CandidateDAO.updateCandidate(email, newname, newphone, newbirthdate)) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("LOGIN_CDD", CandidateDAO.getCandidate(email));
+                    if (CandidateDAO.updateCandidate(email, newname, newphone, newbirthdate, imgFilename)) {
                         request.getRequestDispatcher("personalPage.jsp").forward(request, response);
                     }
                 } else {
-                    request.getRequestDispatcher("homePage.jsp").forward(request, response);
+                    request.getRequestDispatcher("errorPage.jsp").forward(request, response);
                 }
             }
         }

@@ -65,12 +65,11 @@ public class LoginController extends HttpServlet {
                     acc = AccountDAO.getAccount(email, password);
                     if (acc != null) {
                         if (acc.getAccrole().equals("hr")) {
-                            EmployeeDAO empDao = new EmployeeDAO();
                             HttpSession session = request.getSession(true);
                             if (session != null) {
                                 session.setAttribute("email", acc.getEmail());
                                 session.setAttribute("role", acc.getAccrole());
-                                session.setAttribute("LOGIN_EMP", empDao.getEmployee(email));
+                                session.setAttribute("LOGIN_EMP", EmployeeDAO.getEmployee(email));
                                 if (save != null) {
                                     String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
                                             + "lmnopqrstuvwxyyz!@#$%^&";
@@ -88,12 +87,11 @@ public class LoginController extends HttpServlet {
                                 response.sendRedirect("ViewPersonalController");
                             }
                         } else if (acc.getAccrole().equals("hr manager")) {
-                            EmployeeDAO empDao = new EmployeeDAO();
                             HttpSession session = request.getSession(true);
                             if (session != null) {
                                 session.setAttribute("email", acc.getEmail());
                                 session.setAttribute("role", acc.getAccrole());
-                                session.setAttribute("LOGIN_EMP", empDao.getEmployee(email));
+                                session.setAttribute("LOGIN_EMP", EmployeeDAO.getEmployee(email));
                                 if (save != null) {
                                     String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
                                             + "lmnopqrstuvwxyyz!@#$%^&";
@@ -111,12 +109,11 @@ public class LoginController extends HttpServlet {
                                 response.sendRedirect("ViewPersonalController");
                             }
                         } else if (acc.getAccrole().equals("interviewer")) {
-                            EmployeeDAO empDao = new EmployeeDAO();
                             HttpSession session = request.getSession(true);
                             if (session != null) {
                                 session.setAttribute("email", acc.getEmail());
                                 session.setAttribute("role", acc.getAccrole());
-                                session.setAttribute("LOGIN_EMP", empDao.getEmployee(email));
+                                session.setAttribute("LOGIN_EMP", EmployeeDAO.getEmployee(email));
                                 if (save != null) {
                                     String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
                                             + "lmnopqrstuvwxyyz!@#$%^&";
@@ -134,12 +131,11 @@ public class LoginController extends HttpServlet {
                                 response.sendRedirect("ViewPersonalController");
                             }
                         } else if (acc.getAccrole().equals("candidate")) {
-                            CandidateDAO cddDao = new CandidateDAO();
                             HttpSession session = request.getSession(true);
                             if (session != null) {
                                 session.setAttribute("email", acc.getEmail());
                                 session.setAttribute("role", acc.getAccrole());
-                                session.setAttribute("LOGIN_CDD", cddDao.getCandidate(email));
+                                session.setAttribute("LOGIN_CDD", CandidateDAO.getCandidate(email));
                                 if (save != null) {
                                     String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
                                             + "lmnopqrstuvwxyyz!@#$%^&";

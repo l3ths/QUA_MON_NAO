@@ -38,7 +38,7 @@
             </div>
         </header>
         <h1 class="page-title">Update Profile</h1>
-        <form action="MainController" method="post">
+        <form action="UpdateEmpProfileController" enctype="multipart/form-data" method="post">
             <%
                 String role = (String) session.getAttribute("role");
                 if (!role.equals("candidate")) {
@@ -63,9 +63,15 @@
                 <div class="col-md-8 input-border">
                     <input type="text" class="input" name="txtnewphone" required="" value="<%= emp.getEmphone()%>">
                 </div>
+                <div class="col-md-4">
+                    <p class="info-title">Image:</p>
+                </div>
+                <div class="col-md-8 input-border">
+                    <input type="file" class="input" name="txtnewimage">
+                </div>
                 <div style="margin-left: 40%;">
                     <input type="hidden" name="txtemail" value="<%=emp.getEmemail()%>" >
-                    <button type="submit" name="action" value="UPDATE PROFILE"  class="submit-button" >Update</button>
+                    <button type="submit" class="submit-button" >Update</button>
                 </div>
             </div>
             <%
@@ -90,6 +96,12 @@
                 </div>
                 <div class="col-md-8 input-border">
                     <input type="text" class="input" name="txtnewphone" required="" value="<%= can.getPhone()%>">
+                </div>
+                <div class="col-md-4">
+                    <p class="info-title">Image:</p>
+                </div>
+                <div class="col-md-8 input-border">
+                    <input type="file" class="input" name="txtnewimage">
                 </div>
                 <div style="margin-left: 40%;">
                     <input type="hidden" name="txtemail" value="<%=can.getEmail()%>" >

@@ -5,7 +5,6 @@
  */
 package core.dao;
 
-import core.dto.CVDTO;
 import core.dto.CandidateDTO;
 import core.utils.DBUtils;
 import java.sql.Connection;
@@ -133,7 +132,7 @@ public class CandidateDAO {
         return can;
     }
 
-    public static boolean updateCandidate(String email, String name, String phone, String birthDate) {
+    public static boolean updateCandidate(String email, String name, String phone, String birthDate, String imgPath) {
         boolean result = false;
         int n;
         Connection cn = null;
@@ -142,14 +141,16 @@ public class CandidateDAO {
             if (cn != null) {
                 String sql = "update tblCandidate\n"
                         + "set name = ?,\n"
-                        + "	phoneNumber = ?,\n"
-                        + "	dateOfBirth = ?\n"
+                        + "phoneNumber = ?,\n"
+                        + "dateOfBirth = ?, \n"
+                        + "imgPath = ?\n"
                         + "where email=? ";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, name);
                 pst.setString(2, phone);
-                pst.setString(4, email);
                 pst.setString(3, birthDate);
+                pst.setString(4, imgPath);
+                pst.setString(5, email);
                 n = pst.executeUpdate();
                 if (n != 0) {
                     result = true;
