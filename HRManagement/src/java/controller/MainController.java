@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
+    private static final String ERROR = "errorPage.jsp";
     private static final String SHOW_JOB = "ShowJob";
     private static final String SHOW_JOB_CONTROLLER = "ShowJobController";
     private static final String SEARCH_JOB = "SearchJob";
