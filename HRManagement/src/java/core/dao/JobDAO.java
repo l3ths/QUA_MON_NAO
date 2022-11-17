@@ -359,8 +359,7 @@ public class JobDAO {
         return list;
     }
 
-    public static boolean updateJob(String newExp, String newEdu, String newSalary, String NewDescr, String jobID) {
-        boolean result = false;
+    public static void updateJob(String newExp, String newEdu, String newSalary, String NewDescr, String jobID) {
         int n;
         Connection cn = null;
         try {
@@ -380,7 +379,6 @@ public class JobDAO {
                 pst.setString(5, jobID);
                 n = pst.executeUpdate();
                 if (n != 0) {
-                    result = true;
                 }
             }
         } catch (Exception e) {
@@ -392,7 +390,6 @@ public class JobDAO {
                 Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return result;
     }
 
     public static void updateStatus(int status, String jobID) {

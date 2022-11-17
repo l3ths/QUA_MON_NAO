@@ -35,21 +35,14 @@ public class EditRecruitmentPostController extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String newExp = request.getParameter("newExp");
-            String newEdu = request.getParameter("newEdu");            
+            String newEdu = request.getParameter("newEdu");
             String newSalary = request.getParameter("newSalary");
             String NewDescr = request.getParameter("NewDescr");
             String jobID = request.getParameter("jobID");
             JobDTO job = JobDAO.getJob(jobID);
-            if(job!=null) {
-                if (JobDAO.updateJob(newExp, newEdu, newSalary, NewDescr, jobID)) {
-                    request.setAttribute("Job", job);
-                    request.getRequestDispatcher("editRecruitment.jsp?stt=1").forward(request, response);
-                } else {
-                    request.getRequestDispatcher("editRecruitment.jsp?stt=2").forward(request, response);
-                }
-            } else {
-                request.getRequestDispatcher("recruitmentPostDetail.jsp?stt=3").forward(request, response);
-            }
+            JobDAO.updateJob(newExp, newEdu, newSalary, NewDescr, jobID);
+            request.setAttribute("Job", job);
+            request.getRequestDispatcher("editRecruitment.jsp?editstt=1").forward(request, response);
         }
     }
 
