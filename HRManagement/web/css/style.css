@@ -117,40 +117,60 @@ body{
 .select-list::-ms-expand { 
     display: none; /* remove default arrow on ie10 and ie11 */
 }
-input[type="checkbox"] {
-  visibility: hidden;
-}
-.checkboxOverride {
-  margin: auto;
-  position: relative;
-  width: 25px;
-}
-.checkboxOverride input[type="checkbox"]:checked + label:after {
-  opacity: 1;
-}
-.checkboxOverride label {
-  background: none repeat scroll 0 0 var(--theme-color);
-  cursor: pointer;
-  height: 25px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 25px;
+
+/* This css is for normalizing styles. You can skip this. */
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.checkboxOverride label:after {
-  border-style: none none solid solid;
-  border-color: white;
-  content: "";
-  height: 7px;
-  left: 7px;
-  opacity: 0;
+.form-group {
+  display: block;
+  margin: auto;
+}
+
+.form-group input {
+  padding: 0;
+  height: initial;
+  width: initial;
+  margin-bottom: 0;
+  display: none;
+  cursor: pointer;
+}
+
+.form-group label {
+  position: relative;
+  cursor: pointer;
+}
+
+.form-group label:before {
+  content:'';
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 2px solid var(--theme-color);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.form-group input:checked + label:after {
+  content: '';
+  display: block;
   position: absolute;
-  top: 7.5px;
-  -ms-transform:rotate(-45deg); /* IE 9 */
-  -webkit-transform:rotate(-45deg); /* Safari and Chrome */
-  transform:rotate(-45deg);
-  width: 12px;
+  top: 2px;
+  left: 9px;
+  width: 6px;
+  height: 14px;
+  border: solid var(--theme-color);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 /* target Internet Explorer 9 to undo the custom arrow */
@@ -175,7 +195,7 @@ input[type="checkbox"] {
     width: 600px;
     margin: 0 auto;
 }
-.img-responsive{
+.ava-img{
     width: 400px;
     height: 600px;
     object-fit: cover;

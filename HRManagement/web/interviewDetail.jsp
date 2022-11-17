@@ -91,14 +91,14 @@
                     </div>
                     <div class="col-md-3">
                         <div class="border-form short-form">
-                            <input placeholder="Score" type="number" name="score" value="<%= (get.getScore() == null) ? "" : get.getScore()%>">
+                            <input class="input" placeholder="Score" type="number" name="score" value="<%= (get.getScore() == null) ? "" : get.getScore()%>">
                         </div>
                     </div>
                     <div class="col-md-1">
                         <div class="border-form short-form">
                             <input type="hidden" name="CVID" value="<%= get.getCvID()%>" />
                             <input type="hidden" name="ITVID" value="<%= ITVID%>" />
-                            <button type="submit" name="action" value="MarkCandidate" ><%= (get.getScore() == null) ? "Mark" : "Update"%></button>
+                            <button type="submit" class="submit-button" name="action" value="MarkCandidate" ><%= (get.getScore() == null) ? "Mark" : "Update"%></button>
                         </div>
                     </div>
                 </div>

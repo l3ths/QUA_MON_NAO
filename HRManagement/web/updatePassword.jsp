@@ -50,13 +50,13 @@
                                 EmployeeDTO emp = (EmployeeDTO) session.getAttribute("LOGIN_EMP");
                                 email = emp.getEmemail();
                         %>
-                        <img src="img/avatar/<%= emp.getImgpath()%>" class="img-responsive"/>
+                        <img src="img/avatar/<%= emp.getImgpath()%>" class="ava-img"/>
                         <%
                         } else {
                             CandidateDTO can = (CandidateDTO) session.getAttribute("LOGIN_CDD");
                             email = can.getEmail();
                         %>
-                        <img src="img/avatar/<%= can.getImgPath()%>" class="img-responsive"/>
+                        <img src="img/avatar/<%= can.getImgPath()%>" class="ava-img"/>
                         <%}%>
                     </div>
                     <div class="col-md-8 row">
