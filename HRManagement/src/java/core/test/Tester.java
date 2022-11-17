@@ -81,15 +81,7 @@ public class Tester {
 //                    JobDTO get = listJob.get(i);
 //                    listQuantity.add(JobDAO.getQuantityByJID(get.getJobID()));
 //                }
-                CandidateDTO can = CandidateDAO.getCandidatesByCV("CV11");
-                String subject = "Announcement of interview appointment - Toidiyuh Group";
-                String body = "Hello,\n"
-                            + "Your interview appointment is "
-                            + "7:00" + "20/11/2022"
-                            + "\nPlease be on time.\n"
-                            + "Sincerely,\n"
-                            + "Toidiyuh group";
-                EmailUtils.sendEmail(can.getEmail(), subject, body);
+                System.out.println(InterviewingDAO.getQuestion("ITV3"));
         
     }
 }
