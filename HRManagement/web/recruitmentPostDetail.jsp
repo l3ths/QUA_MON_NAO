@@ -98,4 +98,12 @@
             </form> 
         </div>
     </body>
+    <%
+        if (request.getParameter("msg") != null) {
+    %>
+    <script type="text/javascript">
+        alert("Must choose at least 1 candidate!");
+    </script> <%
+    }
+    %>
 </html>

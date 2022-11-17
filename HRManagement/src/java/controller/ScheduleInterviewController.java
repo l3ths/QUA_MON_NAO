@@ -56,21 +56,39 @@ public class ScheduleInterviewController extends HttpServlet {
                 CVDTO get = listCV1.get(i);
                 if (request.getParameter(get.getCvid()) != null) {
                     listCV.add(get);
-                } else {
-                    CandidateDTO can = CandidateDAO.getCandidatesByCV(get.getCvid());
-                    String subject = "CV round results - Toidiyuh Group";
-                    String body = "Hello,\n"
-                                + "We regret to inform that you did not pass the CV round.\n"
-                                + "Thank you for your contributions.\n"
-                                + "Sincerely!\n"
-                                + "Toidiyuh Group.";
-                    EmailUtils.sendEmail(can.getEmail(), subject, body);
                 }
+//                else {
+//                    CandidateDTO can = CandidateDAO.getCandidatesByCV(get.getCvid());
+//                    String subject = "CV round results - Toidiyuh Group";
+//                    String body = "Hello,\n"
+//                                + "We regret to inform that you did not pass the CV round.\n"
+//                                + "Thank you for your contributions.\n"
+//                                + "Sincerely!\n"
+//                                + "Toidiyuh Group.";
+//                    EmailUtils.sendEmail(can.getEmail(), subject, body);
+//                }
             }
-            request.setAttribute("Job", Job);
-            request.setAttribute("listInterviewer", listInterviewer);
-            session.setAttribute("listCV", listCV);
-            request.getRequestDispatcher("interviewSchedule.jsp").forward(request, response);
+            if (listCV.isEmpty()) {
+                request.getRequestDispatcher("GetDetailJobRecruitmentController?msg=true&JobID=" + JobID).forward(request, response);
+            } else {
+                for (int i = 0; i < listCV1.size(); i++) {
+                    CVDTO get = listCV1.get(i);
+                    if (request.getParameter(get.getCvid()) == null) {
+                        CandidateDTO can = CandidateDAO.getCandidatesByCV(get.getCvid());
+                        String subject = "CV round results - Toidiyuh Group";
+                        String body = "Hello,\n"
+                                    + "We regret to inform that you did not pass the CV round.\n"
+                                    + "Thank you for your contributions.\n"
+                                    + "Sincerely!\n"
+                                    + "Toidiyuh Group.";
+                        EmailUtils.sendEmail(can.getEmail(), subject, body);
+                    }
+                }
+                request.setAttribute("Job", Job);
+                request.setAttribute("listInterviewer", listInterviewer);
+                session.setAttribute("listCV", listCV);
+                request.getRequestDispatcher("interviewSchedule.jsp").forward(request, response);
+            }
         }
     }
 

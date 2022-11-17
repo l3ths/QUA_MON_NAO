@@ -92,4 +92,12 @@
                 <%@include file="footer.jsp" %>
             </footer>
     </body>
+    <%
+        if (request.getParameter("schedulestt") != null) {
+    %>
+    <script type="text/javascript">
+        alert("Successfully scheduled!");
+    </script> <%
+    }
+    %>
 </html>

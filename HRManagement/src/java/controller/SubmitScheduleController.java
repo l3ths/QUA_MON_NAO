@@ -81,7 +81,7 @@ public class SubmitScheduleController extends HttpServlet {
                 EmailUtils.sendEmail(can.getEmail(), subject, body);
             }
             JobDAO.updateStatus(1, JobID);
-            request.getRequestDispatcher("ViewPersonalController").forward(request, response);
+            request.getRequestDispatcher("ViewPersonalController?schedulestt=true").forward(request, response);
         }
     }
 
