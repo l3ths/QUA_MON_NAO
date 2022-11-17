@@ -31,7 +31,7 @@
         <div class="container">
             <h1 class="page-title">Post Recruitment</h1>
             <div class="row" style="margin: 100px auto; width: 600px;">
-                <form action="MainController" method="post" >
+                <form action="CreateJobController" method="post" enctype="multipart/form-data" >
                     <div class="col-md-4">
                         <p class="info-title">Job tittle:</p>
                     </div>
@@ -66,7 +66,7 @@
                         <p class="info-title">Image:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="text" class="input" name="txtImg" required="" >
+                        <input type="file" class="input" name="txtImg" required="" >
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Quantity:</p>
@@ -86,7 +86,7 @@
                     <div class="col-md-8 input-border">
                         <input type="date" class="input" name="txtDateto" required="" >
                     </div>
-                    <button type="submit" name="action" value="CREATE JOB"  class="submit-button" >Post</button>
+                    <button type="submit" class="submit-button" >Post</button>
                 </form>
             </div>
         </div>

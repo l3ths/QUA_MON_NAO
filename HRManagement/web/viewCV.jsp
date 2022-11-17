@@ -43,7 +43,7 @@
             <h1 class="page-title">CV</h1>
             <div class="row" style="margin: 50px auto;">
                 <div class="col-md-5">
-                    <iframe src="img/cv/<%= cv.getFilecv()%>" style="width: 400px; height: 600px;"></iframe>
+                    <iframe src="img/cv/<%= cv.getFilecv() != null ? cv.getFilecv() : "default_avatar.png"%>" style="width: 400px; height: 600px;"></iframe>
                 </div>
                 <div class="col-md-7 row">
                     <div class="col-md-4">

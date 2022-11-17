@@ -10,16 +10,24 @@ import core.dao.JobDAO;
 import core.dto.EmployeeDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 /**
  *
  * @author ThinkPad T490
  */
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB
+        maxFileSize = 1024 * 1024 * 10, // 10MB
+        maxRequestSize = 1024 * 1024 * 50) // 50MB
 public class CreateJobController extends HttpServlet {
 
     /**
@@ -32,7 +40,7 @@ public class CreateJobController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -41,17 +49,24 @@ public class CreateJobController extends HttpServlet {
             String eduReq = request.getParameter("txteduReq");
             int salary = Integer.parseInt(request.getParameter("txtSalary"));
             String descript = request.getParameter("txtDesc");
-            String imgPath = request.getParameter("txtImg");
             int quantity = Integer.parseInt(request.getParameter("txtQuantity"));
             String fromdate = request.getParameter("txtDatefrom");
             String todate = request.getParameter("txtDateto");
+            String uploadFolder = request.getServletContext().getRealPath("/img/job");
+            Path uploadPath = Paths.get(uploadFolder);
+            if (!Files.exists(uploadPath)) {
+                Files.createDirectory(uploadPath);
+            }
+            Part imgPart = request.getPart("txtImg");
+            String imgFilename = Paths.get(imgPart.getSubmittedFileName()).getFileName().toString();
+            imgPart.write(Paths.get(uploadPath.toString(), imgFilename).toString());
             HttpSession session = request.getSession();
             String empEmail = (String) session.getAttribute("email");
             EmployeeDTO emp = EmployeeDAO.getEmployee(empEmail);
             String empID = emp.getEid();
             int list = JobDAO.getCountJob();
-            String Jobid = "CV" + (list+1);
-            JobDAO.createJob(Jobid, jobname, salary, descript, expReq, eduReq, imgPath, quantity, fromdate, todate, empID);
+            String Jobid = "CV" + (list + 1);
+            JobDAO.createJob(Jobid, jobname, salary, descript, expReq, eduReq, imgFilename, quantity, fromdate, todate, empID);
             request.getRequestDispatcher("MainController?action=ViewPersonal").forward(request, response);
         }
     }
@@ -67,7 +82,7 @@ public class CreateJobController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -81,7 +96,7 @@ public class CreateJobController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
