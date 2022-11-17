@@ -32,86 +32,89 @@
                     <c:if test="${sessionScope.role eq 'candidate'}">
                         <li><a href="MainController?action=ShowJob">Home</a></li>
                         </c:if>
+                    <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                     <li><a href="personalPage.jsp" class="active-page">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
             </div>
         </header>
-        <h1 class="page-title">Update Profile</h1>
-        <form action="UpdateEmpProfileController" enctype="multipart/form-data" method="post">
-            <%
-                String role = (String) session.getAttribute("role");
-                if (!role.equals("candidate")) {
-                    EmployeeDTO emp = (EmployeeDTO) session.getAttribute("LOGIN_EMP");
-            %>
-            <div class="row center-form">
-                <div class="col-md-4">
-                    <p class="info-title">Full name:</p>
+        <div class="container">
+            <h1 class="page-title">Update Profile</h1>
+            <form action="UpdateEmpProfileController" enctype="multipart/form-data" method="post">
+                <%
+                    String role = (String) session.getAttribute("role");
+                    if (!role.equals("candidate")) {
+                        EmployeeDTO emp = (EmployeeDTO) session.getAttribute("LOGIN_EMP");
+                %>
+                <div class="row center-form">
+                    <div class="col-md-4">
+                        <p class="info-title">Full name:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="text" class="input" name="txtnewname" required="" value="<%= emp.getEmname()%>">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Date of birth:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="date" class="input" name="txtnewbirthdate" required="" value="<%= emp.getBirthdate()%>">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Phone number:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="text" class="input" name="txtnewphone" required="" value="<%= emp.getEmphone()%>">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Image:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="file" class="input" name="txtnewimage">
+                    </div>
+                    <div>
+                        <input type="hidden" name="txtemail" value="<%=emp.getEmemail()%>" >
+                        <button type="submit" class="submit-button" >Update</button>
+                    </div>
                 </div>
-                <div class="col-md-8 input-border">
-                    <input type="text" class="input" name="txtnewname" required="" value="<%= emp.getEmname()%>">
+                <%
+                } else {
+                    CandidateDTO can = (CandidateDTO) session.getAttribute("LOGIN_CDD");
+                %>
+                <div class="row center-form">
+                    <div class="col-md-4">
+                        <p class="info-title">Full name:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="text" class="input" name="txtnewname" required="" value="<%= can.getName()%>">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Date of birth:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="date" class="input" name="txtnewbirthdate" required="" value="<%= can.getBirthdate()%>">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Phone number:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="text" class="input" name="txtnewphone" required="" value="<%= can.getPhone()%>">
+                    </div>
+                    <div class="col-md-4">
+                        <p class="info-title">Image:</p>
+                    </div>
+                    <div class="col-md-8 input-border">
+                        <input type="file" class="input" name="txtnewimage">
+                    </div>
+                    <div>
+                        <input type="hidden" name="txtemail" value="<%=can.getEmail()%>" >
+                        <button type="submit" name="action" value="UPDATE PROFILE"  class="submit-button">Update</button>
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <p class="info-title">Date of birth:</p>
-                </div>
-                <div class="col-md-8 input-border">
-                    <input type="date" class="input" name="txtnewbirthdate" required="" value="<%= emp.getBirthdate()%>">
-                </div>
-                <div class="col-md-4">
-                    <p class="info-title">Phone number:</p>
-                </div>
-                <div class="col-md-8 input-border">
-                    <input type="text" class="input" name="txtnewphone" required="" value="<%= emp.getEmphone()%>">
-                </div>
-                <div class="col-md-4">
-                    <p class="info-title">Image:</p>
-                </div>
-                <div class="col-md-8 input-border">
-                    <input type="file" class="input" name="txtnewimage">
-                </div>
-                <div>
-                    <input type="hidden" name="txtemail" value="<%=emp.getEmemail()%>" >
-                    <button type="submit" class="submit-button" >Update</button>
-                </div>
-            </div>
-            <%
-            } else {
-                CandidateDTO can = (CandidateDTO) session.getAttribute("LOGIN_CDD");
-            %>
-            <div class="row center-form">
-                <div class="col-md-4">
-                    <p class="info-title">Full name:</p>
-                </div>
-                <div class="col-md-8 input-border">
-                    <input type="text" class="input" name="txtnewname" required="" value="<%= can.getName()%>">
-                </div>
-                <div class="col-md-4">
-                    <p class="info-title">Date of birth:</p>
-                </div>
-                <div class="col-md-8 input-border">
-                    <input type="date" class="input" name="txtnewbirthdate" required="" value="<%= can.getBirthdate()%>">
-                </div>
-                <div class="col-md-4">
-                    <p class="info-title">Phone number:</p>
-                </div>
-                <div class="col-md-8 input-border">
-                    <input type="text" class="input" name="txtnewphone" required="" value="<%= can.getPhone()%>">
-                </div>
-                <div class="col-md-4">
-                    <p class="info-title">Image:</p>
-                </div>
-                <div class="col-md-8 input-border">
-                    <input type="file" class="input" name="txtnewimage">
-                </div>
-                <div>
-                    <input type="hidden" name="txtemail" value="<%=can.getEmail()%>" >
-                    <button type="submit" name="action" value="UPDATE PROFILE"  class="submit-button">Update</button>
-                </div>
-            </div>
-            <%
-                }
-            %>         
-        </form>
+                <%
+                    }
+                %>         
+            </form>
+        </div>
         <%@include file="footer.jsp" %>    
     </body>
 </html>

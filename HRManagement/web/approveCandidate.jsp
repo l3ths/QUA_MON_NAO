@@ -75,10 +75,8 @@
                     </div>
                     <div class="col-md-3">
                         <div class="border-form short-form">
-                            <div class="table-link">
-                                <input type="hidden" name="CVID" value="<%= get.getCvID()%>">
-                                <button type="submit" name="action" value="viewCV">View</button>
-                            </div>
+                            <input type="hidden" name="CVID" value="<%= get.getCvID()%>">
+                            <button type="submit" name="action" value="viewCV" class="button-link">View</button>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -87,7 +85,10 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <input class="input" name="<%= get.getCvID()%>" value="true" type="checkbox" style="margin-top: 80px;">
+                        <div class="checkboxOverride">
+                            <input type="checkbox" id="checkboxInputOverride" name="<%= get.getCvID()%>" value="true" />
+                            <label for="checkboxInputOverride"></label>
+                        </div>
                     </div>
                 </div>
                 <%

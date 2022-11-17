@@ -38,7 +38,7 @@
                 </ul>
             </div>
         </header>
-        <section>
+        <section class="container">
             <h1 class="page-title">Profile</h1>
             <form action="MainController" method="post">
                 <p style="color: red"> <%= (request.getParameter("stt") != null) ? "Register Successfull" : ""%></p>

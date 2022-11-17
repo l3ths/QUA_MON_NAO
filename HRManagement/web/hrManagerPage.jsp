@@ -99,7 +99,7 @@
                         <form action="MainController" method="post">
                             <input type="hidden" name="ITVID" value="<%= listID.get(i)%>" />
                             <p class="table-description"><%= stt[listStatus.get(i)]%></p>
-                            <button type="submit" name="action" value="ViewPassed" >View Candidate List</button>
+                            <button class="button-link" type="submit" name="action" value="ViewPassed" >View Candidate List</button>
                         </form>
                         <%
                             } else {%>

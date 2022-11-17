@@ -92,7 +92,7 @@
                         <div class="table-link" style="padding-top: 10px;">
                             <form action="MainController" method="post">
                                 <input type="hidden" name="ITVID" value="<%= listID.get(idx) %>" />
-                                <button type="submit" name="action" value="ViewInterviewDetail" >Detail</button>
+                                <button class="button-link" type="submit" name="action" value="ViewInterviewDetail" >Detail</button>
                             </form>
                         </div>
                         <%

@@ -65,7 +65,8 @@
                     <input required="" type="time" name="time" placeholder="Set Time" class="input"/>
                 </div>
                 <div class="input-border">
-                    <input required="" type="text" name="questtion" placeholder="Questions" class="input"/>
+                    <textarea required="" type="text" name="questtion" placeholder="Questions" class="input" rows="4" cols="50">
+                    </textarea>
                 </div>
                 <button type="submit" name="action" value="SubmitSchedule" class="submit-button">Submit</button>
             </form>

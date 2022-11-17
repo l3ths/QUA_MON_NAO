@@ -87,7 +87,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="border-form short-form table-link">
-                            <button type="submit" name="action" value="viewCV">View</button>
+                            <button class="button-link" type="submit" name="action" value="viewCV">View</button>
                         </div>
                     </div>
                     <div class="col-md-3">

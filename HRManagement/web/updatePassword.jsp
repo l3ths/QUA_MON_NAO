@@ -32,12 +32,13 @@
                     <c:if test="${sessionScope.role eq 'candidate'}">
                         <li><a href="MainController?action=ShowJob">Home</a></li>
                         </c:if>
+                    <li><a href="MainController?action=ViewPersonal">Personal</a></li>
                     <li><a href="personalPage.jsp" class="active-page">Profile</a></li>
                     <li><a href="MainController?action=Logout">Log out</a></li>
                 </ul>
             </div>
         </header>
-        <section>
+        <section class="container">
             <h1 class="page-title">Change Password</h1>
             <form action="MainController" method="post">
                 <div class="row">
