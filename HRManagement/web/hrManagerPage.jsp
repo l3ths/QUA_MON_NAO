@@ -116,4 +116,12 @@
         </div>
         <%@include file="footer.jsp" %>
     </body>
+    <%
+        if (request.getParameter("aprovestt") != null) {
+    %>
+    <script type="text/javascript">
+        alert("Successfully approved!");
+    </script> <%
+    }
+    %>
 </html>

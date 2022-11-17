@@ -78,7 +78,7 @@ public class ApproveCandidateController extends HttpServlet {
                 AccountDAO.updateRoleToEmployee(email);
             }
             InterviewingDAO.updateStatus(ITVID, 2);
-            request.getRequestDispatcher("ViewPersonalController").forward(request, response);
+            request.getRequestDispatcher("ViewPersonalController?aprovestt=true").forward(request, response);
         }
     }
 
