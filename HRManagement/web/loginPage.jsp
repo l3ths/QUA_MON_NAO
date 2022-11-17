@@ -50,6 +50,7 @@
         <%
             String msg = request.getParameter("msg");
             String stt = request.getParameter("stt");
+            String loginstt = request.getParameter("loginstt");
         %>
         <section>
             <div class="limiter">
@@ -72,17 +73,16 @@
                                 </div>
                                 <h7><input type="checkbox" value="savelogin" name="savelogin"> Stay signed in</h7>
                                 <br>
+                                <p style="color: #dfa974" > <%= (msg != null) ? "You must login to apply job!" : ""%></p>
+                                <p style="color: #dfa974"> <%= (loginstt != null) ? "Invalid email or password!" : ""%></p>
                                 <button type="submit" value="login" name="action" class="submit-button">Log in</button>
                                 <h2>Not a member? <a href="registerPage.jsp">Sign up </a></h2>
                                 <input type="hidden" name="msg" value="<%= msg%>" />
                             </form>
                         </div>
-
-
                     </div>
                 </div>
             </div>
-            <p style="color: red"> <%= (msg != null) ? "You must login to use this funtion!" : ""%></p>
         </section>
         <footer><%@include file="footer.jsp" %></footer>
         <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

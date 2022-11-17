@@ -199,7 +199,7 @@ public class LoginController extends HttpServlet {
 
                         }
                     } else {
-                        response.sendRedirect("errorPage.jsp");
+                        response.sendRedirect("loginPage.jsp?loginstt=0");
                     }
                 }
 
