@@ -66,11 +66,9 @@
                     <thead>
                         <tr>
                             <th class="table-header">Full Name</th>
-                            <th class="table-header">Date of birth</th>
-                            <th class="table-header">Email</th>
-                            <th class="table-header">Phone number</th>
                             <th class="table-header">Education</th>
                             <th class="table-header">Experience</th>
+                            <th class="table-header">File CV</th>
                             <th class="table-header">Check</th>
                         </tr>
                     </thead>
@@ -81,11 +79,12 @@
                         %>
                         <tr>
                             <td class="table-description"><%= listCan.get(i).getName()%></td>
-                            <td class="table-description"><%= listCan.get(i).getBirthdate()%></td>
-                            <td class="table-description"><%= listCan.get(i).getEmail()%></td>
-                            <td class="table-description"><%= listCan.get(i).getPhone()%></td>
                             <td class="table-description"><%= get.getEducation()%></td>
                             <td class="table-description"><%= get.getExperience()%></td>
+                            <td>
+                                <input type="hidden" name="CVID" value="<%= get.getCvid()%>">
+                                <button type="submit" name="action" value="viewCV" class="button-link">View</button>
+                            </td>
                             <td>
                                 <div class="form-group">
                                     <input type="checkbox" id="<%= get.getCvid()%>" name="<%= get.getCvid()%>" value="true" />
@@ -115,6 +114,6 @@
     <script type="text/javascript">
         alert("Successfully updated!");
     </script> <%
-    }
+        }
     %>
 </html>
