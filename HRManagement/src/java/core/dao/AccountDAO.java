@@ -31,7 +31,7 @@ public class AccountDAO {
             if (cn != null) {
                 //step 2: viet sql va execute no
                 String sql = "select email, password, role\n"
-                        + "from tblAccount";
+                            + "from tblAccount";
                 Statement st = cn.createStatement();
                 ResultSet table = st.executeQuery(sql);
                 //step 3: xu li ket qu step 2
@@ -65,8 +65,8 @@ public class AccountDAO {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "select email, password, role\n"
-                        + "from tblAccount\n"
-                        + "where email = ?  COLLATE Latin1_General_CS_AS";
+                            + "from tblAccount\n"
+                            + "where email = ?  COLLATE Latin1_General_CS_AS";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 // gan input email vao cac dau cham hoi??
                 pst.setString(1, email);
@@ -98,8 +98,8 @@ public class AccountDAO {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "update tblAccount\n"
-                        + "set password = ? \n"
-                        + "where email = ?";
+                            + "set password = ? \n"
+                            + "where email = ?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, newPassword);
                 pst.setString(2, email);
@@ -126,8 +126,8 @@ public class AccountDAO {
             Connection cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "select email,password,role\n"
-                        + "from dbo.tblAccount\n"
-                        + "where email=? and password=? COLLATE Latin1_General_CS_AS";
+                            + "from dbo.tblAccount\n"
+                            + "where email=? and password=? COLLATE Latin1_General_CS_AS";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, email);
                 pst.setString(2, password);
@@ -150,8 +150,8 @@ public class AccountDAO {
             Connection cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "UPDATE tblAccount\n"
-                        + "SET token = '" + token + "'\n"
-                        + "WHERE tblAccount.email='" + email + "'";
+                            + "SET token = '" + token + "'\n"
+                            + "WHERE tblAccount.email='" + email + "'";
                 Statement st = cn.createStatement();
                 try {
                     st.executeUpdate(sql);
@@ -170,8 +170,8 @@ public class AccountDAO {
         Connection cn = DBUtils.getConnection();
         if (cn != null) {
             String sql = "select email,password,role\n"
-                    + "from dbo.tblAccount\n"
-                    + "where email=?";
+                        + "from dbo.tblAccount\n"
+                        + "where email=?";
             PreparedStatement pst = cn.prepareStatement(sql);
             pst.setString(1, email);
             ResultSet table = pst.executeQuery();
@@ -204,12 +204,35 @@ public class AccountDAO {
             }
         }
     }
+
     public static void updateRoleToEmployee(String email) {
         Connection cn = null;
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
                 String sql = "update tblAccount set role='employee' where email=?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, email);
+                pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    public static void deleteAccount(String email) {
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "delete tblAccount\n"
+                            + "where email=?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, email);
                 pst.executeUpdate();

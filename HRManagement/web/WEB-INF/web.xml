@@ -44,6 +44,10 @@
         <servlet-name>ApproveCandidateController</servlet-name>
         <servlet-class>controller.ApproveCandidateController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>VerifyCodeController</servlet-name>
+        <servlet-class>controller.VerifyCodeController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewInterviewDetailController</servlet-name>
         <url-pattern>/ViewInterviewDetailController</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>ApproveCandidateController</servlet-name>
         <url-pattern>/ApproveCandidateController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VerifyCodeController</servlet-name>
+        <url-pattern>/VerifyCodeController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

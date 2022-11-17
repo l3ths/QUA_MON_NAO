@@ -63,6 +63,7 @@ public class ApproveCandidateController extends HttpServlet {
                             + "Toidiyuh";
                 String email = CandidateDAO.getCandidatesByCV(get.getCvID()).getEmail();
                 EmailUtils.sendEmail(email, subject, body);
+                AccountDAO.deleteAccount(email);
             }
             for (int i = 0; i < listIWPass.size(); i++) {
                 InterviewingDTO get = listIWPass.get(i);

@@ -68,6 +68,8 @@ public class MainController extends HttpServlet {
     private static final String SUBMIT_INTERVEW_CONTROLLER = "SubmitInterviewController";
     private static final String APPROVE_CANDIDATE = "ApproveCandidate";
     private static final String APPROVE_CANDIDATE_CONTROLLER = "ApproveCandidateController";
+    private static final String VERIFY_CODE = "VerifyCode";
+    private static final String VERIFY_CODE_CONTROLLER = "VerifyCodeController";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -122,6 +124,8 @@ public class MainController extends HttpServlet {
                 url = SUBMIT_INTERVEW_CONTROLLER;
             } else if (APPROVE_CANDIDATE.equals(action)) {
                 url = APPROVE_CANDIDATE_CONTROLLER;
+            } else if (VERIFY_CODE.equals(action)) {
+                url = VERIFY_CODE_CONTROLLER;
             } 
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

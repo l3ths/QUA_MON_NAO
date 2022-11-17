@@ -34,23 +34,37 @@
                                 String registerEmail = (String) request.getAttribute("reqEmail");
                             %>
                             <form action="MainController" method="post">
+                                <%if (registerEmail == null) {
+                                %>
                                 <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
                                     <input class="input100" type="text" name="txtemail" value="<%= (registerEmail != null) ? registerEmail : ""%>">
                                     <span class="focus-input100" data-placeholder="Email"></span>
                                 </div>
-                                <%if (registerEmail == null) {
-                                %>
+
                                 <button type="submit" value="checkEmail" name="action" class="submit-button">Continue</button>
+                                <% } else {
+                                %>
+                                <p>Email : <%= registerEmail%></p>
+                                <% }%>
+                                <%if (request.getParameter("verify") != null) {
+                                %>
+                                <div class="wrap-input100 validate-input" data-validate = "Valid email is: a@b.c">
+                                    <input class="input100" type="text" name="txtvcode" >
+                                    <span class="focus-input100" data-placeholder="Verify-code"></span>
+                                </div>
+                                <input type="hidden" value="<%= registerEmail %>" name="reEmail" />
+                                <button type="submit" value="VerifyCode" name="action" class="submit-button">Continue</button>
                                 <% }%>
                             </form>
 
                             <p style="color: red"> <%= (request.getParameter("wrongpass") != null) ? "Password do not match!" : ""%></p>
                             <%
-                                if (registerEmail != null) {
+                                if (request.getParameter("verified") != null) {
                             %>
                             <%@include file="registerPage2.jsp" %>
                             <% }%>
                             <p style="color: red"> <%= (request.getParameter("stt") != null) ? "Email invalid!!!" : ""%></p>
+                            <p style="color: red"> <%= (request.getParameter("vstt") != null) ? "Verify-code invalid!!!" : ""%></p>
                         </div>
                     </div>
                 </div>
