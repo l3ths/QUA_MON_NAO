@@ -85,6 +85,12 @@
                 </div>
             </div>
         </div>
+                    <button type="submit" onclick="backButton()" >Back</button>
         <%@include file="footer.jsp" %>
     </body>
+    <script>
+        function backButton() {
+            window.history.back();
+        }
+    </script>
 </html>
