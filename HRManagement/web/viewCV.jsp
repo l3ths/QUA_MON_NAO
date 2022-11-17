@@ -20,7 +20,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
+        <c:if test="${sessionScope.role==null||sessionScope.role eq 'candidate'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
         </c:if>
         <%
@@ -43,7 +43,7 @@
             <h1 class="page-title">CV</h1>
             <div class="row">
                 <div class="col-md-5">
-                    <iframe src="img/cv/<%= cv.getFilecv() != null ? cv.getFilecv() : "default_avatar.png"%>" style="width: 400px; height: 600px;"></iframe>
+                    <iframe src="img/cv/<%= cv.getFilecv() != null ? cv.getFilecv() : "default_avatar.png"%>" class="img-responsive"></iframe>
                 </div>
                 <div class="col-md-7 row">
                     <div class="col-md-4">
