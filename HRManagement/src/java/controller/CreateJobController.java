@@ -65,9 +65,9 @@ public class CreateJobController extends HttpServlet {
             EmployeeDTO emp = EmployeeDAO.getEmployee(empEmail);
             String empID = emp.getEid();
             int list = JobDAO.getCountJob();
-            String Jobid = "CV" + (list + 1);
+            String Jobid = "JOB" + (list + 1);
             JobDAO.createJob(Jobid, jobname, salary, descript, expReq, eduReq, imgFilename, quantity, fromdate, todate, empID);
-            request.getRequestDispatcher("MainController?action=ViewPersonal").forward(request, response);
+            request.getRequestDispatcher("ViewPersonalController?createstt=1").forward(request, response);
         }
     }
 

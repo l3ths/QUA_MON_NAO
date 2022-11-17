@@ -100,4 +100,13 @@
     </script> <%
     }
     %>
+    <%
+        if (request.getParameter("createstt") != null) {
+    %>
+    <script type="text/javascript">
+        alert("Successfully job reated!");
+    </script> <%
+    }
+    %>
+    
 </html>

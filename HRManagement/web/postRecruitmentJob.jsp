@@ -86,7 +86,7 @@
                     <div class="col-md-8 input-border">
                         <input type="date" class="input" name="txtDateto" required="" >
                     </div>
-                    <button type="submit" class="submit-button" >Post</button>
+                    <button type="submit" name="action" value="" class="submit-button" >Post</button>
                 </form>
             </div>
         </div>

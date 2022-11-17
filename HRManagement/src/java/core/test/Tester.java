@@ -81,7 +81,11 @@ public class Tester {
 //                    JobDTO get = listJob.get(i);
 //                    listQuantity.add(JobDAO.getQuantityByJID(get.getJobID()));
 //                }
-                System.out.println(InterviewingDAO.getQuestion("ITV3"));
-        
+        EmployeeDTO emp = EmployeeDAO.getEmployee("ngoctlbse160583@fpt.edu.vn");
+        String empID = emp.getEid();
+        int list = JobDAO.getCountJob();
+        String Jobid = "JOB" + (list + 1);
+        JobDAO.createJob(Jobid, "QC", 2500, "", "decrisption", "2 year", "img", 2, "2022-09-01", "2022-11-01", "EMP1");
+
     }
 }

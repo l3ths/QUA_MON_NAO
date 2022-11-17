@@ -250,7 +250,7 @@ public class JobDAO {
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                String sql = "insert tblJob values (?,?,?,?,?,?,?,?,?,?,?)";
+                String sql = "insert tblJob values (?,?,?,?,?,?,?,?,?,?,?,0)";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, jid);
                 pst.setString(2, jname);
@@ -462,5 +462,38 @@ public class JobDAO {
             }
         }
         return job;
+    }
+    public static ArrayList<JobDTO> getJobs() {
+        ArrayList<JobDTO> list = new ArrayList<>();
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "SELECT * FROM tblJob";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    String jID = rs.getString("jobID");
+                    String name = rs.getString("name");
+                    int salary = rs.getInt("salary");
+                    String description = rs.getString("description");
+                    String experienceRequirement = rs.getString("experienceRequirement");
+                    String educationRequirement = rs.getString("educationRequirement");
+                    String imgPath = rs.getString("imgPath");
+                    JobDTO job = new JobDTO(jID, name, salary, description, experienceRequirement, educationRequirement, imgPath);
+                    list.add(job);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        return list;
     }
 }

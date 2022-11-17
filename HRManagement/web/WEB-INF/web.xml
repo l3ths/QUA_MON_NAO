@@ -52,6 +52,10 @@
         <servlet-name>BUAccountController</servlet-name>
         <servlet-class>controller.BUAccountController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PostRecruitmentController</servlet-name>
+        <servlet-class>controller.PostRecruitmentController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewInterviewDetailController</servlet-name>
         <url-pattern>/ViewInterviewDetailController</url-pattern>
@@ -103,6 +107,10 @@
     <servlet-mapping>
         <servlet-name>BUAccountController</servlet-name>
         <url-pattern>/BUAccountController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostRecruitmentController</servlet-name>
+        <url-pattern>/PostRecruitmentController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
