@@ -41,6 +41,7 @@ public class ViewInterviewDetailController extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String ITVID = (String) request.getParameter("ITVID");
+            String question = InterviewingDAO.getQuestion(ITVID);
             JobDTO Job = JobDAO.getJobsByITVID(ITVID);
             ArrayList<InterviewingDTO> listIW = InterviewingDAO.getInterviewingByInterviewingID(ITVID);
             ArrayList<String> listName = new ArrayList<>();
@@ -50,6 +51,7 @@ public class ViewInterviewDetailController extends HttpServlet {
                 listName.add(name);
             }
             request.setAttribute("ITVID", ITVID);
+            request.setAttribute("question", question);
             request.setAttribute("Job", Job);
             request.setAttribute("listIW", listIW);
             request.setAttribute("listName", listName);

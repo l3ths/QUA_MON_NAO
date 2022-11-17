@@ -25,6 +25,7 @@
         ArrayList<InterviewingDTO> listIW = (ArrayList<InterviewingDTO>) request.getAttribute("listIW");
         JobDTO Job = (JobDTO) request.getAttribute("Job");
         String ITVID = (String) request.getAttribute("ITVID");
+        String question = (String) request.getAttribute("question");
     %>
     <body>
         <c:if test="${sessionScope.role==null||sessionScope.role ne 'interviewer'}">
@@ -51,9 +52,7 @@
                     </div>
                 </div>
                 <div class="col-md-8 detail-table">
-                    <p><span>Question 1:</span> If they had a magic wand, what would your customers change about their experiences with your product?</p>
-                    <p><span>Question 2:</span> Are the changes because of something you changed on your site, something different about your product, or something in the market?</p>
-                    <p><span>Question 3:</span> Is the experience consistent across all channels?</p>
+                    <p><span><%= question %></span></p>
                 </div>
             </div>
             <div class="row">
@@ -109,10 +108,15 @@
             %>
             <form action="MainController" method="post">
                 <input type="hidden" name="ITVID" value="<%= ITVID%>" />
-                <button type="submit" name="action" value="SubmitInterview" class="submit-button" style="margin: 15px auto;">Submit</button>
+                <button onclick="confirmButton()" type="submit" name="action" value="SubmitInterview" class="submit-button" style="margin: 15px auto;">Submit</button>
             </form>
 
         </div>
         <%@include file="footer.jsp" %>
     </body>
+    <script>
+        function confirmButton() {
+            confirm("Is all the information correct?");
+        }
+    </script>
 </html>

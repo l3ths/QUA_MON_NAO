@@ -359,6 +359,7 @@ public class InterviewingDAO {
         }
         return list;
     }
+
     public static ArrayList<String> getInterviewingID() {
         ArrayList<String> list = new ArrayList<>();
         Connection cn = null;
@@ -386,5 +387,33 @@ public class InterviewingDAO {
             }
         }
         return list;
+    }
+
+    public static String getQuestion(String ID) {
+        String question = null;
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "select distinct content\n"
+                            + "from tblInterviewing\n"
+                            + "where interviewingID=?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, ID);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    question = rs.getString("content");;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return question;
     }
 }

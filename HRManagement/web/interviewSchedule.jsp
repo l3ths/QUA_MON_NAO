@@ -68,9 +68,14 @@
                     <textarea required="" type="text" name="questtion" placeholder="Questions" class="input" rows="4" cols="50">
                     </textarea>
                 </div>
-                <button type="submit" name="action" value="SubmitSchedule" class="submit-button">Submit</button>
+                <button onclick="confirmButton()" type="submit" name="action" value="SubmitSchedule" class="submit-button">Submit</button>
             </form>
         </div>
         <%@include file="footer.jsp" %>
     </body>
+    <script>
+        function confirmButton() {
+            confirm("Is all the information correct?");
+        }
+    </script>
 </html>

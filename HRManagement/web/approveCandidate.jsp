@@ -96,9 +96,14 @@
                 %>
 
                 <input type="hidden" name="ITVID" value="<%= ITVID%>" />
-                <button type="submit" name="action" value="ApproveCandidate" >Approve</button>
+                <button onclick="confirmButton()" type="submit" name="action" value="ApproveCandidate" >Approve</button>
             </form>
         </div>
         <%@include file="footer.jsp" %>
     </body>
+    <script>
+        function confirmButton() {
+            confirm("Is all the information correct?");
+        }
+    </script>
 </html>
