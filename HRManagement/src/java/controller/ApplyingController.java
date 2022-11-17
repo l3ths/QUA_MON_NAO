@@ -5,6 +5,9 @@
  */
 package controller;
 
+import core.dao.CandidateDAO;
+import core.dao.JobDAO;
+import core.dto.JobDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -37,9 +40,15 @@ public class ApplyingController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             HttpSession session = request.getSession(true);
             String role = (String) session.getAttribute("role");
+            String jobID = request.getParameter("jobID");
+            String email = (String) session.getAttribute("email");
+            String dob = CandidateDAO.getCandidate(email).getBirthdate();
+            JobDTO Job = JobDAO.getJob(jobID);
             if (role != null) {//check login
                 if (role.equals("candidate")) { //check role
-                    response.sendRedirect("applyJobPage.jsp");
+                    request.setAttribute("dob", dob);
+                    request.setAttribute("Job", Job);
+                    request.getRequestDispatcher("applyJobPage.jsp").forward(request, response);
                 } else {
                     response.sendRedirect("errorPage.jsp");
                 }

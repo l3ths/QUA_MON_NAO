@@ -57,7 +57,7 @@
             <p><span>Salary:</span> up to <%= job.getSalary()%></p>
             <p><span>Description:</span> <%= job.getDesription()%></p>
             <form action="MainController" method="post">
-                <input type="hidden" value="CDD1" name="CID" />
+                <input type="hidden" value="<%= job.getJobID() %>" name="jobID" />
                 <button type="submit" name="action" value="Applying" class="submit-button">Apply</button>
             </form>
         </div>

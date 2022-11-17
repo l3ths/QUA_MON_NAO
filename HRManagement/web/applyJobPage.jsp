@@ -3,6 +3,7 @@
     Created on : Sep 27, 2022, 1:49:32 PM
     Author     : ADMIN
 --%>
+<%@page import="core.dto.JobDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -40,8 +41,13 @@
                 </ul>
             </div>
         </header>
+        <%
+            JobDTO Job = (JobDTO) request.getAttribute("Job");
+            String dob = (String) request.getAttribute("dob");
+        %>
         <div class="container">
             <h1 class="page-title">Apply</h1>
+            <h3 class="page-title"><%= Job.getName()%></h3>
             <form action="ApplyJobController" method="post" enctype="multipart/form-data" style="width: 500px; margin: 100px auto;">
                 <div class="input-border">
                     <input type="file" name="applyFileCV" class="input" required=""/>
@@ -52,9 +58,8 @@
                 <div class="input-border">
                     <input type="text" name="applyExp" placeholder="Experience" class="input" required=""/>
                 </div>
-                <div class="input-border">
-                    <input type="date" name="applydateOB" placeholder="Date of Birth" class="input" required=""/>
-                </div>
+                <input type="hidden" name="applydateOB" value="<%= dob%>" class="input" />
+
                 <button type="submit" class="submit-button">Apply</button>
             </form>
         </div>
