@@ -57,7 +57,7 @@ public class LoginController extends HttpServlet {
                         }
                     }
                     if (!token.equals("")) {
-                        response.sendRedirect("ViewPersonalController");
+                        response.sendRedirect("ShowJobController");
                     } else {
                         response.sendRedirect("loginPage.jsp");
                     }
