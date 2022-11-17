@@ -49,7 +49,7 @@ public class RegisterController extends HttpServlet {
                 ArrayList<CandidateDTO> list = CandidateDAO.getAllCandidates();
                 String id = "CDD" + (list.size() + 1);
                 CandidateDAO.createCandidate(id, name, Phone, Email, date);
-                request.getRequestDispatcher("personalPage.jsp?stt=1").forward(request, response);
+                request.getRequestDispatcher("loginPage.jsp?stt=1").forward(request, response);
             } else {
                 request.setAttribute("reqEmail", Email);
                 request.getRequestDispatcher("registerCandPage.jsp?wrongpass=1").forward(request, response);

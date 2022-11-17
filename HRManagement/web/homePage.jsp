@@ -112,5 +112,14 @@
             </div>
         </div>
         <%@include file="footer.jsp"%>
+        <%
+            if (request.getParameter("applystt") != null) {
+        %>
+        <script type="text/javascript">
+            alert("Apply successful!");
+        </script> 
+        <%
+            }
+        %>
     </body>
 </html>

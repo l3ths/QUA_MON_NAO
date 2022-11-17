@@ -63,7 +63,7 @@ public class ApplyJobController extends HttpServlet {
             CVDAO dao = new CVDAO();
             dao.createCV(id, cvFilename, edu, exp, dateOB, cd.getcID());
             ApplyingDAO.createApplying(id, jobID);
-            request.getRequestDispatcher("ShowJobController").forward(request, response);
+            request.getRequestDispatcher("ShowJobController?applystt=true").forward(request, response);
         }
     }
 

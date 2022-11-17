@@ -49,6 +49,7 @@
         </div>
         <%
             String msg = request.getParameter("msg");
+            String stt = request.getParameter("stt");
         %>
         <section>
             <div class="limiter">
@@ -98,5 +99,15 @@
         <!--===============================================================================================-->
         <script src="vendor/countdowntime/countdowntime.js"></script>
         <script src="js/main.js"></script>
+        <%
+            if (stt != null) {
+        %>
+        <script type="text/javascript">
+            alert("Successful account registration!");
+        </script> 
+        <%
+            }
+        %>
+
     </body>
 </html>
