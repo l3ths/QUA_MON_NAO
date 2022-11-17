@@ -5,10 +5,12 @@
  */
 package controller;
 
+import core.dao.AccountDAO;
 import core.dao.CVDAO;
 import core.dao.InterviewingDAO;
 import core.dao.JobDAO;
 import core.dao.RecruitmentPostDAO;
+import core.dto.AccountDTO;
 import core.dto.CVDTO;
 import core.dto.InterviewingDTO;
 import core.dto.JobDTO;
@@ -95,6 +97,12 @@ public class ViewPersonalController extends HttpServlet {
                 request.setAttribute("listPost", listPost);
                 request.setAttribute("listJob", listJob);
                 request.getRequestDispatcher("hrPage.jsp").forward(request, response);
+            } else if (role.equals("admin")) {
+                ArrayList<AccountDTO> accList = AccountDAO.getAllAccounts();
+                ArrayList<Integer> sttList = AccountDAO.getAllStatus();
+                request.setAttribute("accList", accList);
+                request.setAttribute("sttList", sttList);
+                request.getRequestDispatcher("adminPage.jsp").forward(request, response);
             } else if (role.equals("hr manager")) {
                 ArrayList<String> listID = InterviewingDAO.getInterviewingID();
                 ArrayList<JobDTO> listJob = new ArrayList<>();

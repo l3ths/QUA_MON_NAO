@@ -58,6 +58,39 @@ public class AccountDAO {
         return list;
     }
 
+    public static ArrayList<Integer> getAllStatus() {
+        ArrayList<Integer> list = new ArrayList<>();
+        //step1: make connection
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                //step 2: viet sql va execute no
+                String sql = "select status\n"
+                            + "from tblAccount";
+                Statement st = cn.createStatement();
+                ResultSet table = st.executeQuery(sql);
+                //step 3: xu li ket qu step 2
+                if (table != null) {
+                    while (table.next()) {
+                        int stt = table.getInt("status");
+                        list.add(stt);
+                    }//het while
+                }//het if
+                cn.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return list;
+    }
+
     public static AccountDTO getAccount(String email) {
         AccountDTO acc = null;
         Connection cn = null;
@@ -188,7 +221,7 @@ public class AccountDAO {
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                String sql = "insert tblAccount values (?,?,'candidate',null)";
+                String sql = "insert tblAccount values (?,?,'candidate',null,1)";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, user);
                 pst.setString(2, password);

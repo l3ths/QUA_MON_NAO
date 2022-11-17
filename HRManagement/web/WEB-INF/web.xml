@@ -48,6 +48,10 @@
         <servlet-name>VerifyCodeController</servlet-name>
         <servlet-class>controller.VerifyCodeController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>BUAccountController</servlet-name>
+        <servlet-class>controller.BUAccountController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewInterviewDetailController</servlet-name>
         <url-pattern>/ViewInterviewDetailController</url-pattern>
@@ -95,6 +99,10 @@
     <servlet-mapping>
         <servlet-name>VerifyCodeController</servlet-name>
         <url-pattern>/VerifyCodeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BUAccountController</servlet-name>
+        <url-pattern>/BUAccountController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
