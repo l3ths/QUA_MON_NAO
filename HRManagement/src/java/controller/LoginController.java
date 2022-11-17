@@ -57,7 +57,7 @@ public class LoginController extends HttpServlet {
                         }
                     }
                     if (!token.equals("")) {
-                        response.sendRedirect("ShowJobController");
+                        response.sendRedirect("ViewPersonalController");
                     } else {
                         response.sendRedirect("loginPage.jsp");
                     }
@@ -152,6 +152,29 @@ public class LoginController extends HttpServlet {
                                 }
                                 response.sendRedirect("ViewPersonalController");
                             }
+                        } else if (acc.getAccrole().equals("employee")) {
+                            HttpSession session = request.getSession(true);
+                            if (session != null) {
+                                session.setAttribute("email", acc.getEmail());
+                                session.setAttribute("role", acc.getAccrole());
+                                session.setAttribute("LOGIN_CDD", CandidateDAO.getCandidate(email));
+                                if (save != null) {
+                                    String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijk"
+                                            + "lmnopqrstuvwxyyz!@#$%^&";
+                                    Random rnd = new Random();
+                                    StringBuilder sb = new StringBuilder(7);
+                                    for (int i = 0; i < 7; i++) {
+                                        sb.append(chars.charAt(rnd.nextInt(chars.length())));
+                                    }
+                                    String token = sb.toString();
+                                    boolean a = AccountDAO.updateToken(token, email);
+                                    Cookie cookie = new Cookie("selector", token);
+                                    cookie.setMaxAge(60 * 60);
+                                    response.addCookie(cookie);
+                                }
+                                response.sendRedirect("employeePage.jsp");
+                            }
+                            
                         }
                     } else {
                         response.sendRedirect("errorPage.jsp");

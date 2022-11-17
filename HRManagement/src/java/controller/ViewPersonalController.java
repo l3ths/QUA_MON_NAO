@@ -114,7 +114,7 @@ public class ViewPersonalController extends HttpServlet {
                 request.setAttribute("listQuantity", listQuantity);
                 request.getRequestDispatcher("hrManagerPage.jsp").forward(request, response);
             } else {
-                response.sendRedirect("index.html");
+                response.sendRedirect("errorPage.jsp");
             }
         }
     }
