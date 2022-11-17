@@ -42,7 +42,6 @@
         </header>
         <div class="container">
             <h1 class="page-title">Recruitment Management</h1>
-            
             <div class="row">
                 <div class="col-md-3">
                     <div class="border-form">
@@ -66,31 +65,29 @@
                         JobDTO get = listJob.get(i);
                 %>
                 <div class="col-md-3">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 25%;"><%= get.getName() %></p>
+                    <div class="border-form short-form">
+                        <p class="table-description"><%= get.getName()%></p>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 10%;">From : <%= listPost.get(i).getDateFrom()%></p>
+                    <div class="border-form short-form">
+                        <p class="table-description">From : <%= listPost.get(i).getDateFrom()%></p>
                         <p class="table-description">To : <%= listPost.get(i).getDateTo()%></p>
                     </div>
                 </div>
-                    <form action="MainController" method="post">
-                <div class="col-md-3">
-                    <div class="border-form table-link" style="height: 200px; padding-top: 25%;">
-                        <input type="hidden" name="JobID" value="<%= get.getJobID() %>">
-                        <input type="submit" name="action" value="Detail"> 
+                <form action="MainController" method="post">
+                    <div class="col-md-3">
+                        <div class="border-form short-form">
+                            <input type="hidden" name="JobID" value="<%= get.getJobID()%>">
+                            <input type="submit" name="action" value="Detail"> 
+                        </div>
                     </div>
-                </div>
-                    </form>
+                </form>
                 <%
                     }
                 %>
-                <div style="width: 150px; margin-right:40px; margin-bottom: 30px; margin-top: 20px; float: right;">
-                    <a href="postRecruitmentJob.jsp" class="link-button" >New post</a>
-                </div>
             </div>
+            <a href="postRecruitmentJob.jsp" class="link-button" >New post</a>
             <footer>
                 <%@include file="footer.jsp" %>
             </footer>

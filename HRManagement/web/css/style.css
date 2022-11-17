@@ -1,19 +1,26 @@
-html {
-    height: 100%;
-    background-color: #ECECEC;
-}
-body{
-    min-height: 100%;
-    margin: 0 15%;
-    background-color: white;
-    background-size: 85%;
-    background-position: center;
-}
 :root {
     --theme-color: #DFA974;
     --text-font-1: Lora;
     --text-font-2: var(--text-font-2), sans-serif;
 }
+
+html {
+    height: 100%;
+    background-color: #ECECEC;
+}
+
+body{
+    background-color: white;
+    background-position: center;
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        min-height: 100%;
+        margin: 0 15%;
+    }
+}
+
 /*footer*/
 .footer {
     width: 100%;
@@ -100,6 +107,37 @@ body{
     opacity: 90%;
     margin-bottom: 10px;
 }
+.select-list {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    background: url(../img/icon/drop-down.png) 96% / 3% no-repeat white;
+}
+.select-list::-ms-expand { 
+    display: none; /* remove default arrow on ie10 and ie11 */
+}
+
+/* target Internet Explorer 9 to undo the custom arrow */
+@media screen and (min-width:0\0) {
+    .select-list {
+        background:none\9;
+        padding: 5px\9;
+    } 
+}
+.long-form{
+    min-height: 700px;
+}
+.short-form{
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.center-form{
+    width: 600px;
+    margin: 0 auto;
+}
 /*job*/
 .job img {
     width:100%;
@@ -135,21 +173,18 @@ body{
     align-content: center; 
 }
 /*page-pagination*/
-.page-pagination ul {
-    margin-top: 10px;
-    width: 100%;
+.page-pagination ul{
     list-style: none;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 .page-pagination ul li {
-    display: inline-block;
+    margin: 5px 20px 0px 20px;
     font-family: var(--text-font-2);
     font-size: 15px;
-    margin-bottom: 0;
-    width: 70px;
-    box-sizing: border-box;
 }
 .page-pagination ul li a {
+    display: inline-block;
     border-radius: 3px;
     border: 1px solid var(--theme-color);
     padding: 7px 14px;
@@ -498,7 +533,7 @@ body{
 /*page title*/
 .page-title {
     text-align: center;
-    margin: 30px 0;
+    margin: 30px 0 50px 0;
     font-family: var(--text-font-1);
     font-size: 40px;
     color: black;
@@ -523,8 +558,7 @@ body{
     clear: both;
     border: 1px solid #EBEBEB;
     border-radius: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px 0;
     padding: 5px;
 }
 /*input*/
@@ -560,6 +594,7 @@ body{
 }
 
 .submit-button{
+    margin: 30px auto 10px auto;
     width: 165px;
     height: 40px;
     display: block;
@@ -570,12 +605,12 @@ body{
     text-transform: uppercase;
     border-radius: 2px;
     border: none;
-    margin-top: 20px;
 }
 .submit-button:hover{
     background-color: #dc9752;
 }
 .link-button{
+    margin: 30px auto 10px auto;
     width: 165px;
     height: 40px;
     display: block;
@@ -588,7 +623,6 @@ body{
     border: none;
     text-decoration: none;
     padding-top: 10px;
-    margin-top: 20px;
 }
 .link-button.active,
 .link-button:hover {

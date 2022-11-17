@@ -73,37 +73,37 @@
             %>
             <div class="row">
                 <div class="col-md-3">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 25%;"><%= listJob.get(i).getName()%></p>
+                    <div class="border-form short-form">
+                        <p class="table-description"><%= listJob.get(i).getName()%></p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 25%;"><%= stt[listStatus.get(i)]%></p>
+                    <div class="border-form short-form">
+                        <p class="table-description"><%= stt[listStatus.get(i)]%></p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="border-form" style="height: 200px;">
-                        <p class="table-description" style="margin-top: 25%;"><%= listQuantity.get(i)%></p>
+                    <div class="border-form short-form">
+                        <p class="table-description"><%= listQuantity.get(i)%></p>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="border-form" style="height: 200px;">
+                    <div class="border-form short-form">
                         <%
                             if (listStatus.get(i) == 0) {
                         %>
-                        <p class="table-description" style="margin-top: 25%;"><%= stt[listStatus.get(i)]%></p>
+                        <p class="table-description"><%= stt[listStatus.get(i)]%></p>
                         <%
                         } else if (listStatus.get(i) == 1) {
                         %>
                         <form action="MainController" method="post">
                             <input type="hidden" name="ITVID" value="<%= listID.get(i)%>" />
-                            <p class="table-description" style="margin-top: 25%;"><%= stt[listStatus.get(i)]%></p>
+                            <p class="table-description"><%= stt[listStatus.get(i)]%></p>
                             <button type="submit" name="action" value="ViewPassed" >View Candidate List</button>
                         </form>
                         <%
                             } else {%>
-                        <p class="table-description" style="margin-top: 25%;"><%= stt[listStatus.get(i)]%></p>
+                        <p class="table-description"><%= stt[listStatus.get(i)]%></p>
                         <%
                             }
                         %>
@@ -113,13 +113,6 @@
             <%
                 }
             %>
-            <div class="page-pagination">
-                <ul>
-                    <li><a href="#" class="active">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </div>
         </div>
         <%@include file="footer.jsp" %>
     </body>

@@ -30,7 +30,7 @@
         </header>
         <div class="container">
             <h1 class="page-title">Post Recruitment</h1>
-            <div class="row" style="margin: 100px auto; width: 600px;">
+            <div class="row center-form">
                 <form action="CreateJobController" method="post" enctype="multipart/form-data" >
                     <div class="col-md-4">
                         <p class="info-title">Job tittle:</p>

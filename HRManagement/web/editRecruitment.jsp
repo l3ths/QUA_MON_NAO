@@ -39,7 +39,7 @@
                 JobDTO Job = (JobDTO) request.getAttribute("Job");
             %>
             <h1 class="page-title">Edit Recruitment</h1>
-            <div class="row" style="width: 600px; margin: 0 auto;">
+            <div class="row center-form">
                 <form action="MainController" method="post">
                     <div class="col-md-4">
                         <p class="info-title">Experience Requirement:</p>

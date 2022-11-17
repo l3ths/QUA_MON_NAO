@@ -44,7 +44,7 @@
         <div class="container">
             <h1 class="page-title">Interview schedule</h1>
             <h3 class="page-title" style="font-size: 20px" ><%= Job.getName()%></h3>
-            <form action="MainController" method="post" style="width: 500px; margin: 100px auto;">
+            <form action="MainController" method="post" class="center-form">
                 <input type="hidden" name="JobID" value="<%= Job.getJobID()%>" />
                 <div class="input-border">
                     <p>Interviewer :</p>

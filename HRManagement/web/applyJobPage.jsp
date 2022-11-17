@@ -17,9 +17,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
+        <c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
-        </c:if>--%>
+        </c:if>
         <header class="header row">
             <div class="col-md-5">
                 <h1>Toidiyuh</h1>

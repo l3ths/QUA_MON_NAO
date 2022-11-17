@@ -20,9 +20,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
+        <c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
-        </c:if>--%>
+        </c:if>
         <%
             CVDTO cv = (CVDTO) request.getAttribute("CV");
             CandidateDTO can = (CandidateDTO) request.getAttribute("CV_CAN");
@@ -41,7 +41,7 @@
         </header>
         <div class="container">
             <h1 class="page-title">CV</h1>
-            <div class="row" style="margin: 50px auto;">
+            <div class="row">
                 <div class="col-md-5">
                     <iframe src="img/cv/<%= cv.getFilecv() != null ? cv.getFilecv() : "default_avatar.png"%>" style="width: 400px; height: 600px;"></iframe>
                 </div>

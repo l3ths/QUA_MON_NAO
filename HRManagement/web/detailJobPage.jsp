@@ -58,9 +58,7 @@
             <p><span>Description:</span> <%= job.getDesription()%></p>
             <form action="MainController" method="post">
                 <input type="hidden" value="CDD1" name="CID" />
-                <div style="padding-left: 4%" >
-                    <button type="submit" name="action" value="Applying" class="submit-button">Apply</button>
-                </div>
+                <button type="submit" name="action" value="Applying" class="submit-button">Apply</button>
             </form>
         </div>
         <%@include file="footer.jsp" %>

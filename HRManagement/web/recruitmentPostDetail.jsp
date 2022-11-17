@@ -95,13 +95,6 @@
                         %>
                     </tbody>
                 </table>
-                <div class="page-pagination">
-                    <ul>
-                        <li><a href="#" class="active">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">Next</a></li>
-                    </ul>
-                </div>
             </form> 
         </div>
     </body>

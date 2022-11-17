@@ -47,7 +47,7 @@
                     if (!role.equals("candidate")) {
                         EmployeeDTO emp = (EmployeeDTO) session.getAttribute("LOGIN_EMP");
                 %>
-                <div class="row" style="margin: 100px 0;">
+                <div class="row">
                     <div class="col-md-5" >
                         <img src="img/avatar/<%= emp.getImgpath() != null ? emp.getImgpath() : "default_avatar.png"%>" alt="avatar" class="img-responsive"/>
                     </div>
@@ -88,7 +88,7 @@
                     } else {
                         CandidateDTO can = (CandidateDTO) session.getAttribute("LOGIN_CDD");
                     %>
-                    <div class="row" style="margin: 100px 0;">
+                    <div class="row">
                         <div class="col-md-5" >
                             <img src="img/avatar/<%= can.getImgPath() != null ? can.getImgPath() : "default_avatar.png"%>" alt="avatar" class="img-responsive"/>
                         </div>

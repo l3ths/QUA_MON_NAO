@@ -40,7 +40,7 @@
         <section>
             <h1 class="page-title">Change Password</h1>
             <form action="MainController" method="post">
-                <div class="row" style="margin: 50px 0;">
+                <div class="row">
                     <div class="col-md-4" >
                         <%
                             String role = (String) session.getAttribute("role");
@@ -83,7 +83,7 @@
                         <div class="col-md-8 input-border">
                             <input type="password" class="input" name="txtnewpassword2" required="">
                         </div>
-                        <div style="margin-left: 40%;">
+                        <div>
                             <button type="submit" name="action" value="CHANGE PASSWORD" class="submit-button">Submit</button>
                         </div>
                     </div>

@@ -44,7 +44,7 @@
                 if (!role.equals("candidate")) {
                     EmployeeDTO emp = (EmployeeDTO) session.getAttribute("LOGIN_EMP");
             %>
-            <div class="row" style="width: 600px; margin: 100px auto;">
+            <div class="row center-form">
                 <div class="col-md-4">
                     <p class="info-title">Full name:</p>
                 </div>
@@ -69,7 +69,7 @@
                 <div class="col-md-8 input-border">
                     <input type="file" class="input" name="txtnewimage">
                 </div>
-                <div style="margin-left: 40%;">
+                <div>
                     <input type="hidden" name="txtemail" value="<%=emp.getEmemail()%>" >
                     <button type="submit" class="submit-button" >Update</button>
                 </div>
@@ -78,7 +78,7 @@
             } else {
                 CandidateDTO can = (CandidateDTO) session.getAttribute("LOGIN_CDD");
             %>
-            <div class="row" style="width: 600px; margin: 100px auto;">
+            <div class="row center-form">
                 <div class="col-md-4">
                     <p class="info-title">Full name:</p>
                 </div>
@@ -103,7 +103,7 @@
                 <div class="col-md-8 input-border">
                     <input type="file" class="input" name="txtnewimage">
                 </div>
-                <div style="margin-left: 40%;">
+                <div>
                     <input type="hidden" name="txtemail" value="<%=can.getEmail()%>" >
                     <button type="submit" name="action" value="UPDATE PROFILE"  class="submit-button">Update</button>
                 </div>

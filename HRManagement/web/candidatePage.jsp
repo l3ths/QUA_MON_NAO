@@ -65,7 +65,7 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <div class="border-form" style="min-height: 700px;">
+                    <div class="border-form long-form">
                         <% for (int idx = 0; idx < listJob.size(); idx++) {
                                 JobDTO get = listJob.get(idx);
                         %>
@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="border-form" style="min-height: 700px;">
+                    <div class="border-form long-form">
                         <% for (int idx = 0; idx < listIW.size(); idx++) {
                                 InterviewingDTO get = listIW.get(idx);
                         %>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="border-form" style="min-height: 700px;">
+                    <div class="border-form long-form">
                         <% for (int idx = 0; idx < listIW.size(); idx++) {
                                 InterviewingDTO get = listIW.get(idx);
                         %>
