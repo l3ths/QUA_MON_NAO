@@ -39,28 +39,29 @@
                 </ul>
             </div>
         </header>
-        <%
-            JobDTO job = (JobDTO) request.getAttribute("JOB");
-        %>
-        <h1 class="page-title">Job Detail</h1>
-        <div class="row">
-            <div class="col-md-6 detail-name">
-                <h2 style="margin-top: 18%;"><%= job.getName()%></h2>
+        <div class="container">
+            <%
+                JobDTO job = (JobDTO) request.getAttribute("JOB");
+            %>
+            <h1 class="page-title">Job Detail</h1>
+            <div class="row">
+                <div class="col-md-6 detail-name">
+                    <h2 style="margin-top: 18%;"><%= job.getName()%></h2>
+                </div>
+                <div class="col-md-6 detail-img"> 
+                    <p><img class="img-responsive" src="img/job/<%= job.getImgPath()%>"  /></p>
+                </div>
             </div>
-            <div class="col-md-6 detail-img"> 
-                <p><img class="img-responsive" src="img/job/<%= job.getImgPath()%>"  /></p>
+            <div class="detail-table" style="margin: 10px 8%;">
+                <p><span>Experience:</span> <%= job.getExperienceRequirement()%></p>
+                <p><span>Education:</span> <%= job.getEducationRequirement()%></p>
+                <p><span>Salary:</span> up to <%= job.getSalary()%></p>
+                <p><span>Description:</span> <%= job.getDesription()%></p>
+                <form action="MainController" method="post">
+                    <input type="hidden" value="<%= job.getJobID()%>" name="jobID" />
+                    <button type="submit" name="action" value="Applying" class="submit-button">Apply</button>
+                </form>
             </div>
-        </div>
-        <div class="detail-table" style="margin: 10px 8%;">
-            <p><span>Experience:</span> <%= job.getExperienceRequirement()%></p>
-            <p><span>Education:</span> <%= job.getEducationRequirement()%></p>
-            <p><span>Salary:</span> up to <%= job.getSalary()%></p>
-            <p><span>Description:</span> <%= job.getDesription()%></p>
-            <form action="MainController" method="post">
-                <input type="hidden" value="<%= job.getJobID() %>" name="jobID" />
-                <button type="submit" name="action" value="Applying" class="submit-button">Apply</button>
-            </form>
-        </div>
-        <%@include file="footer.jsp" %>
+            <%@include file="footer.jsp" %>
     </body>
 </html>

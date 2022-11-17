@@ -96,7 +96,7 @@
                                     <div>
                                         <input type="hidden" value="${job.jobID}" name="jobID" />
                                     </div>
-                                    <button type="submit" name="action" value="ViewJobDetail">More Detail</button>
+                                    <button class="button-link" style="margin-left: 65%;" type="submit" name="action" value="ViewJobDetail">More Detail</button>
                                 </form>
                             </div>
                         </c:forEach>

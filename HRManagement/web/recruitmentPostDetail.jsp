@@ -54,7 +54,6 @@
                         <button type="submit" name="action" value="editRecruitmentPost" class="submit-button" style="margin: 15px auto;">Edit</button>
                         <button type="submit" name="action" value="ScheduleInterview" class="submit-button" style="margin: 15px auto;">Schedule</button>
                     </div>
-
                     <div class="col-md-8 detail-table">
                         <p><span>Experience:</span> <%= Job.getExperienceRequirement()%> at <%= Job.getName()%></p>
                         <p><span>Education:</span> <%= Job.getEducationRequirement()%></p>
@@ -63,16 +62,16 @@
                     </div>
 
                 </div>
-                <table border="1" style="margin: 20px auto;">
+                <table border="1" class="border-form">
                     <thead>
                         <tr>
-                            <th class="table-header border-form">Full Name</th>
-                            <th class="table-header border-form">Date of birth</th>
-                            <th class="table-header border-form">Email</th>
-                            <th class="table-header border-form">Phone number</th>
-                            <th class="table-header border-form">Certification</th>
-                            <th class="table-header border-form">Education</th>
-                            <th class="table-header border-form">Experience</th>
+                            <th class="table-header">Full Name</th>
+                            <th class="table-header">Date of birth</th>
+                            <th class="table-header">Email</th>
+                            <th class="table-header">Phone number</th>
+                            <th class="table-header">Education</th>
+                            <th class="table-header">Experience</th>
+                            <th class="table-header">Check</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,15 +79,14 @@
                             for (int i = 0; i < listCV.size(); i++) {
                                 CVDTO get = listCV.get(i);
                         %>
-                        <tr class="border-form">
-                            <td class="table-description border-form"><%= listCan.get(i).getName()%></td>
-                            <td class="table-description border-form"><%= listCan.get(i).getBirthdate()%></td>
-                            <td class="table-description border-form"><%= listCan.get(i).getEmail()%></td>
-                            <td class="table-description border-form"><%= listCan.get(i).getPhone()%></td>
-                            <td class="table-description border-form">Certification 5</br>Certification 4</td>
-                            <td class="table-description border-form"><%= get.getEducation()%></td>
-                            <td class="table-description border-form"><%= get.getExperience()%> in <%= Job.getName()%></td>
-                            <td><input type="checkbox" name="<%= get.getCvid()%>" value="true" /></td>
+                        <tr>
+                            <td class="table-description"><%= listCan.get(i).getName()%></td>
+                            <td class="table-description"><%= listCan.get(i).getBirthdate()%></td>
+                            <td class="table-description"><%= listCan.get(i).getEmail()%></td>
+                            <td class="table-description"><%= listCan.get(i).getPhone()%></td>
+                            <td class="table-description"><%= get.getEducation()%></td>
+                            <td class="table-description"><%= get.getExperience()%></td>
+                            <td><div class="checkboxOverride"><input type="checkbox" id="checkboxInputOverride" name="<%= get.getCvid()%>" value="true" /><label for="checkboxInputOverride"></label></div></td>
                         </tr>
                         <%
                             }

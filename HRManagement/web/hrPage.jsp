@@ -79,7 +79,7 @@
                     <div class="col-md-3">
                         <div class="border-form short-form">
                             <input type="hidden" name="JobID" value="<%= get.getJobID()%>">
-                            <input type="submit" name="action" value="Detail"> 
+                            <input class="button-link" type="submit" name="action" value="Detail"> 
                         </div>
                     </div>
                 </form>
