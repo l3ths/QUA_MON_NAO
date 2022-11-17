@@ -70,8 +70,11 @@ public class MainController extends HttpServlet {
     private static final String APPROVE_CANDIDATE_CONTROLLER = "ApproveCandidateController";
     private static final String VERIFY_CODE = "VerifyCode";
     private static final String VERIFY_CODE_CONTROLLER = "VerifyCodeController";
+    private static final String VIEW_CV = "viewCV";
+    private static final String VIEW_CV_CONTROLLER = "ViewCVController";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
@@ -126,7 +129,9 @@ public class MainController extends HttpServlet {
                 url = APPROVE_CANDIDATE_CONTROLLER;
             } else if (VERIFY_CODE.equals(action)) {
                 url = VERIFY_CODE_CONTROLLER;
-            } 
+            } else if (VIEW_CV.equals(action)) {
+                url = VIEW_CV_CONTROLLER;
+            }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());
         } finally {
@@ -146,7 +151,7 @@ public class MainController extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 
@@ -160,7 +165,7 @@ public class MainController extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+            throws ServletException, IOException {
         processRequest(request, response);
     }
 

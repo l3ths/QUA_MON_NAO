@@ -17,6 +17,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
+        <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
+            <c:redirect url="loginPage.jsp"></c:redirect>
+        </c:if>--%>
         <header class="header row">
             <div class="col-md-5">
                 <h1>Toidiyuh</h1>
@@ -39,20 +42,20 @@
         </header>
         <div class="container">
             <h1 class="page-title">Apply</h1>
-            <form action="MainController" method="post" style="width: 500px; margin: 100px auto;">
+            <form action="ApplyJobController" method="post" enctype="multipart/form-data" style="width: 500px; margin: 100px auto;">
                 <div class="input-border">
-                    <input type="text" name="applyFileCV" placeholder="File CV" class="input"/>
+                    <input type="file" name="applyFileCV" class="input" required=""/>
                 </div>
                 <div class="input-border">
-                    <input type="text" name="applyEdu" placeholder="Education" class="input"/>
+                    <input type="text" name="applyEdu" placeholder="Education" class="input" required=""/>
                 </div>
                 <div class="input-border">
-                    <input type="text" name="applyExp" placeholder="Experience" class="input"/>
+                    <input type="text" name="applyExp" placeholder="Experience" class="input" required=""/>
                 </div>
                 <div class="input-border">
-                    <input type="date" name="applydateOB" placeholder="Date of Birth" class="input"/>
+                    <input type="date" name="applydateOB" placeholder="Date of Birth" class="input" required=""/>
                 </div>
-                <button type="submit" name="action" value="ApplyJob" class="submit-button">Apply</button>
+                <button type="submit" class="submit-button">Apply</button>
             </form>
         </div>
         <%@include file="footer.jsp" %>

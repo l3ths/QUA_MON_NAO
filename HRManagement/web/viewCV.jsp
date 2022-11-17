@@ -4,6 +4,8 @@
     Author     : ADMIN
 --%>
 
+<%@page import="core.dto.CandidateDTO"%>
+<%@page import="core.dto.CVDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -21,6 +23,10 @@
         <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
         </c:if>--%>
+        <%
+            CVDTO cv = (CVDTO) request.getAttribute("CV");
+            CandidateDTO can = (CandidateDTO) request.getAttribute("CV_CAN");
+        %>
         <header class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
@@ -37,50 +43,44 @@
             <h1 class="page-title">CV</h1>
             <div class="row" style="margin: 50px auto;">
                 <div class="col-md-5">
-                    <iframe src="img/cv/tiengnhat.pdf" style="width: 400px; height: 600px;"></iframe>
+                    <iframe src="img/cv/<%= cv.getFilecv()%>" style="width: 400px; height: 600px;"></iframe>
                 </div>
                 <div class="col-md-7 row">
                     <div class="col-md-4">
                         <p class="info-title">Full name:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="text" class="input" readonly="" value="Nguyen Thuc Tien" >
+                        <input type="text" class="input" readonly="" value="<%= can.getName()%>" >
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Date of birth:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="date" class="input" readonly="" value="08-12-1998">
+                        <input type="date" class="input" readonly="" value="<%= cv.getBirthday()%>">
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Phone number:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="text" class="input" readonly="" value="0987654321">
+                        <input type="text" class="input" readonly="" value="<%= can.getPhone()%>">
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Email:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="text" class="input" readonly="" value="thuytien@gmail.com">
+                        <input type="text" class="input" readonly="" value="<%= can.getEmail()%>">
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Year of experience:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="number" class="input" readonly="" value="4">
+                        <input type="text" class="input" readonly="" value="<%= cv.getExperience()%>">
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Education:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="text" class="input" readonly="" value="Master of Business FU">
-                    </div>
-                    <div class="col-md-4">
-                        <p class="info-title">Strength:</p>
-                    </div>
-                    <div class="col-md-8 input-border">
-                        <input type="text" class="input" readonly="" value="Handsome, friendly">
+                        <input type="text" class="input" readonly="" value="<%= cv.getEducation()%>">
                     </div>
                 </div>
             </div>

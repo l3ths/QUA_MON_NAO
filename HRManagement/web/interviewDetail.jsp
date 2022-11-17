@@ -87,7 +87,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="border-form table-link" style="height: 200px; padding-top: 25%;">
-                            <a href="#">Detail</a>
+                            <button type="submit" name="action" value="viewCV">View</button>
                         </div>
                     </div>
                     <div class="col-md-3">

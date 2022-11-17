@@ -22,7 +22,8 @@ import java.util.logging.Logger;
  */
 public class CVDAO {
 
-    private static final String CREATE_CV = "insert into tblCV (CVID, dateOfBirth, status,education,experience, candidateID, fileCV) values ( ? , ? , ? , ? , ? , ? , ? )";
+    private static final String CREATE_CV = "insert into tblCV (CVID, dateOfBirth, status, education, experience, candidateID, fileCV) values ( ? , ? , ? , ? , ? , ? , ? )";
+    private static final String GET_CV = "SELECT CVID, dateOfBirth, status, education, experience, candidateID, fileCV, certificateID FROM tblCV WHERE CVID = ?";
 
     public void createCV(String CVID, String fileCV, String edu, String exp, String date, String CID) throws SQLException {
         JobDTO Job = null;
@@ -34,12 +35,11 @@ public class CVDAO {
             if (conn != null) {
                 ptm = conn.prepareStatement(CREATE_CV);
                 ptm.setString(1, CVID);
-                ptm.setInt(3, 0);
                 ptm.setString(2, date);
+                ptm.setInt(3, 0);
                 ptm.setString(4, edu);
                 ptm.setString(5, exp);
                 ptm.setString(6, CID);
-                ptm.setInt(3, 0);
                 ptm.setString(7, fileCV);
                 ptm.executeUpdate();
 
@@ -105,8 +105,9 @@ public class CVDAO {
         }
         return cv;
     }
+
     public static ArrayList<CVDTO> getCVsByEmail(String email) {
-        
+
         Connection cn = null;
         ArrayList<CVDTO> list = new ArrayList<>();
         try {
@@ -224,5 +225,37 @@ public class CVDAO {
             }
         }
         return list;
+    }
+
+    public CVDTO getCVByCVID(String CVID) {
+        CVDTO cv = new CVDTO();
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                PreparedStatement pst = cn.prepareStatement(GET_CV);
+                pst.setString(1, CVID);
+                ResultSet rs = pst.executeQuery();
+                while (rs.next()) {
+                    String education = rs.getString("education");
+                    String experience = rs.getString("experience");
+                    String dateOfBirth = rs.getString("dateOfBirth");
+                    int status = rs.getInt("status");
+                    String fileCV = rs.getString("fileCV");
+                    String candidateID = rs.getString("candidateID");
+                    String certificateID = rs.getString("certificateID");
+                    cv = new CVDTO(CVID, education, experience, dateOfBirth, status, fileCV, candidateID, certificateID);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return cv;
     }
 }
