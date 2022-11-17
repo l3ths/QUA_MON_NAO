@@ -50,7 +50,7 @@
             <h3 class="page-title"><%= Job.getName()%></h3>
             <form action="ApplyJobController" method="post" enctype="multipart/form-data" style="width: 500px; margin: 100px auto;">
                 <div class="input-border">
-                    <input type="file" name="applyFileCV" class="input" required=""/>
+                    <input type="file" class="custom-file-input" name="applyFileCV" class="input" required=""/>
                 </div>
                 <div class="input-border">
                     <input type="text" name="applyEdu" placeholder="Education" class="input" required=""/>

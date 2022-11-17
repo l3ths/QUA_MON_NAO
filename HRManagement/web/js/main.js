@@ -94,3 +94,6 @@
 
 
 })(jQuery);
+document.getElementById("fileupload").onchange = function () {
+    document.getElementById("uploadFile").value = this.value.replace("C:\\fakepath\\", "");
+};

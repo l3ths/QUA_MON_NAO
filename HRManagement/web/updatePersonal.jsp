@@ -69,7 +69,7 @@
                         <p class="info-title">Image:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="file" class="input" name="txtnewimage">
+                        <input class="custom-file-input" type="file" class="input" name="txtnewimage">
                     </div>
                     <div>
                         <input type="hidden" name="txtemail" value="<%=emp.getEmemail()%>" >
@@ -103,11 +103,11 @@
                         <p class="info-title">Image:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="file" class="input" name="txtnewimage">
+                        <input id="fileupload" type="file" class="custom-file-input" name="txtnewimage">
                     </div>
                     <div>
                         <input type="hidden" name="txtemail" value="<%=can.getEmail()%>" >
-                        <button type="submit" name="action" value="UPDATE PROFILE"  class="submit-button">Update</button>
+                        <button type="submit" class="submit-button">Update</button>
                     </div>
                 </div>
                 <%

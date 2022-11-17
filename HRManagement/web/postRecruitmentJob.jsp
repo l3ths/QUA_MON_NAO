@@ -66,7 +66,7 @@
                         <p class="info-title">Image:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="file" class="input" name="txtImg" required="" >
+                        <input type="file" class="custom-file-input" name="txtImg" required="" >
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Quantity:</p>
