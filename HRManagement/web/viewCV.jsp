@@ -18,9 +18,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet">
     </head>
     <body>
-        <c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
+        <%--<c:if test="${sessionScope.role==null||sessionScope.role ne 'candidate'}">
             <c:redirect url="loginPage.jsp"></c:redirect>
-        </c:if>
+        </c:if>--%>
         <header class="header row">
             <div class="col-md-6">
                 <h1>Toidiyuh</h1>
@@ -37,20 +37,20 @@
             <h1 class="page-title">CV</h1>
             <div class="row" style="margin: 50px auto;">
                 <div class="col-md-5">
-                    <img src="img/avatar/thuytien.jpg" class="img-responsive"/>
+                    <iframe src="img/cv/tiengnhat.pdf" style="width: 400px; height: 600px;"></iframe>
                 </div>
                 <div class="col-md-7 row">
                     <div class="col-md-4">
                         <p class="info-title">Full name:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="text" class="input" readonly="Nguyen Thuc Tien" >
+                        <input type="text" class="input" readonly="" value="Nguyen Thuc Tien" >
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Date of birth:</p>
                     </div>
                     <div class="col-md-8 input-border">
-                        <input type="date" class="input" readonly="" value="12/8/1998">
+                        <input type="date" class="input" readonly="" value="08-12-1998">
                     </div>
                     <div class="col-md-4">
                         <p class="info-title">Phone number:</p>
