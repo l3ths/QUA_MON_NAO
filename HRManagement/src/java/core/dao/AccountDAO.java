@@ -280,5 +280,25 @@ public class AccountDAO {
             }
         }
     }
-
+    public static void updateStt(String email, int stt) {
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "update tblAccount set status=? where email=?";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(2, email);
+                pst.setInt(1, stt);
+                pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 }

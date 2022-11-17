@@ -19,34 +19,44 @@
             ArrayList<Integer> sttList = (ArrayList<Integer>) request.getAttribute("sttList");
             String stt[] = {"Blocked", "Active"};
         %>
-        <form action="MainController" method="post">
-            <table>
-                <tr><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr>
-                        <%
-                            for (int i = 0; i < accList.size(); i++) {
-                                AccountDTO get = accList.get(i);
-                        %>
+
+        <table>
+            <tr><th>Email</th><th>Role</th><th>Status</th><th>Action</th></tr>
+                    <%
+                        for (int i = 0; i < accList.size(); i++) {
+                            AccountDTO get = accList.get(i);
+                    %>
+            
                 <tr>
+                    <form action="MainController" method="post">
                     <td><%= get.getEmail()%></td>
                     <td><%= get.getAccrole()%></td>
                     <td><%= stt[sttList.get(i)]%></td>
-                    <%
-                        if (sttList.get(i) == 1) {
-                    %>
-                    <td><button name="action" value="BlockAccount">Block</button></td>
-                    <%
-                    } else {
-                    %>
-                    <td><button name="action" value="UnblockAccount">Unblock</button></td>
-                    <%
-                        }
-                    %>
-
+                <input type="hidden" name="email" value="<%= get.getEmail()%>"/>
+                <input type="hidden" name="stt" value="<%= sttList.get(i)%>"/>
+                <td><button name="action" value="BUAccount">
+                        <%
+                            if (sttList.get(i) == 1) {
+                        %>
+                        Block
+                        <%
+                        } else {
+                        %>
+                        Unblock
+                        <%
+                            }
+                        %>
+                    </button></td>
+                    </form>
                 </tr>
-                <%
-                    }
-                %>
-            </table>
+            
+            <%
+                }
+            %>
+        </table>
+        <form>
+            <button name="action" value="">Create Employee Account</button>
         </form>
+        
     </body>
 </html>
