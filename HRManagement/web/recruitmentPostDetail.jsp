@@ -104,4 +104,12 @@
     </script> <%
     }
     %>
+    <%
+        if (request.getParameter("editstt") != null) {
+    %>
+    <script type="text/javascript">
+        alert("Successfully updated!");
+    </script> <%
+    }
+    %>
 </html>

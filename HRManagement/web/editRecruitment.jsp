@@ -77,12 +77,4 @@
         </div>
         <%@include file="footer.jsp" %>
     </body>
-    <%
-        if (request.getParameter("editstt") != null) {
-    %>
-    <script type="text/javascript">
-        alert("Successfully updated!");
-    </script> <%
-    }
-    %>
 </html>

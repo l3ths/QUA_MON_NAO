@@ -42,7 +42,7 @@ public class EditRecruitmentPostController extends HttpServlet {
             JobDTO job = JobDAO.getJob(jobID);
             JobDAO.updateJob(newExp, newEdu, newSalary, NewDescr, jobID);
             request.setAttribute("Job", job);
-            request.getRequestDispatcher("editRecruitment.jsp?editstt=1").forward(request, response);
+            request.getRequestDispatcher("GetDetailJobRecruitmentController?editstt=1&JobID="+jobID).forward(request, response);
         }
     }
 
