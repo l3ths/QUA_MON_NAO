@@ -56,10 +56,10 @@ public class ApproveCandidateController extends HttpServlet {
             for (int i = 0; i < listIWNotPass.size(); i++) {
                 InterviewingDTO get = listIWNotPass.get(i);
                 String subject = "Recruitment Result";
-                String body = "Hi there,\n"
-                            + "I am from Toidiuyh corp.\n"
-                            + "I am sorry to annouce that you are not pass\n"
-                            + "Thank you and see you later\n"
+                String body = "Hi there,"
+                            + "I am from Toidiuyh corp."
+                            + "I am sorry to annouce that you are not pass"
+                            + "Thank you and see you later"
                             + "Toidiyuh";
                 String email = CandidateDAO.getCandidatesByCV(get.getCvID()).getEmail();
                 EmailUtils.sendEmail(email, subject, body);
@@ -68,10 +68,10 @@ public class ApproveCandidateController extends HttpServlet {
             for (int i = 0; i < listIWPass.size(); i++) {
                 InterviewingDTO get = listIWPass.get(i);
                 String subject = "Recruitment Result";
-                String body = "Hi there,\n"
-                            + "I am from Toidiuyh corp.\n"
-                            + "Congratulation, you have passed the interview.\n "
-                            + "Thank you and see you later!\n"
+                String body = "Hi there,"
+                            + "I am from Toidiuyh corp."
+                            + "Congratulation, you have passed the interview. "
+                            + "Thank you and see you later"
                             + "Toidiyuh";
                 String email = CandidateDAO.getCandidatesByCV(get.getCvID()).getEmail();
                 EmailUtils.sendEmail(email, subject, body);
