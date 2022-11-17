@@ -85,9 +85,9 @@
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <div class="checkboxOverride">
-                            <input type="checkbox" id="checkboxInputOverride" name="<%= get.getCvID()%>" value="true" />
-                            <label for="checkboxInputOverride"></label>
+                        <div class="form-group">
+                            <input type="checkbox" id="<%= get.getCvID()%>" name="<%= get.getCvID()%>" value="true" />
+                            <label for="<%= get.getCvID()%>"></label>
                         </div>
                     </div>
                 </div>

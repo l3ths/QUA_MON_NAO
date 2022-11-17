@@ -49,7 +49,7 @@
                 %>
                 <div class="row">
                     <div class="col-md-5" >
-                        <img src="img/avatar/<%= emp.getImgpath() != null ? emp.getImgpath() : "default_avatar.png"%>" alt="avatar" class="img-responsive"/>
+                        <img src="img/avatar/<%= emp.getImgpath() != null ? emp.getImgpath() : "default_avatar.png"%>" alt="avatar" class="ava-img"/>
                     </div>
                     <div class="col-md-7 row" >
                         <div class="col-md-4">
@@ -90,7 +90,7 @@
                     %>
                     <div class="row">
                         <div class="col-md-5" >
-                            <img src="img/avatar/<%= can.getImgPath() != null ? can.getImgPath() : "default_avatar.png"%>" alt="avatar" class="img-responsive"/>
+                            <img src="img/avatar/<%= can.getImgPath() != null ? can.getImgPath() : "default_avatar.png"%>" alt="avatar" class="ava-img"/>
                         </div>
                         <div class="col-md-7 row">
                             <div class="col-md-4">

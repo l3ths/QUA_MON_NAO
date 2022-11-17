@@ -86,7 +86,12 @@
                             <td class="table-description"><%= listCan.get(i).getPhone()%></td>
                             <td class="table-description"><%= get.getEducation()%></td>
                             <td class="table-description"><%= get.getExperience()%></td>
-                            <td><div class="checkboxOverride"><input type="checkbox" id="checkboxInputOverride" name="<%= get.getCvid()%>" value="true" /><label for="checkboxInputOverride"></label></div></td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="checkbox" id="<%= get.getCvid()%>" name="<%= get.getCvid()%>" value="true" />
+                                    <label for="<%= get.getCvid()%>"></label>
+                                </div>
+                            </td>
                         </tr>
                         <%
                             }
@@ -102,6 +107,6 @@
     <script type="text/javascript">
         alert("Must choose at least 1 candidate!");
     </script> <%
-    }
+        }
     %>
 </html>
