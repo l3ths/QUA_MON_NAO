@@ -5,14 +5,20 @@
  */
 package controller;
 
+import core.dao.CandidateDAO;
 import core.dao.EmployeeDAO;
 import core.dao.InterviewingDAO;
 import core.dao.JobDAO;
 import core.dto.CVDTO;
+import core.dto.CandidateDTO;
 import core.dto.EmployeeDTO;
+import core.utils.EmailUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,7 +41,7 @@ public class SubmitScheduleController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+                throws ServletException, IOException, MessagingException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -49,18 +55,30 @@ public class SubmitScheduleController extends HttpServlet {
             ArrayList<EmployeeDTO> listInterviewers = new ArrayList<>();
             for (int i = 0; i < listInterviewers1.size(); i++) {
                 EmployeeDTO get = listInterviewers1.get(i);
-                if (request.getParameter(get.getEid())!=null) {
+                if (request.getParameter(get.getEid()) != null) {
                     listInterviewers.add(get);
                 }
             }
             int size = InterviewingDAO.getInterviewings().size();
-            String ID = "ITV" + (size+1);
+            String ID = "ITV" + (size + 1);
             for (int i = 0; i < listInterviewers.size(); i++) {
                 EmployeeDTO get = listInterviewers.get(i);
                 for (int j = 0; j < listCV.size(); j++) {
                     CVDTO get1 = listCV.get(j);
-                    InterviewingDAO.createInterviewing(ID, date, time, questtion , get.getEid(), get1.getCvid(), JobID);
+                    InterviewingDAO.createInterviewing(ID, date, time, questtion, get.getEid(), get1.getCvid(), JobID);
                 }
+            }
+            for (int i = 0; i < listCV.size(); i++) {
+                CVDTO get = listCV.get(i);
+                CandidateDTO can = CandidateDAO.getCandidatesByCV(get.getCvid());
+                String subject = "Announcement of interview appointment - Toidiyuh Group";
+                String body = "Hello, \n"
+                            + "Your interview appointment is"
+                            + time + " " + date + "."
+                            + "\nPlease be on time.\n"
+                            + "Sincerely, \n"
+                            + "Toidiyuh group";
+                EmailUtils.sendEmail(can.getEmail(), subject, body);
             }
             JobDAO.updateStatus(1, JobID);
             request.getRequestDispatcher("ViewPersonalController").forward(request, response);
@@ -79,7 +97,11 @@ public class SubmitScheduleController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(SubmitScheduleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -93,7 +115,11 @@ public class SubmitScheduleController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(SubmitScheduleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

@@ -6,14 +6,20 @@
 package controller;
 
 import core.dao.CVDAO;
+import core.dao.CandidateDAO;
 import core.dao.EmployeeDAO;
 import core.dao.JobDAO;
 import core.dto.CVDTO;
+import core.dto.CandidateDTO;
 import core.dto.EmployeeDTO;
 import core.dto.JobDTO;
+import core.utils.EmailUtils;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +42,7 @@ public class ScheduleInterviewController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-                throws ServletException, IOException {
+                throws ServletException, IOException, MessagingException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -48,8 +54,17 @@ public class ScheduleInterviewController extends HttpServlet {
             ArrayList<EmployeeDTO> listInterviewer = EmployeeDAO.getAllInterviewers();
             for (int i = 0; i < listCV1.size(); i++) {
                 CVDTO get = listCV1.get(i);
-                if (request.getParameter(get.getCvid())!=null) {
+                if (request.getParameter(get.getCvid()) != null) {
                     listCV.add(get);
+                } else {
+                    CandidateDTO can = CandidateDAO.getCandidatesByCV(get.getCvid());
+                    String subject = "CV round results - Toidiyuh Group";
+                    String body = "Hello,\n"
+                                + "We regret to inform that you did not pass the CV round.\n"
+                                + "Thank you for your contributions.\n"
+                                + "Sincerely!\n"
+                                + "Toidiyuh Group.";
+                    EmailUtils.sendEmail(can.getEmail(), subject, body);
                 }
             }
             request.setAttribute("Job", Job);
@@ -71,7 +86,11 @@ public class ScheduleInterviewController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(ScheduleInterviewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -85,7 +104,11 @@ public class ScheduleInterviewController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
                 throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (MessagingException ex) {
+            Logger.getLogger(ScheduleInterviewController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
