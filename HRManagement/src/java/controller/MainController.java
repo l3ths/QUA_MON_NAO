@@ -74,7 +74,9 @@ public class MainController extends HttpServlet {
     private static final String VIEW_CV_CONTROLLER = "ViewCVController";
     private static final String BU_ACCOUNT = "BUAccount";
     private static final String BU_ACCOUNT_CONTROLLER = "BUAccountController";
-
+    private static final String CREATE_EMPLOYEE_ACCOUNT = "Create Account";
+    private static final String CREATE_EMPLOYEE_ACCOUNT_CONTROLLER = "Create Account";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");

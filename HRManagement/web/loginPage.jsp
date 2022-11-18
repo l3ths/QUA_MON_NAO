@@ -76,7 +76,7 @@
                                 <p style="color: #dfa974" > <%= (msg != null) ? "You must login to apply job!" : ""%></p>
                                 <p style="color: #dfa974"> <%= (loginstt != null) ? "Invalid email or password!" : ""%></p>
                                 <button type="submit" value="login" name="action" class="submit-button">Log in</button>
-                                <h2>Not a member? <a href="registerPage.jsp">Sign up </a></h2>
+                                <h2>Not a member? <a href="registerCandPage.jsp">Sign up </a></h2>
                                 <input type="hidden" name="msg" value="<%= msg%>" />
                             </form>
                         </div>
