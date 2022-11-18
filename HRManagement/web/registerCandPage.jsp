@@ -44,7 +44,7 @@
                                 <button type="submit" value="checkEmail" name="action" class="submit-button">Continue</button>
                                 <% } else {
                                 %>
-                                <input type="text" class="input" readonly="" value="<%= registerEmail%>" >
+                                <input type="hidden" class="input" readonly="" value="<%= registerEmail%>" >
                                 <% }%>
                                 <%if (request.getParameter("verify") != null) {
                                 %>
