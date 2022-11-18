@@ -109,7 +109,7 @@
             <%
                 }
             %>
-            <form>
+            <form action="createEmployee.jsp">
                 <button name="action" class="submit-button" value="">Create Employee Account</button>
             </form>
         </div>

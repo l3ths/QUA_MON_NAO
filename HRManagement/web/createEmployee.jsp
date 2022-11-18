@@ -64,6 +64,10 @@
                                     <span class="focus-input100" data-placeholder="Phone"></span>
                                 </div>
                                 <div class="wrap-input100 validate-input" >
+                                    <input class="input100" type="text" name="regRole">
+                                    <span class="focus-input100" data-placeholder="Role"></span>
+                                </div>
+                                <div class="wrap-input100 validate-input" >
                                     <input class="input100" type="date" name="regDate">
                                     <span class="focus-input100" data-placeholder="Date of birth"></span>
                                 </div>
