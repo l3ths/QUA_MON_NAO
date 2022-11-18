@@ -86,14 +86,6 @@ public class Tester {
 //        int list = JobDAO.getCountJob();
 //        String Jobid = "JOB" + (list + 1);
 //        JobDAO.createJob(Jobid, "QC", 2500, "", "decrisption", "2 year", "img", 2, "2022-09-01", "2022-11-01", "EMP1");
-        String email = "john123gmail.com";
-        System.out.println("The E-mail ID is: " + email);
-        System.out.println("Is the above E-mail ID valid? " + isValid(email));
-    }
-
-    static boolean isValid(String email) {
-        String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
-        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
-        return email.matches(regex);
+        EmployeeDAO.createEmployee("EMP4", "Nhan Vien", "1234", "xinchao@gmail", "hr", "2002-10-10");
     }
 }

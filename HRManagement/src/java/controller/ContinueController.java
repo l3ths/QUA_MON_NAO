@@ -43,24 +43,30 @@ public class ContinueController extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String email = request.getParameter("txtemail");
             HttpSession session = request.getSession();
-            if (email != null && !AccountDAO.checkExistAccount(email)) {
-                String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                Random rnd = new Random();
-                StringBuilder sb = new StringBuilder(7);
-                for (int i = 0; i < 5; i++) {
-                    sb.append(chars.charAt(rnd.nextInt(chars.length())));
+            String regex = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@"
+                        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
+            if (email.matches(regex)) {
+                if (email != null && !AccountDAO.checkExistAccount(email)) {
+                    String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                    Random rnd = new Random();
+                    StringBuilder sb = new StringBuilder(7);
+                    for (int i = 0; i < 5; i++) {
+                        sb.append(chars.charAt(rnd.nextInt(chars.length())));
+                    }
+                    String verifyCode = sb.toString();
+                    session.setAttribute("verifyCode", verifyCode);
+                    request.setAttribute("reqEmail", email);
+                    String subject = "Verify Email";
+                    String body = "Your verify-code is:\n"
+                                + verifyCode + "\n"
+                                + "Please don't share this code to anyone else!";
+                    EmailUtils.sendEmail(email, subject, body);
+                    request.getRequestDispatcher("registerCandPage.jsp?verify=true").forward(request, response);
+                } else {
+                    request.getRequestDispatcher("registerCandPage.jsp?stt=false").forward(request, response);
                 }
-                String verifyCode = sb.toString();
-                session.setAttribute("verifyCode", verifyCode);
-                request.setAttribute("reqEmail", email);
-                String subject = "Verify Email";
-                String body = "Your verify-code is:\n"
-                            + verifyCode +"\n"
-                            + "Please don't share this code to anyone else!";
-                EmailUtils.sendEmail(email, subject, body);
-                request.getRequestDispatcher("registerCandPage.jsp?verify=true").forward(request, response);
             } else {
-                request.getRequestDispatcher("registerCandPage.jsp?stt=false").forward(request, response);
+                request.getRequestDispatcher("registerCandPage.jsp?valstt=false").forward(request, response);
             }
         }
     }
