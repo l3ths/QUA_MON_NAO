@@ -17,6 +17,7 @@ CREATE TABLE [dbo].[tblAccount](
 	[password] [nvarchar](50) NULL,
 	[role] [nvarchar](50) NULL,
 	[token] [nvarchar](50) NULL,
+	[status] [bit] NULL,
 	CONSTRAINT [PK_tblAccount] PRIMARY KEY CLUSTERED 
 (
 	[email] ASC
@@ -185,10 +186,11 @@ CREATE TABLE [dbo].[tblAppyling](
 GO
 
 --Insert data
-INSERT [dbo].[tblAccount] ([email], [password], [role]) VALUES (N'ngoctlbse160583@fpt.edu.vn', N'1', N'hr')
-INSERT [dbo].[tblAccount] ([email], [password], [role]) VALUES (N'trungttse160105@fpt.edu.vn', N'1', N'hr manager')
-INSERT [dbo].[tblAccount] ([email], [password], [role]) VALUES (N'huyltse160094@fpt.edu.vn', N'1', N'interviewer')
-INSERT [dbo].[tblAccount] ([email], [password], [role]) VALUES (N'ductcse160119@fpt.edu.vn', N'1', N'candidate')
+INSERT [dbo].[tblAccount] ([email], [password], [role], [status]) VALUES (N'ngoctlbse160583@fpt.edu.vn', N'1', N'hr', 1)
+INSERT [dbo].[tblAccount] ([email], [password], [role], [status]) VALUES (N'trungttse160105@fpt.edu.vn', N'1', N'hr manager', 1)
+INSERT [dbo].[tblAccount] ([email], [password], [role], [status]) VALUES (N'huyltse160094@fpt.edu.vn', N'1', N'interviewer', 1)
+INSERT [dbo].[tblAccount] ([email], [password], [role], [status]) VALUES (N'ductcse160119@fpt.edu.vn', N'1', N'candidate', 1)
+INSERT [dbo].[tblAccount] ([email], [password], [role], [status]) VALUES (N'tranlebaongoc1512@gmail.com', N'1', N'admin', 1)
 GO
 
 INSERT [dbo].[tblEmployee] ([empID], [name], [phoneNumber], [email], [role], [imgPath], [dateOfBirth]) VALUES (N'EMP1', N'Tran Le Bao Ngoc', N'0912345678', N'ngoctlbse160583@fpt.edu.vn', N'hr', N'baongoc.jpg', '2002-02-01')
@@ -225,13 +227,13 @@ INSERT [dbo].[tblJob] ([jobID], [name], [salary], [description], [experienceRequ
 
 GO
 
-INSERT [dbo].[tblCV] ([CVID], [fileCV], [education], [experience], [dateOfBirth], [status], [candidateID], [certificateID]) VALUES (N'CV1', N'hong biet x4', N'hong biet x5', N'hong biet x6',  '2002-01-01', 0, N'CDD1', N'CER1')
+INSERT [dbo].[tblCV] ([CVID], [fileCV], [education], [experience], [dateOfBirth], [status], [candidateID], [certificateID]) VALUES (N'CV1', N'tiengnhat.pdf', N'FPT University', N'2 years', '2002-01-01', 0, N'CDD1', N'CER1')
 GO
 
 INSERT [dbo].[tblRecruitmentPost] ([postID], [dateFrom], [dateTo]) VALUES (N'POST1', '2022-09-01', '2022-10-30')
 GO
 
-INSERT [dbo].[tblInterviewing] ([interviewingID], [date], [time], [score], [content], [empID], [CVID], [jobID], [status]) VALUES (N'ITV1', '2022-09-19', '09:00:00', 80, N'hong biet x8', N'EMP3', N'CV1', N'JOB1', 0)
+INSERT [dbo].[tblInterviewing] ([interviewingID], [date], [time], [score], [content], [empID], [CVID], [jobID], [status]) VALUES (N'ITV1', '2022-09-19', '09:00:00', 80, N'back end', N'EMP3', N'CV1', N'JOB1', 0)
 GO
 
 INSERT [dbo].[tblAppyling] ([date], [CVID], [jobID]) VALUES ('2022-09-10', N'CV1', N'JOB1')

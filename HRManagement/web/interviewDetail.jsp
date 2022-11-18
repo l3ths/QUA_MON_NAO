@@ -46,12 +46,12 @@
         <div class="container">
             <h1 class="page-title">Interview detail</h1>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="detail-name">
-                        <h2 style="margin-top: 30%;"><%= Job.getName()%></h2>
+                        <h2><%= Job.getName()%></h2>
                     </div>
                 </div>
-                <div class="col-md-8 detail-table">
+                <div class="col-md-7 detail-table">
                     <p><span><%= question %></span></p>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                         <h3 class="table-header">Name</h3>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="border-form">
                         <h3 class="table-header">CV</h3>
                     </div>
@@ -69,6 +69,11 @@
                 <div class="col-md-3">
                     <div class="border-form">
                         <h3 class="table-header">Score</h3>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="border-form">
+                        <h3 class="table-header">Mark</h3>
                     </div>
                 </div>
             </div>
@@ -84,7 +89,7 @@
                             <p class="table-description"><%= listName.get(i)%></p>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <div class="border-form short-form table-link">
                             <button class="button-link" type="submit" name="action" value="viewCV">View</button>
                         </div>
@@ -94,11 +99,11 @@
                             <input class="input" placeholder="Score" type="number" name="score" value="<%= (get.getScore() == null) ? "" : get.getScore()%>">
                         </div>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-3">
                         <div class="border-form short-form">
                             <input type="hidden" name="CVID" value="<%= get.getCvID()%>" />
                             <input type="hidden" name="ITVID" value="<%= ITVID%>" />
-                            <button type="submit" class="submit-button" name="action" value="MarkCandidate" ><%= (get.getScore() == null) ? "Mark" : "Update"%></button>
+                            <button style="margin-top: 0;" type="submit" class="submit-button" name="action" value="MarkCandidate" ><%= (get.getScore() == null) ? "Mark" : "Update"%></button>
                         </div>
                     </div>
                 </div>

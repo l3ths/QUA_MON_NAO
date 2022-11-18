@@ -52,8 +52,10 @@
                         for (int i = 0; i < listInterviewer.size(); i++) {
                             EmployeeDTO get = listInterviewer.get(i);
                     %>
-                    <input type="checkbox" name="<%= get.getEid()%>" value="true"/>
-                    <label for="<%= get.getEid()%>"><%= get.getEmname()%></label><br>
+                    <div class="form-group">
+                        <input type="checkbox" name="<%= get.getEid()%>" value="true"/>
+                        <label for="<%= get.getEid()%>"><%= get.getEmname()%></label>
+                    </div>
                     <%
                         }
                     %>

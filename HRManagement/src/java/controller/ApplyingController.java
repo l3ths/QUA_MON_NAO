@@ -42,10 +42,10 @@ public class ApplyingController extends HttpServlet {
             String role = (String) session.getAttribute("role");
             String jobID = request.getParameter("jobID");
             String email = (String) session.getAttribute("email");
-            String dob = CandidateDAO.getCandidate(email).getBirthdate();
-            JobDTO Job = JobDAO.getJob(jobID);
             if (role != null) {//check login
                 if (role.equals("candidate")) { //check role
+                    String dob = CandidateDAO.getCandidate(email).getBirthdate();
+                    JobDTO Job = JobDAO.getJob(jobID);
                     request.setAttribute("dob", dob);
                     request.setAttribute("Job", Job);
                     request.getRequestDispatcher("applyJobPage.jsp").forward(request, response);

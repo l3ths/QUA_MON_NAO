@@ -43,7 +43,7 @@
             <h1 class="page-title">CV</h1>
             <div class="row">
                 <div class="col-md-5">
-                    <iframe src="img/cv/<%= cv.getFilecv() != null ? cv.getFilecv() : "default_avatar.png"%>" class="img-responsive"></iframe>
+                    <iframe src="img/cv/<%= cv.getFilecv() != null ? cv.getFilecv() : "default_avatar.png"%>" class="ava-img"></iframe>
                 </div>
                 <div class="col-md-7 row">
                     <div class="col-md-4">
@@ -82,10 +82,10 @@
                     <div class="col-md-8 input-border">
                         <input type="text" class="input" readonly="" value="<%= cv.getEducation()%>">
                     </div>
+                    <button class="submit-button" type="submit" onclick="backButton()" >Back</button>
                 </div>
             </div>
         </div>
-                    <button type="submit" onclick="backButton()" >Back</button>
         <%@include file="footer.jsp" %>
     </body>
     <script>

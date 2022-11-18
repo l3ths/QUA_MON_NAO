@@ -60,9 +60,9 @@
                         <p><span>Salary:</span> up to <%= Job.getSalary()%> USD</p>
                         <p><span>Description:</span> <%= Job.getDesription()%></p>
                     </div>
-
                 </div>
-                <table border="1" class="border-form">
+                <% if (listCan.size() > 0) {%>
+                <table border="1" class="border-form" style="width: 100%;">
                     <thead>
                         <tr>
                             <th class="table-header">Full Name</th>
@@ -81,11 +81,11 @@
                             <td class="table-description"><%= listCan.get(i).getName()%></td>
                             <td class="table-description"><%= get.getEducation()%></td>
                             <td class="table-description"><%= get.getExperience()%></td>
-                            <td>
+                            <td style="text-align: center;">
                                 <input type="hidden" name="CVID" value="<%= get.getCvid()%>">
-                                <button type="submit" name="action" value="viewCV" class="button-link">View</button>
+                                <button class="button-link" type="submit" name="action" value="viewCV" class="button-link">View</button>
                             </td>
-                            <td>
+                            <td style="text-align: center; padding-top: 2px;">
                                 <div class="form-group">
                                     <input type="checkbox" id="<%= get.getCvid()%>" name="<%= get.getCvid()%>" value="true" />
                                     <label for="<%= get.getCvid()%>"></label>
@@ -97,6 +97,9 @@
                         %>
                     </tbody>
                 </table>
+                <%} else {%>
+                <p class="table-header">There are no candidates applying for this job.</p>
+                <%}%>
             </form> 
         </div>
     </body>
@@ -109,7 +112,8 @@
         }
     %>
     <%
-        if (request.getParameter("editstt") != null) {
+        if (request.getParameter(
+                "editstt") != null) {
     %>
     <script type="text/javascript">
         alert("Successfully updated!");

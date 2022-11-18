@@ -42,7 +42,7 @@
             <h1 class="page-title">Change Password</h1>
             <form action="MainController" method="post">
                 <div class="row">
-                    <div class="col-md-4" >
+                    <div class="col-md-5" >
                         <%
                             String role = (String) session.getAttribute("role");
                             String email = "";
@@ -59,7 +59,7 @@
                         <img src="img/avatar/<%= can.getImgPath()%>" class="ava-img"/>
                         <%}%>
                     </div>
-                    <div class="col-md-8 row">
+                    <div class="col-md-7 row">
                         <div class="col-md-4">
                             <p class="info-title">Email:</p>
                         </div>

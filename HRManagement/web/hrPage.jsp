@@ -88,9 +88,8 @@
                 %>
             </div>
             <a href="postRecruitmentJob.jsp" class="link-button" >New post</a>
-            <footer>
-                <%@include file="footer.jsp" %>
-            </footer>
+            <%@include file="footer.jsp" %>
+        </div>
     </body>
     <%
         if (request.getParameter("schedulestt") != null) {
@@ -98,7 +97,7 @@
     <script type="text/javascript">
         alert("Successfully scheduled!");
     </script> <%
-    }
+        }
     %>
     <%
         if (request.getParameter("createstt") != null) {

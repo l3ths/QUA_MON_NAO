@@ -190,7 +190,7 @@ body{
 .custom-file-input{
     height: 40px;
     width: 100%;
-    background: url(../img/icon/upload.png) 96% / 5% no-repeat transparent;
+    background: url(../img/icon/upload.png) 96% / 3% no-repeat transparent;
     display: inline-block;
     border: none;
     border-radius: 2px;
@@ -202,12 +202,12 @@ body{
     font-family: var(--text-font-2);
 }
 .long-form{
-    min-height: 700px;
+    min-height: 500px;
     text-align: center;
 
 }
 .short-form{
-    height: 200px;
+    height: 150px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -463,10 +463,10 @@ body{
     -moz-transition: all 0.4s;
     transition: all 0.4s;
 }
-.input100:focus + .focus-input100::after {
+.input100+ .focus-input100::after {
     top: -18px;
 }
-.input100:focus + .focus-input100::before {
+.input100:focus+ .focus-input100::before {
     width: 100%;
 }
 .has-val.input100 + .focus-input100::after {

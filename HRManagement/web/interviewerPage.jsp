@@ -89,7 +89,7 @@
                         <% for (int idx = 0; idx < listJob.size(); idx++) {
                                 JobDTO get = listJob.get(idx);
                         %>
-                        <div class="table-link" style="padding-top: 10px;">
+                        <div class="table-link">
                             <form action="MainController" method="post">
                                 <input type="hidden" name="ITVID" value="<%= listID.get(idx) %>" />
                                 <button class="button-link" type="submit" name="action" value="ViewInterviewDetail" >Detail</button>
