@@ -65,11 +65,8 @@
                     <div class="col-md-8 input-border">
                         <input type="text" name="NewDescr" value="<%= Job.getDesription()%>" class="input" required=""/>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <input type="hidden" name="jobID" value="<%= Job.getJobID()%>" >
-                        <button type="submit" name="action" value="" class="submit-button">Cancel</button>
-                    </div>
-                    <div class="col-md-6">
                         <button type="submit" name="action" value="editPost" class="submit-button">Save</button>
                     </div> 
                 </form>

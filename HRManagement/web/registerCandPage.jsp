@@ -63,9 +63,9 @@
                             %>
                             <%@include file="registerPage2.jsp" %>
                             <% }%>
-                            <p style="color: #dfa974"> <%= (request.getParameter("stt") != null) ? "Email already exists!!!" : ""%></p>
-                            <p style="color: #dfa974"> <%= (request.getParameter("vstt") != null) ? "Verify-code invalid!!!" : ""%></p>
-                            <p style="color: #dfa974"> <%= (request.getParameter("valstt") != null) ? "Email invalid!!!" : ""%></p>
+                            <p style="color: red; text-align: center;"> <%= (request.getParameter("stt") != null) ? "Email already exists!!!" : ""%></p>
+                            <p style="color: red; text-align: center;"> <%= (request.getParameter("vstt") != null) ? "Verify-code invalid!!!" : ""%></p>
+                            <p style="color: red; text-align: center;"> <%= (request.getParameter("valstt") != null) ? "Email invalid!!!" : ""%></p>
                         </div>
                     </div>
                 </div>
