@@ -650,7 +650,8 @@ body{
     width: 100%;
 }
 /*link*/
-.button-link {
+.button-link{
+    text-decoration: none;
     display: inline-block;
     width: max-content;
     margin: 10px auto;
@@ -661,6 +662,12 @@ body{
     background-color: white;
     font-size: 90%;
     box-shadow: 0 1px var(--theme-color);
+    color: black;
+}
+.button-link:hover,
+.button-link.active {
+    text-decoration: none;
+    color: black;
 }
 /*button*/
 .input-button{

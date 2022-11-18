@@ -44,7 +44,7 @@
                 <p><span>Required:</span> 2</p>
             </div>
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="border-form">
                         <h3 class="table-header">Name</h3>
                     </div>
@@ -54,7 +54,7 @@
                         <h3 class="table-header">CV</h3>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="border-form">
                         <h3 class="table-header">Score</h3>
                     </div>
@@ -68,24 +68,23 @@
                         InterviewingDTO get = listIW.get(i);
                 %>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-5">
                         <div class="border-form short-form">
                             <p class="table-description"><%= listName.get(i)%></p>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="border-form short-form">
-                            <input type="hidden" name="CVID" value="<%= get.getCvID()%>">
-                            <button type="submit" name="action" value="viewCV" class="button-link">View</button>
+                            <a class="button-link" href="ViewCVController?CVID=<%= get.getCvID()%>">View</a>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="border-form short-form">
                             <p class="table-description"><%= get.getScore()%></p>
                         </div>
                     </div>
                     <div class="col-md-1">
-                        <div class="form-group">
+                        <div class="form-group short-form">
                             <input type="checkbox" id="<%= get.getCvID()%>" name="<%= get.getCvID()%>" value="true" />
                             <label for="<%= get.getCvID()%>"></label>
                         </div>
@@ -96,8 +95,8 @@
                 %>
 
                 <input type="hidden" name="ITVID" value="<%= ITVID%>" />
-                <button onclick="confirmButton()" type="submit" name="action" value="ApproveCandidate" >Approve</button>
-            </form>
+                <button class="submit-button" onclick="confirmButton()" type="submit" name="action" value="ApproveCandidate" >Approve</button>
+            </form> 
         </div>
         <%@include file="footer.jsp" %>
     </body>

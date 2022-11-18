@@ -42,25 +42,25 @@
             <div class="row center-form">
                 <form action="MainController" method="post">
                     <div class="col-md-4">
-                        <p class="info-title">Experience Requirement:</p>
+                        <p class="info-title">Experience Requirement*:</p>
                     </div>
                     <div class="col-md-8 input-border">
                         <input type="text" name="newExp" value="<%= Job.getExperienceRequirement()%>" class="input" required=""/>
                     </div>
                     <div class="col-md-4">
-                        <p class="info-title">Education Requirement:</p>
+                        <p class="info-title">Education Requirement*:</p>
                     </div>
                     <div class="col-md-8 input-border">
                         <input type="text" name="newEdu" value="<%= Job.getEducationRequirement()%>" class="input" required=""/>
                     </div>
                     <div class="col-md-4">
-                        <p class="info-title">Salary:</p>
+                        <p class="info-title">Salary*:</p>
                     </div>
                     <div class="col-md-8 input-border">
                         <input type="text" name="newSalary" value="<%= Job.getSalary()%>" class="input" required=""/>
                     </div>
                     <div class="col-md-4">
-                        <p class="info-title">Description:</p>
+                        <p class="info-title">Description*:</p>
                     </div>
                     <div class="col-md-8 input-border">
                         <input type="text" name="NewDescr" value="<%= Job.getDesription()%>" class="input" required=""/>

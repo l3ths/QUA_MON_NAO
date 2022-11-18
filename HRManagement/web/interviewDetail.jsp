@@ -91,7 +91,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="border-form short-form table-link">
-                            <button class="button-link" type="submit" name="action" value="viewCV">View</button>
+                            <a class="button-link" href="ViewCVController?CVID=<%= get.getCvID()%>">View</a>
                         </div>
                     </div>
                     <div class="col-md-3">

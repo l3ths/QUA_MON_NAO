@@ -82,8 +82,7 @@
                             <td class="table-description"><%= get.getEducation()%></td>
                             <td class="table-description"><%= get.getExperience()%></td>
                             <td style="text-align: center;">
-                                <input type="hidden" name="CVID" value="<%= get.getCvid()%>">
-                                <button class="button-link" type="submit" name="action" value="viewCV" class="button-link">View</button>
+                                <a class="button-link" href="ViewCVController?CVID=<%= get.getCvid()%>">View</a>
                             </td>
                             <td style="text-align: center; padding-top: 2px;">
                                 <div class="form-group">

@@ -53,7 +53,7 @@
                             EmployeeDTO get = listInterviewer.get(i);
                     %>
                     <div class="form-group">
-                        <input type="checkbox" name="<%= get.getEid()%>" value="true"/>
+                        <input type="checkbox" id="<%= get.getEid()%>" name="<%= get.getEid()%>" value="true"/>
                         <label for="<%= get.getEid()%>"><%= get.getEmname()%></label>
                     </div>
                     <%

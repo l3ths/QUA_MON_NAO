@@ -140,7 +140,7 @@ public class EmployeeDAO {
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                String sql = "insert tblEmployee values (?,?,?,?,?,?,null)";
+                String sql = "insert tblEmployee values (?,?,?,?,?,null,?)";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, id);
                 pst.setString(2, name);
