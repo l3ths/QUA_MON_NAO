@@ -47,7 +47,7 @@
         %>
         <div class="container">
             <h1 class="page-title">Apply</h1>
-            <h3 class="page-title"><%= Job.getName()%></h3>
+            <h3 class="page-title" style="font-size: 25px;"><%= Job.getName()%></h3>
             <form action="ApplyJobController" method="post" enctype="multipart/form-data" class="center-form">
                 <div class="input-border">
                     <input type="file" class="custom-file-input" name="applyFileCV" class="input" required=""/>

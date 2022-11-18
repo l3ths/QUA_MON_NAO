@@ -64,8 +64,11 @@
                                     <span class="focus-input100" data-placeholder="Phone"></span>
                                 </div>
                                 <div class="wrap-input100 validate-input" >
-                                    <input class="input100" type="text" name="regRole">
-                                    <span class="focus-input100" data-placeholder="Role"></span>
+                                    <select name="regRole" class="input select-list">
+                                        <option value="hr">HR</option>
+                                        <option value="hr manager">HR Manager</option>
+                                        <option value="interviewer">Interviewer</option>
+                                    </select>
                                 </div>
                                 <div class="wrap-input100 validate-input" >
                                     <input class="input100" type="date" name="regDate">

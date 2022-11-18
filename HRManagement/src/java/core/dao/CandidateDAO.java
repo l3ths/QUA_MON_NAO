@@ -71,7 +71,7 @@ public class CandidateDAO {
                 String sql = "SELECT [candidateID],[name] ,[phoneNumber]\n"
                         + "      ,[email],[imgPath] ,[dateOfBirth]\n"
                         + "  FROM [HR].[dbo].[tblCandidate]\n"
-                        + "  where email=? COLLATE Latin1_General_CS_AS";
+                        + "  where email=?";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 // gan input email vao cac dau cham hoi??
                 pst.setString(1, email);
@@ -173,7 +173,7 @@ public class CandidateDAO {
         try {
             cn = DBUtils.getConnection();
             if (cn != null) {
-                String sql = "insert tblCandidate values (?,?,?,?,null,null,?)";
+                String sql = "insert tblCandidate values (?,?,?,?,null,?)";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, id);
                 pst.setString(2, name);

@@ -31,7 +31,7 @@ public class AccountDAO {
             if (cn != null) {
                 //step 2: viet sql va execute no
                 String sql = "select email, password, role\n"
-                            + "from tblAccount";
+                            + "from tblAccount where role != 'admin'";
                 Statement st = cn.createStatement();
                 ResultSet table = st.executeQuery(sql);
                 //step 3: xu li ket qu step 2
@@ -160,7 +160,7 @@ public class AccountDAO {
             if (cn != null) {
                 String sql = "select email,password,role\n"
                             + "from dbo.tblAccount\n"
-                            + "where email=? and password=? COLLATE Latin1_General_CS_AS";
+                            + "where email=? and password=? and status = 1";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, email);
                 pst.setString(2, password);

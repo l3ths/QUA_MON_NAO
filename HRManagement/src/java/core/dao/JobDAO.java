@@ -22,11 +22,11 @@ import java.util.logging.Logger;
  */
 public class JobDAO {
 
-    private static final String GET_ALL_JOB = "SELECT jobID, name, salary, description, experienceRequirement, educationRequirement, imgPath FROM tblJob ORDER BY jobID OFFSET ? ROWS FETCH NEXT 3 ROWS ONLY";
+    private static final String GET_ALL_JOB = "SELECT jobID, name, salary, description, experienceRequirement, educationRequirement, imgPath FROM tblJob WHERE status = 0 ORDER BY jobID OFFSET ? ROWS FETCH NEXT 3 ROWS ONLY";
     private static final String GET_JOB = "SELECT jobID, name, salary, description, experienceRequirement, educationRequirement, imgPath FROM tblJob WHERE jobID=?";
-    private static final String SEARCH_JOB = "SELECT jobID, name, salary, description, experienceRequirement, educationRequirement, imgPath FROM tblJob WHERE name like ? AND SALARY >= ? ORDER BY jobID OFFSET ? ROWS FETCH NEXT 3 ROWS ONLY";
-    private static final String COUNT_JOB = "SELECT COUNT(jobID) AS count FROM tblJob";
-    private static final String COUNT_SEARCH = "SELECT COUNT(jobID) AS count FROM tblJob WHERE name like ? AND SALARY >= ?";
+    private static final String SEARCH_JOB = "SELECT jobID, name, salary, description, experienceRequirement, educationRequirement, imgPath FROM tblJob WHERE name like ? AND SALARY >= ? AND status = 0 ORDER BY jobID OFFSET ? ROWS FETCH NEXT 3 ROWS ONLY";
+    private static final String COUNT_JOB = "SELECT COUNT(jobID) AS count FROM tblJob WHERE status = 0";
+    private static final String COUNT_SEARCH = "SELECT COUNT(jobID) AS count FROM tblJob WHERE name like ? AND SALARY >= ? and status = 0";
 
     public List<JobDTO> getListJob(int index) throws SQLException {
         List<JobDTO> listJob = new ArrayList<>();
@@ -330,7 +330,7 @@ public class JobDAO {
                             + "    FROM tblJob j\n"
                             + "  inner join tblEmployee e\n"
                             + "  on j.empID=e.empID\n"
-                            + "  where e.email=?";
+                            + "  where e.email=? and j.status = 0";
                 PreparedStatement pst = cn.prepareStatement(sql);
                 pst.setString(1, email);
                 ResultSet rs = pst.executeQuery();

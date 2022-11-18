@@ -86,6 +86,8 @@ public class Tester {
 //        int list = JobDAO.getCountJob();
 //        String Jobid = "JOB" + (list + 1);
 //        JobDAO.createJob(Jobid, "QC", 2500, "", "decrisption", "2 year", "img", 2, "2022-09-01", "2022-11-01", "EMP1");
-        EmployeeDAO.createEmployee("EMP4", "Nhan Vien", "1234", "xinchao@gmail", "hr", "2002-10-10");
+//        EmployeeDAO.createEmployee("EMP4", "Nhan Vien", "1234", "xinchao@gmail", "hr", "2002-10-10");
+CandidateDTO dob = CandidateDAO.getCandidate("l3thanhhuy@gmail.com");
+        System.out.println(dob);
     }
 }
