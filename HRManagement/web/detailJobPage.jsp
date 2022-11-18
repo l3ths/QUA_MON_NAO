@@ -55,7 +55,7 @@
             <div class="detail-table" style="margin: 10px 8%;">
                 <p><span>Experience:</span> <%= job.getExperienceRequirement()%></p>
                 <p><span>Education:</span> <%= job.getEducationRequirement()%></p>
-                <p><span>Salary:</span> up to <%= job.getSalary()%></p>
+                <p><span>Salary:</span> up to <%= job.getSalary()%> USD</p>
                 <p><span>Description:</span> <%= job.getDesription()%></p>
                 <form action="MainController" method="post">
                     <input type="hidden" value="<%= job.getJobID()%>" name="jobID" />

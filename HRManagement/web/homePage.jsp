@@ -82,7 +82,7 @@
                                             <p>Salary:</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p>${job.salary}</p>
+                                            <p>${job.salary} USD</p>
                                         </div>
                                     </div>
                                     <div class="job-description row">

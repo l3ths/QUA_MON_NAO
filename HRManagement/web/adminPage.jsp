@@ -115,4 +115,12 @@
         </div>
         <%@include file="footer.jsp" %>
     </body>
+    <%
+        if (request.getParameter("regstt") != null) {
+    %>
+    <script type="text/javascript">
+        alert("Create account successfull!");
+    </script> <%
+    }
+    %>
 </html>

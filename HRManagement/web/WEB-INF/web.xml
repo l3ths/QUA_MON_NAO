@@ -56,6 +56,10 @@
         <servlet-name>PostRecruitmentController</servlet-name>
         <servlet-class>controller.PostRecruitmentController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateEmployeeAccountController</servlet-name>
+        <servlet-class>controller.CreateEmployeeAccountController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ViewInterviewDetailController</servlet-name>
         <url-pattern>/ViewInterviewDetailController</url-pattern>
@@ -111,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>PostRecruitmentController</servlet-name>
         <url-pattern>/PostRecruitmentController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateEmployeeAccountController</servlet-name>
+        <url-pattern>/CreateEmployeeAccountController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -237,6 +237,28 @@ public class AccountDAO {
             }
         }
     }
+    public static void createAccount(String user, String password, String role) {
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "insert tblAccount values (?,?,?,null,1)";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, user);
+                pst.setString(2, password);
+                pst.setString(3, role);
+                pst.executeUpdate();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
 
     public static void updateRoleToEmployee(String email) {
         Connection cn = null;

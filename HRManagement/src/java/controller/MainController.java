@@ -75,7 +75,7 @@ public class MainController extends HttpServlet {
     private static final String BU_ACCOUNT = "BUAccount";
     private static final String BU_ACCOUNT_CONTROLLER = "BUAccountController";
     private static final String CREATE_EMPLOYEE_ACCOUNT = "Create Account";
-    private static final String CREATE_EMPLOYEE_ACCOUNT_CONTROLLER = "Create Account";
+    private static final String CREATE_EMPLOYEE_ACCOUNT_CONTROLLER = "CreateEmployeeAccountController";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -137,6 +137,8 @@ public class MainController extends HttpServlet {
                 url = VIEW_CV_CONTROLLER;
             } else if (BU_ACCOUNT.equals(action)) {
                 url = BU_ACCOUNT_CONTROLLER;
+            } else if (CREATE_EMPLOYEE_ACCOUNT.equals(action)) {
+                url = CREATE_EMPLOYEE_ACCOUNT_CONTROLLER;
             }
         } catch (Exception e) {
             log("Error at MainController: " + e.toString());

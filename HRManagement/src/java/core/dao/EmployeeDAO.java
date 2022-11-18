@@ -134,6 +134,33 @@ public class EmployeeDAO {
         }
         return result;
     }
+     public static void createEmployee(String id, String name, String phone, String email, String role, String birthDate) {
+        
+        Connection cn = null;
+        try {
+            cn = DBUtils.getConnection();
+            if (cn != null) {
+                String sql = "insert tblEmployee values (?,?,?,?,?,?,null)";
+                PreparedStatement pst = cn.prepareStatement(sql);
+                pst.setString(1, id);
+                pst.setString(2, name);
+                pst.setString(3, phone);
+                pst.setString(4, email);
+                pst.setString(5, role);
+                pst.setString(6, birthDate);
+                pst.executeUpdate();
+               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                cn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AccountDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 
     public static ArrayList<EmployeeDTO> getAllInterviewers() {
         ArrayList<EmployeeDTO> list = new ArrayList<>();
