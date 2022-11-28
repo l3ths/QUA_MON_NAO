@@ -1,11 +1,11 @@
 # Welcome to HR Management
 ## You will find in this repo the following stuff:
 * A web app using jsp/servlet to manage recruitment with main functions:
-- Candidate: apply, view result
-- HR: manage recruitment job, review cv, create interview schedule
-- Interviewer: mark
-- HR manager: view the list of passed candidates and accept
-- Admin: manage account
+    - Candidate: apply, view result
+    - HR: manage recruitment job, review cv, create interview schedule
+    - Interviewer: mark
+    - HR manager: view the list of passed candidates and accept
+    - Admin: manage account
 * A SQL query file includes data for the project.
 * ...
 
